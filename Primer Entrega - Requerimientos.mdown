@@ -1,0 +1,36 @@
+# Requerimientos de usuario
+
+## Primera entrega Frontend
+
+## Pelicula
+
+* Nombre
+* Sinopsis
+* Año
+* Genero
+* Poster
+* Calificacion Promedio 1 a 5
+* Comentarios
+
+## Comentario
+
+* Nombre del Usuario
+* Cantidad de estrellas que puso ese usuario //0 si no la evaluó
+* Comentario
+
+Los Usuarios no requieren validacion de ingreso
+
+## Pagina de Peliculas
+
+* Se veran de a 5 por pagina.
+* Ordenamiento alfabeticamente por Titulo
+* Ordenamiento cronologico por año de estreno
+* Busqueda por año
+* Busqueda por genero
+* Busqueda por nombre (puede ser parcial)
+
+## Pagina de una Pelicula
+
+* Se mostraran los datos de la pelicula
+* Se mostraran comentarios
+* Ordenamiento de comentarios (arriba mas reciente)
