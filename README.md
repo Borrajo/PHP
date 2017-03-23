@@ -1,41 +1,42 @@
 # PHP
+
 Trabajo Practico PHP, sitio de información de peliculas
---
+
 Se solicita la creación de un sitio en el lenguaje PHP para publicar información de películas y realizar comentarios acerca de ellas por parte de los usuarios del sitio.
 El sitio está dividido en un Frontend y en un Backend.
 --
 
-##Frontend
+## Frontend
 --
-La página de inicio (que deberá llamarse index.php y estar en la raíz del sitio) contendrá un listado de películas en el que se podrán visualizar los siguientes datos:
-	+ una imagen del poster
-	+ el nombre
-	+ la sinopsis
-	+ el año de estreno
-	+ el género
-	+ el promedio de la calificación que le dieron los usuarios del sitio en una escala de 1 a 5 estrellas (donde 5 es lo mejor y 1 lo peor).
+La página de inicio (que deberá llamarse index.php y estar en la raíz del sitio) contendrá un listado de películas en el que se podrán visualizar los siguientes datos:  
++ una imagen del poster
++ el nombre
++ la sinopsis
++ el año de estreno
++ el género
++ el promedio de la calificación que le dieron los usuarios del sitio en una escala de 1 a 5 estrellas (donde 5 es lo mejor y 1 lo peor).
 
-Dicho listado deberá estar paginado de a 5 películas por página y permitir:
-	+ Ordenarse alfabéticamente por nombre de la película o por año de estreno.
-	+ Poder realizar búsquedas por año de estreno, género o nombre (que podría ser parcial, por ejemplo, si se busca por la palabra “ojo” aparecería la película “El secreto de tus ojos”).
+Dicho listado deberá estar paginado de a 5 películas por página y permitir:  
++ Ordenarse alfabéticamente por nombre de la película o por año de estreno.
++ Poder realizar búsquedas por año de estreno, género o nombre (que podría ser parcial, por ejemplo, si se busca por la palabra “ojo” aparecería la película “El secreto de tus ojos”).
 
 Además, haciendo clic en el poster o el nombre de la película se debe ir a otro script que muestre información de dicha película.
-La información que debe mostrar es:
-	+ la imagen del poster
-	+ el nombre
-	+ la sinopsis
-	+ el año de estreno
-	+ el género
-	+ el promedio de la calificación que le dieron los usuarios del sitio en una escala de 1 a 5 estrellas
-	+ listado ordenado por fecha (desde la más reciente a la más antigua) de todos los comentarios que recibió dicha película.
+La información que debe mostrar es:  
++ la imagen del poster
++ el nombre
++ la sinopsis
++ el año de estreno
++ el género
++ el promedio de la calificación que le dieron los usuarios del sitio en una escala de 1 a 5 estrellas
++ listado ordenado por fecha (desde la más reciente a la más antigua) de todos los comentarios que recibió dicha película.
 
-De cada comentario se debe mostrar:
-	+ cantidad de estrellas
-	+ el nombre y apellido del usuario autor del comentario
-	+ el comentario
+De cada comentario se debe mostrar:  
++ cantidad de estrellas
++ el nombre y apellido del usuario autor del comentario
++ el comentario
 
 --
-##Backend
+## Backend
 --
 Por otro lado la página de inicio tendrá un enlace para que los usuarios que quieran comentar sobre las películas se registren.
 Sólo los usuarios registrados podrán comentar las películas.
@@ -58,7 +59,7 @@ El trabajo debe entregarse en dos etapas:
 2. La segunda comprende el backend.
 
 --
-###Metodología del curso:
+### Metodología del curso:
 --
 El trabajo se debe realizar en grupos de DOS alumnos.
 La conformación de los grupos se tiene que informar a la cátedra antes del 31/3.
@@ -70,14 +71,14 @@ El trabajo final se aprueba con 6 (seis).
 Los alumnos que aprueben el trabajo final accederán a un coloquio que constará de dos partes.
 En la primera cada alumno deberá hacer una modificación del trabajo presentado y luego aquellos que aprueben deberán contestar un grupo de preguntas con el profesor para defender el trabajo y definir la nota final.
 --
-###Requisitos técnicos obligatorios:
+### Requisitos técnicos obligatorios:
 --
 1. El modelo de la base de datos será provisto por la cátedra y no debe ser modificado.
 2. La validación de los datos ingresados por el cliente será tanto del lado del cliente (JavaScript), como del lado del servidor (PHP).
 3. Se deberá implementar una clase que se encargue de la autenticación y de la autorización. En el proceso de autenticación, si el usuario y/o contraseña son incorrectos la clase deberá arrojar una excepción.
 --
-###Calendario de entregas
+### Calendario de entregas
 --
-	+ Primer etapa obligatoria: 5/5
-	+ Entrega final obligatoria: 16/6
-	+ Coloquio obligatorio: Semana del 3/7
++ Primer etapa obligatoria: 5/5
++ Entrega final obligatoria: 16/6
++ Coloquio obligatorio: Semana del 3/7
