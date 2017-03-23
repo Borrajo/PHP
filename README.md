@@ -1,10 +1,9 @@
 # PHP
 
-Trabajo Practico PHP, sitio de información de peliculas
-
+Trabajo Practico PHP, sitio de información de peliculas.  
 Se solicita la creación de un sitio en el lenguaje PHP para publicar información de películas y realizar comentarios acerca de ellas por parte de los usuarios del sitio.
 El sitio está dividido en un Frontend y en un Backend.
------
+
 
 ## Frontend
 
