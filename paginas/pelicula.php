@@ -3,7 +3,7 @@
 <?php 
 	$nombre = "JURASSIC PARK";
 	$anio = 1993;
-	$calif = 5;
+	$calif = 2;
 	$genero = "ciencia ficcion";
 	$sinopsis = "El multimillonario John Hammond consigue hacer realidad su sueño de clonar dinosaurios del Jurásico y crear con ellos un parque temático en una isla remota. Antes de abrirlo al público, invita a una pareja de eminentes científicos y a un matemático para que comprueben la viabilidad del proyecto. Pero las medidas de seguridad del parque no prevén el instinto de supervivencia de la madre naturaleza ni la codicia humana.";
 	$poster = "http://i.imgur.com/Ak3if00.jpg";
@@ -36,6 +36,7 @@
 		  </div>
 		</div>
 	</div>
+
 	<!-- COMENTARIOS -->
 	<div class="col-lg-10 col-md-12 col-xs-12 col-lg-offset-1">
 		<div class="page-header">
@@ -44,11 +45,11 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="col-md-1">
+				<div class="col-md-1 col-xs-1">
 					<!-- FOTO -->
 					<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="100%">
 				</div>
-				<div class="col-md-11">
+				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
 					<h4> nombre de usuario </h4> 
 					<input type="text" class="form-control" name="comment" placeholder="Escriba su comentario aqui">
@@ -58,11 +59,11 @@
 		</div>
 		<?php for ($i=0; $i < $comments; $i++){?>	
 		<div class="col-md-12">
-			<div class="col-md-1">
+			<div class="col-md-1 col-xs-1">
 				<!-- FOTO -->
 				<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="100%">
 			</div>
-			<div class="col-md-11">
+			<div class="col-md-11 col-xs-11">
 				<!-- COMENTARIO -->
 				<div class="panel panel-default">
 				  <div class="panel-heading">persona - apellido <?php $r= rand(0,5); for ($u=0; $u < $r ; $u++) { ?>
