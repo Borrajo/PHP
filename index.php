@@ -10,18 +10,25 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> 
+
+<link rel="stylesheet" href="Styles/carousel.css" type="text/css" media="screen">
+<!--<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> -->
+
 
 </head>
-<body style="background-image:url(http://bsnscb.com/data/out/196/39460826-theatre-wallpapers.jpg)">
+<body>
 <?php include "paginas/nav_top.php" ?>
+
+<script type="text/javascript" src="carousel.js"></script>
+
 Aca van las peliculitas.
 
 
-<div class="contain">
+<!--<div class="contain">
   <div class="row">
     <div class="row__inner">
 
@@ -235,8 +242,77 @@ Aca van las peliculitas.
       </div>
 
     </div>
-  </div>
+  </div>-->
+<div class="container">
+    <div class="col-md-12">
+         <h1>Peliculas</h1>
+
+        <div class="well">
+            <div id="myCarousel" class="carousel slide">
 
 
+                
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-2"><a href="#x"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-2"><a href="#x" class="thumbnail"><img src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                </div>
+                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+            <!--/myCarousel-->
+        </div>
+        <!--/well-->
+    </div>
+</div>
+
+
+<?php include "paginas/pelicula.php" ?>
 </body>
 </html>
