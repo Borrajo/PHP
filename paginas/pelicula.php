@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php include "header.php" ?>
+</head>
+<body>
+
+<?php include "nav_top.php" ?>
+
 <div class="container-fluid">
 <!-- PELICULA DE EJEMPLO PARA CARGAR LOS DATOS -->
 <?php 
@@ -82,3 +91,6 @@
 		<?php	}	?>
 	</div><!--fin del col-lg-10 -->
 </div><!-- fin del container -->
+
+</body>
+</html>

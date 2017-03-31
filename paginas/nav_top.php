@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./index.php">Marca del sitio</a>
+      <a class="navbar-brand" href="../index.php">Marca del sitio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
