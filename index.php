@@ -28,6 +28,7 @@
                 "http://k43.kn3.net/26A9F5670.jpg",
                 "http://www.freemovieposters.net/posters/matrix_the_1999_3131_poster.jpg"
                 );
+  $paginas = 3;
 ?>
 
 <?php include "paginas/nav_top.php" ?>
@@ -248,7 +249,7 @@
 
     </div>
   </div>-->
-<div class="container-fluid">
+<div class="container-fuid">
     <div class="col-md-12">
          <h1>Peliculas</h1>
 
@@ -258,12 +259,12 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner">
 
-                      <?php for ($i=0; $i <3 ; $i++) { ?> 
-                        <div class="item <?php if($i == 0) { echo "active";} ?> ">
+                      <?php for ($i=0; $i <$paginas ; $i++) { ?> 
+                        <div class="item <?php if($i == 0) { echo "active";} ?> " id=<?php echo "item".$i ?> >
                           <div class="row">
                               <div class="col-md-1"></div>
                               <?php for ($p=0; $p < 5 ; $p++) { ?>
-                              <div class="col-sm-2"><a href="paginas/pelicula.php"><img src=<?php echo $peliculas[($i*5)+$p] ?> alt="Image" class="img-responsive img-rounded" ></a>
+                              <div class="col-sm-2 col-md-2"><a href="paginas/pelicula.php"><img src=<?php echo $peliculas[($i*5)+$p] ?> alt="Image" class="img-responsive img-rounded" ></a>
                               </div>
                               <?php } ?>
                           </div><!--/row-->
@@ -278,6 +279,25 @@
             <!--/myCarousel-->
         </div>
         <!--/well-->
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+      <nav aria-label="Page navigation">
+      <ul class="pagination  pagination-lg">
+        <li>
+          <a href="#myCarousel" data-slide="prev" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <?php for ($l=0; $l < $paginas ; $l++) { ?>
+          <li><a href="#"><?php echo $l+1 ?></a></li>
+        <?php } ?>
+        <li>
+          <a href="#myCarousel" data-slide="next" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+      </nav>
     </div>
 </div>
 
