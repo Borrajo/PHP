@@ -1,0 +1,25 @@
+### Parametros de busqueda 
+
+Existe un parametro llamdo search que es el de la barra de busqueda.
+En este parametro se almacena una palabra que sirve para hacer la busqueda en la base de datos.
+Se utiliza tanto para el nombre, el año o el genero. Ej: si buscamos "2012" tambien aparecerá la pelicula con nombre "2012"
+
+Esto queda libre a nuestro criterio si deseamos separar los terminos de busqueda o juntarlos todos.
+
+Luego estan los Ordenamientos:
+El ordenamiento principal es Alfabeticamente Ascendente y Anualmente Descendente.
+Cada vez que se cambie un parametro de ordenamiento se enviará al servidor realizando una nueva busqueda.
+Puede ordenarse primero por año (ascendente o descendente) y dentro de cada año puede ordenarse a su vez por nombre(ascendente o descendente).
+Tambien puede ordenarse primero por nombre y dentro de cada letra por año(ascendente o descendente)
+
+Por ultimo estan las paginas:
+Estas se envian como parametro de la busqueda trayendo asi la pagina correcta.
+
+Resumen de los parametros enviados en cada solicitud al servidor:
++ Search (podrá dividirse en:)
+	+ Nombre
+	+ Anio
+	+ Genero
++ OrderAnio
++ OrderNombre
++ Page
