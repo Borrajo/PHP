@@ -31,252 +31,33 @@
   $paginas = 3;
 ?>
 
-<?php include "paginas/nav_top.php" ?>
+<?php include "paginas/nav_top.php" ;
 
+if(isset($_GET["search"]))
+{
+	print_r($_GET["search"]);
+	$busqueda = $_GET["search"];
+}
+?>
 
-<!--<div class="contain">
-  <div class="row">
-    <div class="row__inner">
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://k60.kn3.net/taringa/C/C/8/C/4/2/supermachote2/260.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://k60.kn3.net/taringa/4/E/9/E/0/6/supermachote2/455.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="hhttp://pics.filmaffinity.com/deadpool-834516798-large.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="http://es.web.img3.acsta.net/pictures/17/01/09/09/56/256507.jpg" alt=""  />
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Nombre
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>-->
-<div class="container-fuid">
-    <div class="col-md-12">
+<div class="container-fluid">
+    <div class="col-md-10 col-md-offset-1">
          <h1>Peliculas</h1>
 
         <div class="well">
-            <div id="myCarousel" class="carousel slide">
+ 
               
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-
                       <?php for ($i=0; $i <$paginas ; $i++) { ?> 
                         <div class="item <?php if($i == 0) { echo "active";} ?> " id=<?php echo "item".$i ?> >
                           <div class="row">
-                              <div class="col-md-1"></div>
-                              <?php for ($p=0; $p < 5 ; $p++) { ?>
-                              <div class="col-sm-2 col-md-2"><a href="paginas/pelicula.php"><img src=<?php echo $peliculas[($i*5)+$p] ?> alt="Image" class="img-responsive img-rounded" ></a>
+                              
+                              <?php for ($p=0; $p < 4 ; $p++) { ?>
+                              <div class="col-sm-3 col-md-3"><a href="paginas/pelicula.php"><img src=<?php echo $peliculas[($i*5)+$p] ?> alt="Image" class="img-responsive img-rounded" ></a>
                               </div>
                               <?php } ?>
                           </div><!--/row-->
                         </div>
                       <?php } ?>
-                    <!--/item-->
-                </div>
-                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-            </div>
-            <!--/myCarousel-->
         </div>
         <!--/well-->
     </div>
@@ -289,7 +70,11 @@
           </a>
         </li>
         <?php for ($l=0; $l < $paginas ; $l++) { ?>
-          <li><a href="#"><?php echo $l+1 ?></a></li>
+          <li>
+	          <form action="index.php" method="GET">
+	          <a href="#" name="page"><?php echo $l+1 ?></a>
+	          </form>
+          </li>
         <?php } ?>
         <li>
           <a href="#myCarousel" data-slide="next" aria-label="Next">
