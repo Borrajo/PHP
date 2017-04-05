@@ -1,0 +1,17 @@
+## CONSULTAS SQL
+
+## Primera entrega:
+
+#### Obtener pelicula por id
+
+#### Obtener Comentarios por id de pelicula
+
+#### Obtener peliculas por nombre, anio
+
+## Segunda entrega:
+
+#### Registrar Nuevo usuario
+
+#### Obtener usuario por id
+
+#### Modificar pelicula por id si el usuario es administrador.
