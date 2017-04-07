@@ -16,10 +16,9 @@ Por ultimo estan las paginas:
 Estas se envian como parametro de la busqueda trayendo asi la pagina correcta.  
 
 Resumen de los parametros enviados en cada solicitud al servidor:
-+ Search (podrá dividirse en:)
-	+ Nombre
-	+ Anio
-	+ Genero
++ Nombre
++ Anio
++ Genero
 + OrderAnio
 + OrderNombre
 + Page
