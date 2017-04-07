@@ -14,7 +14,26 @@ SELECT comentarios.* , usuarios.nombreusuario
 FROM comentarios INNER JOIN usuarios ON (comentarios.usuarios_id = usuarios.id)
 WHERE comentarios.peliculas_id = $id
 
-#### Obtener peliculas por nombre, anio
+#### Obtener peliculas por nombre
+
+SELECT comentarios.* , usuarios.nombreusuario
+FROM peliculas INNER JOIN comentarios ON (peliculas.id = comentarios.peliculas_id) INNER JOIN usuarios ON (comentarios.usuarios_id = usuarios.id)
+WHERE peliculas.id=$id
+
+#### Obtener peliculas por anio
+
+SELECT peliculas.*,  AVG(comentarios.calificacion) AS Calificacion
+FROM peliculas INNER JOIN comentarios ON(peliculas.id=comentarios.peliculas_id)
+WHERE peliculas.anio=$anio
+GROUP BY peliculas.id
+
+#### Obtener peliculas por nombre
+
+SELECT peliculas.*,  AVG(comentarios.calificacion) AS Calificacion
+FROM peliculas INNER JOIN comentarios ON(peliculas.id=comentarios.peliculas_id)
+WHERE peliculas.nombre=".$nombre"
+GROUP BY peliculas.id
+>>>>>>> b30d604592a6f58225d9a67e78efb5cce5b9b3b0
 
 ## Segunda entrega:
 
