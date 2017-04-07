@@ -1,0 +1,34 @@
+### Organizacion de la Base de Datos.
+
+Organizacion:  
+
+* generos
+	+ id
+	+ genero
+
+* peliculas
+	+ id
+	+ nombre
+	+ sinopsis
+	+ año
+	+ generos_id
+	+ contenidoimagen
+	+ tipoimagen
+
+* usuarios
+	+ id
+	+ nombreusuario
+	+ email
+	+ password
+	+ nombre
+	+ apellido
+	+ administrador
+
+* comentarios
+	+ id
+	+ comentario
+	+ fecha
+	+ peliculas_id
+	+ usuarios_id
+	+ calificacion
+
