@@ -1,0 +1,50 @@
+.poster {
+	position: static;
+  max-height: 100%;
+  height: auto;
+}
+
+.poster-img 
+{
+	border-radius: 10px;
+	max-width: 100%;
+    display: block;
+    margin: auto;
+    transition: .5s ease;
+  	
+}
+
+.poster:hover .poster-img
+{
+	opacity: 0.85;
+	background: black;
+}
+
+.poster:hover .poster-info
+{
+	opacity: 1;
+}
+
+.poster-info
+{
+	transform: translate(0%, -500%); /* Revisar la traslacion */
+	transition: .5s ease;
+  	opacity: 0;
+	
+}
+
+.poster-titulo
+{
+	color: white;
+	font-size: 40px;
+	text-align: center;
+	text-shadow: 0 0 6px #000000;
+}
+.poster-anio
+{
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	text-shadow: 0 0 6px #000000;
+}
+

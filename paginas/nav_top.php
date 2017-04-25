@@ -1,3 +1,20 @@
+<?php   
+ 
+ // include "../../php/paginas/getGeneros.php"; Da problemas dependiendo la ubicacion
+ 	include ('conexion.php');
+    $sql = "SELECT * FROM `generos`";
+	if(!$result = mysqli_query($conn, $sql)) die();
+	/*Creamos un arreglo de generos*/
+    $generos = array();
+    //fetch tha data from the database
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))  
+    {
+        array_push($generos, $row); /*en cada fila del arreglo ponemos un genero*/
+   	}
+   	/* DATOS 
+ 		$generos --> contiene todos los generos que existen.
+  	*/
+?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,19 +25,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.php">Marca del sitio</a>
+      <a class="navbar-brand" href="../../php/index.php">Marca del sitio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" action="index.php" method="GET">
+      <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar" name="search">
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+          <input type="text" class="form-control" placeholder="Año de estreno" name="anio">
+          <select class="form-control" name="genero">
+          	<option value="" >--Genero--</option>
+          <?php for ($i=0; $i < count($generos) ; $i++) 
+          { ?>
+          	<option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
+          <?php } ?>
+          </select>
         </div>
-        <button type="submit" class="btn btn-default">Buscar</button>
+        <button type="submit" class="btn btn-danger">Buscar</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn-danger navbar-btn">Iniciar Sesion</button></li>
+        <li><button type="button" class="btn btn-default navbar-btn">Iniciar Sesion</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

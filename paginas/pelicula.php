@@ -10,13 +10,15 @@
 <div class="container-fluid">
 <!-- PELICULA DE EJEMPLO PARA CARGAR LOS DATOS -->
 <?php 
-	$nombre = "JURASSIC PARK";
-	$anio = 1993;
-	$calif = 2;
-	$genero = "ciencia ficcion";
-	$sinopsis = "El multimillonario John Hammond consigue hacer realidad su sueño de clonar dinosaurios del Jurásico y crear con ellos un parque temático en una isla remota. Antes de abrirlo al público, invita a una pareja de eminentes científicos y a un matemático para que comprueben la viabilidad del proyecto. Pero las medidas de seguridad del parque no prevén el instinto de supervivencia de la madre naturaleza ni la codicia humana.";
-	$poster = "http://i.imgur.com/Ak3if00.jpg";
-	$comments = 100;
+	include ('getPelicula.php');
+	/* NOS DEVUELVE UN ARREGLO $data CON LA INFORMACION */
+	$nombre = $data['nombre'];
+	$anio = $data['anio'];
+	$calif = $data['calificacion'];
+	$genero = $data['genero'];
+	$sinopsis = $data['sinopsis'];
+	$poster = $data['contenidoimagen'];
+	$comments = $comentarios; /* Proviene desde la consulta SQL */
 ?>
 
 	<!-- PAGINA DE LA PELICULA -->
@@ -26,7 +28,7 @@
 		<!--PARTE SUPERIOR CON INFORMACION DE LA PELICULA-->
 			<div class="col-md-4 col-xs-12">
 			<!-- POSTER DE LA PELICULA -->
-			<img src=<?php echo $poster ?> width="100%" class="img-rounded">
+			<img src="data:image/jpeg;base64,<?php echo base64_encode($poster); ?>" width="100%" class="img-rounded"/>
 			</div>
 			<div class="col-md-6 col-xs-12">
 				<!-- INFORMACION -->
@@ -49,7 +51,7 @@
 	<!-- COMENTARIOS -->
 	<div class="col-lg-10 col-md-12 col-xs-12 col-lg-offset-1">
 		<div class="page-header">
-  		<h1><small><?php echo $comments ?> comentarios</small></h1>
+  		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) >1){echo 's';} ?></small></h1>
 		</div>
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -66,7 +68,11 @@
 			</div>
 			</div>
 		</div>
-		<?php for ($i=0; $i < $comments; $i++){?>	
+		<?php for ($i=0; $i < count($comments); $i++)
+		{
+			$comentario = $comments[$i];
+			$puntaje = $comentario['calificacion'];
+			?>	
 		<div class="col-md-12">
 			<div class="col-md-1 col-xs-1">
 				<!-- FOTO -->
@@ -75,15 +81,15 @@
 			<div class="col-md-11 col-xs-11">
 				<!-- COMENTARIO -->
 				<div class="panel panel-default">
-				  <div class="panel-heading">persona - apellido <?php $r= rand(0,5); for ($u=0; $u < $r ; $u++) { ?>
+				  <div class="panel-heading"><?php echo $comentario['nombreusuario']." | " ; for ($u=0; $u < $puntaje ; $u++) { ?>
 							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						<?php } ?>
-						<?php for ($u=0; $u <5-$r ; $u++) { ?>
+						<?php for ($u=0; $u <5-$puntaje ; $u++) { ?>
 							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-						<?php } ?> 
+						<?php } echo $comentario['fecha']; ?> 
 				  </div>
 				  <div class="panel-body">
-				    Aca aparecerá el comentario de la persona 
+				    <?php echo $comentario['comentario']; ?>
 				  </div>
 				</div>
 			</div>
