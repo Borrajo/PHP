@@ -2,10 +2,12 @@
 <html>
 <head>
 	<?php include "header.php" ?>
+	<link rel="stylesheet" href="Styles/estilos.css" type="text/css">
 </head>
 <body>
 
 <?php include "nav_top.php" ?>
+
 
 <div class="container-fluid">
 <!-- PELICULA DE EJEMPLO PARA CARGAR LOS DATOS -->

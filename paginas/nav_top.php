@@ -25,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../../php/index.php">Marca del sitio</a>
+      <a class="navbar-brand" href="../../php/index.php">Peliszone</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,17 +35,17 @@
           <input type="text" class="form-control" placeholder="Nombre" name="nombre">
           <input type="text" class="form-control" placeholder="Año de estreno" name="anio">
           <select class="form-control" name="genero">
-          	<option value="" >--Genero--</option>
+          	<ul class="dropdown-menu"></ul>
           <?php for ($i=0; $i < count($generos) ; $i++) 
           { ?>
           	<option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
           <?php } ?>
           </select>
         </div>
-        <button type="submit" class="btn btn-danger">Buscar</button>
+        <button type="submit" class="btn btn"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn-default navbar-btn">Iniciar Sesion</button></li>
+        <li><button type="button" class="btn btn navbar-btn">Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -40,20 +40,20 @@
             <input type="hidden" name="order_anio" value="" > <!-- Se ponen en vacio para reiniciar el orden y solo se sobreescribe el que se solicita -->
             <input type="hidden" name="order_nombre" value="" >
             <input type="hidden" name="page" value="1" >
-                      Ordenar por:
+                      <h5>Ordenar por:</h5>
             <!-- BOTON DE ORDER_ANIO -->
             <div class="btn-group">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Año <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><button class="btn btn-link"  type="submit" name="order_anio" value="DESC">Mas nuevas</button></li>
-                <li><button class="btn btn-link"  type="submit" name="order_anio" value="ASC">Mas viejas</button></li>
+                <li><button class="btn btn-link"  type="submit" name="order_anio" value="DESC">Más recientes</button></li>
+                <li><button class="btn btn-link"  type="submit" name="order_anio" value="ASC">Más viejas</button></li>
               </ul>
             </div>
             <!-- BOTON DE ORDER_NOMBRE -->
             <div class="btn-group">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Nombre <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
@@ -64,14 +64,14 @@
             </form>
          </div>
          <!-- FIN DE MENU DE ORDENAMIENTO -->
-         <h1>Peliculas</h1>
+         <h2>Últimas pel&#237;culas agregadas</h2><br>
 
         <div class="well">
             <?php if(count($peliculas) > 0 )
             { ?>
-                          <div class="row">
+                          <div class="row justify-content-center">
                               <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
-                              <div class="col-sm-12 col-md-3 poster">
+                              <div class="col-sm-10 col-md-3 align-items-center poster">
                                   <a href="<?php echo 'paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
                                     <img class="poster-img" src="data:image/jpeg;base64,<?php echo base64_encode($peliculas[$p]['contenidoimagen']); ?>"/>
                                   </a>
@@ -82,7 +82,7 @@
                               </div>
                               <?php } ?>
                           </div><!--/row-->
-            <?php } else echo "<h1> No hay peliculas con esos parametros de busqueda</h1>" ?>
+            <?php } else echo "<h1> No hay películas con esos parámetros de búsqueda</h1>" ?>
         </div>
         <!--/well-->
     </div>
@@ -98,11 +98,11 @@
               <input type="hidden" name="order_nombre" value="<?php echo $order_nombre ?>" >
               <div class="btn-group" role="group">
                     <?php if($page > 1){ ?> 
-                    <button type="submit" name="page" value="<?php echo $page-1 ?>" class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span></button> <?php }?>
+                    <button type="submit" name="page" value="<?php echo $page-1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-left"></span></button> <?php }?>
                     <?php for ($l=0; $l < $paginas ; $l++) { ?>
-        	          <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn-danger"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
+        	          <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
                     <?php if($paginas > 1 && $page != $paginas){ ?>
-                    <button type="submit" name="page" value="<?php echo $page+1 ?>" class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button type="submit" name="page" value="<?php echo $page+1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-right"></span></button>
                     <?php } ?>
               </div>
           </form>
