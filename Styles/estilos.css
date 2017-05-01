@@ -116,7 +116,7 @@ h5{
 
 
 /* Black buttons with extra padding and without rounded borders */
-.btn{
+.btn-bc{
     padding: 10px 20px;
     background-color: #848484;
     color: white;
@@ -131,7 +131,11 @@ h5{
     color: #000;
 }
 
-.footer {
+.btn-link:hover, .btn:focus {
+    border: 0px;
+}
+
+footer {
     background-color: #100D0A;
     /*background-color: transparent;*/
     font-family: Montserrat, sans-serif;

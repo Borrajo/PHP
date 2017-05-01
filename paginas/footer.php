@@ -1,4 +1,4 @@
-<footer class=footer>
+<footer >
    <div align=center> <a class="up-arrow" href="http://localhost/php/index.php" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>

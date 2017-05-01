@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php include "header.php" ?>
-	<link rel="stylesheet" href="Styles/estilos.css" type="text/css">
+	<link rel="stylesheet" href="../Styles/estilos.css" type="text/css">
 </head>
 <body>
 

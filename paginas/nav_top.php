@@ -33,19 +33,19 @@
       <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-          <input type="text" class="form-control" placeholder="Año de estreno" name="anio">
+          <input type="number" class="form-control" placeholder="Año de estreno" name="anio">
           <select class="form-control" name="genero">
-          	<ul class="dropdown-menu"></ul>
+          	<option value="" >--Genero--</option>
           <?php for ($i=0; $i < count($generos) ; $i++) 
           { ?>
           	<option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
           <?php } ?>
           </select>
         </div>
-        <button type="submit" class="btn btn"><span class="glyphicon glyphicon-search"></span></button>
+        <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn navbar-btn">Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
+        <li><button type="button" class="btn btn-bc navbar-btn">Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

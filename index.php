@@ -43,7 +43,7 @@
                       <h5>Ordenar por:</h5>
             <!-- BOTON DE ORDER_ANIO -->
             <div class="btn-group">
-              <button type="button" class="btn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-bc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Año <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
             </div>
             <!-- BOTON DE ORDER_NOMBRE -->
             <div class="btn-group">
-              <button type="button" class="btn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-bc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Nombre <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
