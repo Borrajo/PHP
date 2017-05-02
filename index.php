@@ -27,7 +27,7 @@
   include "paginas/nav_top.php" ;
 ?>
         
-<div class="container-fluid">
+<div class="container-fluid fondo">
 
     <div class="col-md-10 col-md-offset-1">
           <!-- MENU DE ORDENAMIENTO -->
@@ -64,7 +64,14 @@
             </form>
          </div>
          <!-- FIN DE MENU DE ORDENAMIENTO -->
-         <h2>Últimas pel&#237;culas agregadas</h2><br>
+         <?php if ($nombre =="" && $anio == "" && $genero =="" )
+         {
+          echo "<h2>Últimas películas agregadas</h2><br>";
+         }
+         else
+         {
+          echo "<h2>Resultados de la búsqueda: </h2><br>";
+         }?>
 
         <div class="well">
             <?php if(count($peliculas) > 0 )
@@ -82,7 +89,7 @@
                               </div>
                               <?php } ?>
                           </div><!--/row-->
-            <?php } else echo "<h1> No hay películas con esos parámetros de búsqueda</h1>" ?>
+            <?php } else echo "<h1> No hay películas con esos parámetros de búsqueda</h1></br>" ?>
         </div>
         <!--/well-->
     </div>

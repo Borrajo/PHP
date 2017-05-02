@@ -9,7 +9,7 @@
 <?php include "nav_top.php" ?>
 
 
-<div class="container-fluid">
+<div class="container-fluid fondo">
 <!-- PELICULA DE EJEMPLO PARA CARGAR LOS DATOS -->
 <?php 
 	include ('getPelicula.php');
@@ -99,6 +99,8 @@
 		<?php	}	?>
 	</div><!--fin del col-lg-10 -->
 </div><!-- fin del container -->
-
+<footer>
+  <?php include "../paginas/footer.php";?>
+</footer>
 </body>
 </html>

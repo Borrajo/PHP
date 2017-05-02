@@ -1,5 +1,5 @@
 
-.navbar-inverse .container-fluid{
+.navbar-inverse{
     font-family: Montserrat, sans-serif;
     margin-bottom: 0;
     background-color: #2d2d30;
@@ -8,14 +8,14 @@
     letter-spacing: 4px;
     opacity:0.9;
     padding-top:20px; padding-bottom: 20px;
+    background-image: linear-gradient(to top,#000000 10%,#bc1818 100%);
 }
 
 
 .navbar-brand{
     font-family: Montserrat, sans-serif;
 	font-style: normal;
-	font-size: 40px;
-	font-weight: 300;
+	font-size: 10ex;
 	color: #d5d5d5 !important; //color gris para todos los links de la barra
 }
 
@@ -40,10 +40,16 @@
     background-color: red !important;
 }
 
-.container-fluid{
-        background-image: url("http://thewongcouple.com/our-wedding/images/CinemaBackground.jpg");
+.fondo{
+      
 }
-.body {
+
+body {
+	background-color: black;
+	background-image: url("http://thewongcouple.com/our-wedding/images/CinemaBackground.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
     font: 400 15px/1.8 Lato, sans-serif;
     color: #777;
 }
@@ -125,14 +131,17 @@ h5{
 }
 
 /* On hover, the color of .btn will transition to white with black text */
-.btn:hover, .btn:focus {
+.btn-bc:hover {
     border: 1px solid #333;
     background-color: #fff;
     color: #000;
 }
 
-.btn-link:hover, .btn:focus {
-    border: 0px;
+.btn-link:hover 
+{
+	text-decoration: none;
+	color: #000000;
+
 }
 
 footer {

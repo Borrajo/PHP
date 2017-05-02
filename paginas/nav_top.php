@@ -15,7 +15,7 @@
  		$generos --> contiene todos los generos que existen.
   	*/
 ?>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" id="top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
