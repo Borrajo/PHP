@@ -19,7 +19,7 @@
 	color: #d5d5d5 !important; //color gris para todos los links de la barra
 }
 
-/* Remove border color from the collapsible button */
+/* borde transparente*/
 .navbar-default .navbar-toggle {
     border-color: transparent;
 }
@@ -33,11 +33,6 @@
 /* Dropdown links */
 .dropdown-menu li a {
     color: #000 !important;
-}
-
-/* On hover, the dropdown links will turn red */
-.dropdown-menu li a:hover {
-    background-color: red !important;
 }
 
 .fondo{
@@ -59,9 +54,45 @@ body {
 }
 
 .poster {
-  position: static;
- width:320 px; height: 320px;
-  height: auto;
+    position: relative;
+    display: inline-block; /*Para que todos los elementos aparezcan en la misma linea*/
+}
+
+/* Texto que aparece en el tooltip*/
+.poster .poster-info {
+    visibility: hidden;/*no se muestra hasta que se pasa el mouse por encima*/
+    width: 70%; /*ancho del tooltip*/
+    background-color: #848484;
+    color: #fff;
+    text-align: center;
+    padding: 4px 0;
+    border-radius: 10px;
+ 
+    /* Posicion del texto que aparece dentro del tooltip*/
+    position: absolute;
+    z-index: 1; /*orden de aparicion del tooltip en relacion al poster*/
+    left:50%; /*para que aparezca a la derecha*/
+    margin-left: -30px; /*se usa la mitad del ancho para centrarlo*/
+    bottom:5%; /*para que aparezca mas abajo*/
+}
+
+/* El tooltip se hace visible cuando se pasa el mouse por encima del poster*/
+.poster:hover .poster-info {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*Flecha del tooltip (hace que se vea como una ventana de dialogo)*/
+.poster .poster-info::after {
+    content: " "; /*Contenido vacio*/
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    /*Se crea usando bordes*/
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #848484 transparent transparent transparent; /*La flecha aparece encima del tooltip*/
 }
 
 .poster-img 
@@ -80,14 +111,9 @@ body {
 	background: black;
 }
 
-.poster:hover .poster-info
-{
-	opacity: 1;
-}
 
 .poster-info
-{   font: 400 8px/1.3 Lato, sans-serif;
-	transform: translate(0%, -100%); /* Revisar la traslacion  */ /*La cambie de -500 a -100*/
+{   transform: translate(0%, -100%); /* Revisar la traslacion  */ /*La cambie de -500 a -100*/
 	transition: .5s ease;
   	opacity: 0;
 	
@@ -96,14 +122,14 @@ body {
 .poster-titulo
 {
 	color: white;
-	font-size: 35px;
+	font-size: 20px;
 	text-align: center;
 	text-shadow: 0 0 6px #000000;
 }
 .poster-anio
 {
 	color: white;
-	font-size: 20px;
+	font-size: 15px;
 	text-align: center;
 	text-shadow: 0 0 6px #000000;
 }
@@ -121,7 +147,7 @@ h5{
 }
 
 
-/* Black buttons with extra padding and without rounded borders */
+/* Botones color gris con los bordes redondeados y las letras blancas*/
 .btn-bc{
     padding: 10px 20px;
     background-color: #848484;
@@ -130,13 +156,13 @@ h5{
     transition: .2s;
 }
 
-/* On hover, the color of .btn will transition to white with black text */
+/* Al pasar el mouse los botones pasan a ser blancos con las letras negras*/
 .btn-bc:hover {
     border: 1px solid #333;
     background-color: #fff;
     color: #000;
 }
-
+/*Los links de los botones también pasan a ser negros cuando se pasa el mouse por encima*/
 .btn-link:hover 
 {
 	text-decoration: none;
@@ -146,7 +172,6 @@ h5{
 
 footer {
     background-color: #100D0A;
-    /*background-color: transparent;*/
     font-family: Montserrat, sans-serif;
     color: #f5f5f5;
     padding: 32px;
