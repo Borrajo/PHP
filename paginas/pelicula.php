@@ -35,10 +35,10 @@
 			<div class="col-md-6 col-xs-12">
 				<!-- INFORMACION -->
 				<h1><?php echo $nombre ?> | 
-					<?php for ($i=0; $i <$calif ; $i++) { ?>
+					<?php for ($i=0; $i <ceil($calif) ; $i++) { ?>
 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					<?php } ?>
-					<?php for ($i=0; $i <5-$calif ; $i++) { ?>
+					<?php for ($i=0; $i <5-ceil($calif) ; $i++) { ?>
 						<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 					<?php } ?>
 				</h1>

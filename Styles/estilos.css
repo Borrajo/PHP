@@ -50,12 +50,13 @@ body {
 }
 
 .well{
-    padding-bottom: 1px;
+    padding-bottom: 20px;
 }
 
 .poster {
     position: relative;
     display: inline-block; /*Para que todos los elementos aparezcan en la misma linea*/
+     
 }
 
 /* Texto que aparece en el tooltip*/
@@ -98,7 +99,7 @@ body {
 .poster-img 
 {
 	border-radius: 10px;
-    width:320 px; height: 320px;
+    height: 28em;
 	/*max-width: 100%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
     display: block;
     margin: auto;

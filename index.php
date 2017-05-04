@@ -85,6 +85,7 @@
                                   <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
                                     <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
                                     <div class="poster-anio"><?php echo $peliculas[$p]['anio'];?></div>
+                                    <div class="poster-anio"><?php echo $peliculas[$p]['sinopsis'];?></div>
                                   </div>
                               </div>
                               <?php } ?>
