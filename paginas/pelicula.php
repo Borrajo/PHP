@@ -60,7 +60,7 @@
 			<div class="panel-body">
 				<div class="col-md-1 col-xs-1">
 					<!-- FOTO -->
-					<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="100%">
+					<img src="../img/perfil.jpg" width="100%">
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
@@ -78,7 +78,7 @@
 		<div class="col-md-12">
 			<div class="col-md-1 col-xs-1">
 				<!-- FOTO -->
-				<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="100%">
+				<img src="../img/perfil.jpg" width="100%">
 			</div>
 			<div class="col-md-11 col-xs-11">
 				<!-- COMENTARIO -->
