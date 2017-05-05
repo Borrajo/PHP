@@ -1,4 +1,5 @@
 
+
 .navbar-inverse{
     font-family: Montserrat, sans-serif;
     margin-bottom: 0;
@@ -14,9 +15,9 @@
 
 .navbar-brand{
     font-family: Montserrat, sans-serif;
-	font-style: normal;
-	font-size: 10ex;
-	color: #d5d5d5 !important; //color gris para todos los links de la barra
+    font-style: normal;
+    font-size: 10ex;
+    color: #d5d5d5 !important; //color gris para todos los links de la barra
 }
 
 /* borde transparente*/
@@ -40,8 +41,8 @@
 }
 
 body {
-	background-color: black;
-	background-image: url("../img/CinemaBackground.jpg");
+    background-color: black;
+    background-image: url("../img/CinemaBackground.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center bottom;
@@ -62,43 +63,47 @@ body {
 /* Texto que aparece en el tooltip*/
 .poster .poster-info {
     visibility: hidden;/*no se muestra hasta que se pasa el mouse por encima*/
-    width: 70%; /*ancho del tooltip*/
-    background-color: #848484;
+    width: 100%; /*ancho del tooltip*/
+    background-color: #343434;
     color: #fff;
     text-align: center;
-    padding: 4px 0;
+    padding: 4px 10px 4px 10px;
     border-radius: 10px;
     /* Posicion del texto que aparece dentro del tooltip*/
     position: absolute;
     z-index: 1; /*orden de aparicion del tooltip en relacion al poster*/
     left:50%; /*para que aparezca a la derecha*/
+    margin-left: -30px; /*se usa la mitad del ancho para centrarlo*/
+}
+.poster-sinopsis{
+    font-style: italic;
     bottom: -50%; /*para que aparezca mas abajo si es negativo*/
 }
 
 /* El tooltip se hace visible cuando se pasa el mouse por encima del poster*/
 .poster:hover .poster-info {
     visibility: visible;
-    opacity: 1;
+    opacity: .95;
 }
 
 /*Flecha del tooltip (hace que se vea como una ventana de dialogo)*/
 .poster .poster-info::after {
     content: " "; /*Contenido vacio*/
     position: absolute;
-    top: 100%; 
-    left: 50%;
+    top: 50%; 
+    right: 100%; /*àra que el triangulo aparezca a la izquierda*/
     /*Se crea usando bordes*/
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #848484 transparent transparent transparent; /*La flecha aparece encima del tooltip*/
+    border-color: transparent #343434 transparent transparent; /*La flecha aparece a la izquierda del tooltip*/
 }
 
 .poster-img 
 {
-	border-radius: 10px;
-    height: 28em;
-	/*max-width: 100%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
+    border-radius: 10px;
+    height: 20em;
+    /*max-width: 100%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
     display: block;
     margin: auto;
     transition: .5s ease;
@@ -106,31 +111,31 @@ body {
 
 .poster:hover .poster-img
 {
-	opacity: 0.85;
-	background: black;
+    opacity: 0.85;
+    background: black;
 }
 
 
 .poster-info
 {   transform: translate(0%, -100%); /* Revisar la traslacion  */ /*La cambie de -500 a -100*/
-	transition: .5s ease;
-  	opacity: 0;
-	
+    transition: .5s ease;
+    opacity: 0;
+    
 }
 
 .poster-titulo
 {
-	color: white;
-	font-size: 20px;
-	text-align: center;
-	text-shadow: 0 0 6px #000000;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0 0 6px #000000;
 }
 .poster-anio
 {
-	color: white;
-	font-size: 15px;
-	text-align: center;
-	text-shadow: 0 0 6px #000000;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 0 0 6px #000000;
 }
 
 h1{
@@ -164,8 +169,8 @@ h5{
 /*Los links de los botones también pasan a ser negros cuando se pasa el mouse por encima*/
 .btn-link:hover 
 {
-	text-decoration: none;
-	color: #000000;
+    text-decoration: none;
+    color: #000000;
 
 }
 
@@ -184,4 +189,3 @@ a:hover {
     color: #777;
     text-decoration: none;
 }
-

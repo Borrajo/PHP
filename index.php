@@ -85,7 +85,7 @@
                                   <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
                                     <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
                                     <div class="poster-anio"><?php echo $peliculas[$p]['anio'];?></div>
-                                    <div class="poster-anio"><?php echo $peliculas[$p]['sinopsis'];?></div>
+                                    <div class="poster-sinopsis"><?php echo $peliculas[$p]['sinopsis'];?></div>
                                   </div>
                               </div>
                               <?php } ?>
@@ -108,7 +108,7 @@
                     <?php if($page > 1){ ?> 
                     <button type="submit" name="page" value="<?php echo $page-1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-left"></span></button> <?php }?>
                     <?php for ($l=0; $l < $paginas ; $l++) { ?>
-        	          <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
+                    <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
                     <?php if($paginas > 1 && $page != $paginas){ ?>
                     <button type="submit" name="page" value="<?php echo $page+1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-right"></span></button>
                     <?php } ?>
