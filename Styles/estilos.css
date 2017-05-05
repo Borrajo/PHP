@@ -68,13 +68,11 @@ body {
     text-align: center;
     padding: 4px 0;
     border-radius: 10px;
- 
     /* Posicion del texto que aparece dentro del tooltip*/
     position: absolute;
     z-index: 1; /*orden de aparicion del tooltip en relacion al poster*/
     left:50%; /*para que aparezca a la derecha*/
-    margin-left: -30px; /*se usa la mitad del ancho para centrarlo*/
-    bottom:5%; /*para que aparezca mas abajo*/
+    bottom: -50%; /*para que aparezca mas abajo si es negativo*/
 }
 
 /* El tooltip se hace visible cuando se pasa el mouse por encima del poster*/

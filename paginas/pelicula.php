@@ -53,7 +53,7 @@
 	<!-- COMENTARIOS -->
 	<div class="col-lg-10 col-md-12 col-xs-12 col-lg-offset-1">
 		<div class="page-header">
-  		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) >1){echo 's';} ?></small></h1>
+  		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) != 1){echo 's';} ?></small></h1>
 		</div>
 		<div class="col-md-12">
 			<div class="panel panel-default">
