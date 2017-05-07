@@ -45,7 +45,7 @@
         <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn-bc navbar-btn">Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
+        <li><a type="button" class="btn btn-bc navbar-btn" href="paginas/ingreso.php">Ingresar <span class="glyphicon glyphicon-user"></span></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
