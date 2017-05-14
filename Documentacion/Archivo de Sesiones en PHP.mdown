@@ -1,0 +1,24 @@
+Archivo de Sesiones en PHP
+
+- session_status() : devuelve el estado actual de la sesion: 
+	-0 PHP_SESSION_DISABLED si las sesiones están deshabilitadas.
+    -1 PHP_SESSION_NONE si las sesiones están habilidatas, pero no existe ninguna.
+    -2 PHP_SESSION_ACTIVE si las sesiones están habilidatas, y existe una.
+
+- session_start() : devuelve una session si ya existe o crea una nueva. retorna TRUE si se creo o FALSE si no se pudo crear.
+
+- session_id() : devuelve el id de la session creada, si no existe devuelve "". Para cambiar el id de la sesion debe utilizarse sesion_regenerate_id();
+
+- session_regenerate_id() : cambia el id de la session actual por otro, manteniendo los datos de la sesion. Se utiliza para seguridad, para que no haya inyeccion de ID de sesiones.
+
+- session_encode() : codifica los datos de la sesion en un string de sesion.
+
+- session_decode( String $dato ) : decodifica los datos de la sesion almacenados en $dato y sobreescribe la variable superglobal $SESSION
+
+- session_unset() : libera todas las variables de $SESSION y luego puede hacerse un session_destroy();
+
+- session_destroy() : destruye la session, pero no destruye ni la cookie de session ni los datos almacenados en $SESSION
+
+- session_write_close() : debe utilizarse ni bien se modifiquen valores en $SESSION para que puedan estar disponibles a los demas procesos que quieran hacer uso de $SESSION, por problemas de concurrencia.
+
+- SID es una constante que devuelve "name=id" de la sesion si existe, si no devuelve ""

@@ -21,10 +21,12 @@
 	$sinopsis = $data['sinopsis'];
 	$poster = $data['contenidoimagen'];
 	$comments = $comentarios; /* Proviene desde la consulta SQL */
+	$usuarios = array_column($comments, 'nombreusuario'); /* lista de los usuarios que hicieron comentarios */
 ?>
 
 	<!-- PAGINA DE LA PELICULA -->
 	<div class="col-lg-10 col-md-12 col-xs-12 col-lg-offset-1">
+	<h1></h1>
 		<div class="panel panel-default">
 		  <div class="panel-body">
 		<!--PARTE SUPERIOR CON INFORMACION DE LA PELICULA-->
@@ -49,12 +51,15 @@
 		  </div>
 		</div>
 	</div>
-
 	<!-- COMENTARIOS -->
 	<div class="col-lg-10 col-md-12 col-xs-12 col-lg-offset-1">
 		<div class="page-header">
   		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) != 1){echo 's';} ?></small></h1>
 		</div>
+		<?php 
+		 if (session_status() == 2 && (isset($session['username']) && !in_array($session['username'], $usuarios))) { ?>
+		<!-- 'si la persona ya comentó lo siguiente no aparece'  -->
+		<!-- tiene que: estar conectado Y existir el username Y no tiene que estar en los usuarios que comentaron -->
 		<div class="col-md-12">
 			<div class="panel panel-default">
 			<div class="panel-body">
@@ -64,12 +69,13 @@
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
-					<h4> nombre de usuario </h4> 
+					<h4> <?php echo $session['username'] ?> </h4> 
 					<input type="text" class="form-control" name="comment" placeholder="Escriba su comentario aqui">
 				</div>
 			</div>
 			</div>
 		</div>
+		<?php } ?>
 		<?php for ($i=0; $i < count($comments); $i++)
 		{
 			$comentario = $comments[$i];
@@ -91,7 +97,7 @@
 						<?php } echo $comentario['fecha']; ?> 
 				  </div>
 				  <div class="panel-body">
-				    <?php echo $comentario['comentario']; ?>
+				    <?php echo $comentario['comentario'];?>
 				  </div>
 				</div>
 			</div>
