@@ -44,7 +44,10 @@
         </div>
         <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
-      <?php  if( session_status() == PHP_SESSION_ACTIVE) {?> <!-- Si existe una sesion iniciada -->
+      <?php if(isset($_COOKIE['PHPSESSID'])){session_start();};
+      print_r($_COOKIE);
+      print_r($_SESSION);
+      if( session_status() == PHP_SESSION_ACTIVE) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -52,11 +55,11 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
-              <li><a href="#">Mi Perfil</a></li>
+              <li><a href="#"><?php echo $_SESSION['nombre'];?></a></li>
               <li><a href="#">Modificar</a></li>
-              <?php if(isset($sesion['admin']))
+              <?php if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
               { ?>
-              <li><a href="#">Agregar peliculas</a></li>
+              <li><a href="#">Administrar peliculas</a></li>
               <?php } ?>
               <li role="separator" class="divider"></li>
               <li><a href="#">Cerrar Sesión</a></li>
@@ -84,7 +87,7 @@
       </div>
       <!-- Cuerpo del modal --> 
       <div class="modal-body">
-      <form action="login.php" method="post" >
+      <form action="../../php/paginas/getUsuario.php" method="post" >
           <div class="form-group">
               <label for="username">Nombre Usuario:</label>
               <input type="text" class="form-control" name="username" id="username" required placeholder="Nombre de usuario">
@@ -92,7 +95,7 @@
           
           <div class="form-group">
               <label for="password">Contraseña:</label>
-              <input type="text" class="form-control" name="password" type="password" id="password" required placeholder="Contraseña">
+              <input type="password" class="form-control" name="password" type="password" id="password" required placeholder="Contraseña">
           </div>
 
           <button  type="submit" class="btn btn-bc navbar-btn"> Entrar</button>

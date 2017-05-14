@@ -57,7 +57,7 @@
   		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) != 1){echo 's';} ?></small></h1>
 		</div>
 		<?php 
-		 if (session_status() == 2 && (isset($session['username']) && !in_array($session['username'], $usuarios))) { ?>
+		 if (session_status() == 2 && (isset($_SESSION['nombreusuario']) && !in_array($_SESSION['nombreusuario'], $usuarios))) { ?>
 		<!-- 'si la persona ya comentó lo siguiente no aparece'  -->
 		<!-- tiene que: estar conectado Y existir el username Y no tiene que estar en los usuarios que comentaron -->
 		<div class="col-md-12">
@@ -69,7 +69,7 @@
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
-					<h4> <?php echo $session['username'] ?> </h4> 
+					<h4> <?php echo $_SESSION['nombreusuario'] ?> </h4> 
 					<input type="text" class="form-control" name="comment" placeholder="Escriba su comentario aqui">
 				</div>
 			</div>
