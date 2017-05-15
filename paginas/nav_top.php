@@ -44,10 +44,10 @@
         </div>
         <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
-      <?php if(isset($_COOKIE['PHPSESSID'])){session_start();};
+      <?php if(isset($_COOKIE['user_session'])){session_start();};
       print_r($_COOKIE);
       print_r($_SESSION);
-      if( session_status() == PHP_SESSION_ACTIVE) { ?> <!-- Si existe una sesion iniciada -->
+      if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -62,7 +62,7 @@
               <li><a href="#">Administrar peliculas</a></li>
               <?php } ?>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Cerrar Sesión</a></li>
+              <li><a href="../php/paginas/logout.php">Cerrar Sesión</a></li>
             </ul>
           </div>
         </ul>

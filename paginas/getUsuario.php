@@ -23,7 +23,7 @@
                     {
                         $_SESSION["$key"] = $value;
                     }
-                    setcookie("TestCookie", session_id(), time()+0);
+                    setcookie("user_session", session_id(), time()+3600,'/');
                 }
     }
     header('Location: ../index.php');
