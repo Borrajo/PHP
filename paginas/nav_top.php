@@ -45,8 +45,8 @@
         <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <?php if(isset($_COOKIE['user_session'])){session_start();};
-      print_r($_COOKIE);
-      print_r($_SESSION);
+     // print_r($_COOKIE);
+      //print_r($_SESSION);
       if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
@@ -62,7 +62,7 @@
               <li><a href="#">Administrar peliculas</a></li>
               <?php } ?>
               <li role="separator" class="divider"></li>
-              <li><a href="../php/paginas/logout.php">Cerrar Sesión</a></li>
+              <li><a href="../../php/paginas/logout.php">Cerrar Sesión</a></li>
             </ul>
           </div>
         </ul>
@@ -105,7 +105,7 @@
       <!-- footer del modal -->
       <div class="modal-footer">
         <p class="texto">No tienes una cuenta? 
-        <a type="button" class="btn btn-bc navbar-btn" href="../paginas/register.php"> Registrarse</a></p>
+        <a type="button" class="btn btn-bc navbar-btn" href="../../php/paginas/register.php"> Registrarse</a></p>
       </div>
 
     </div> <!-- fin contenido del modal -->
