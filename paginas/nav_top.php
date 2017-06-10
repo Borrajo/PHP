@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/scripts/validaciones.js"></script>
 <?php   
  
  // include "../../php/paginas/getGeneros.php"; Da problemas dependiendo la ubicacion
@@ -51,7 +52,7 @@
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              MiCuenta<span class="glyphicon glyphicon-user"></span>
+              Mi Cuenta<span class="glyphicon glyphicon-user"></span>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
@@ -87,9 +88,9 @@
       </div>
       <!-- Cuerpo del modal --> 
       <div class="modal-body">
-      <form action="../../php/paginas/getUsuario.php" method="post" >
+      <form action="../../php/paginas/getUsuario.php" onsubmit='return validarLogin()' method="post" >
           <div class="form-group">
-              <label for="username">Nombre Usuario:</label>
+              <label for="username">Nombre de usuario:</label>
               <input type="text" class="form-control" name="username" id="username" required placeholder="Nombre de usuario">
           </div>
           
@@ -98,14 +99,13 @@
               <input type="password" class="form-control" name="password" type="password" id="password" required placeholder="Contraseña">
           </div>
 
-          <button  type="submit" class="btn btn-bc navbar-btn"> Entrar</button>
-        <button type="submit" class="btn btn-lg btn-success">Entrar</button>
+          <button  type="submit" class="btn btn-ingreso navbar-btn"> Entrar</button>
       </form>
       </div>
       <!-- footer del modal -->
       <div class="modal-footer">
-        <p class="texto">No tienes una cuenta? 
-        <a type="button" class="btn btn-bc navbar-btn" href="../../php/paginas/register.php"> Registrarse</a></p>
+        <p class="texto">No tienes una cuenta?   
+        <a type="button" class="btn btn-ingreso navbar-btn" href="../../php/paginas/register.php"> Regístrate!</a></p>
       </div>
 
     </div> <!-- fin contenido del modal -->
