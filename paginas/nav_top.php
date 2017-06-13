@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/scripts/validaciones.js"></script>
+<script type="text/javascript" src="./scripts/validaciones.js"></script>
 <?php   
  
  // include "../../php/paginas/getGeneros.php"; Da problemas dependiendo la ubicacion
@@ -88,7 +88,7 @@
       </div>
       <!-- Cuerpo del modal --> 
       <div class="modal-body">
-      <form action="../../php/paginas/getUsuario.php" onsubmit='return validarLogin()' method="post" >
+      <form action="../../php/paginas/getUsuario.php" method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
           <div class="form-group">
               <label for="username">Nombre de usuario:</label>
               <input type="text" class="form-control" name="username" id="username" required placeholder="Nombre de usuario">
@@ -99,7 +99,7 @@
               <input type="password" class="form-control" name="password" type="password" id="password" required placeholder="Contraseña">
           </div>
 
-          <button  type="submit" class="btn btn-ingreso navbar-btn"> Entrar</button>
+          <button  type="button" onclick='validarLogin("username", "password","login")'  class="btn btn-ingreso navbar-btn"> Entrar</button>
       </form>
       </div>
       <!-- footer del modal -->

@@ -85,6 +85,15 @@
                                   <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
                                     <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
                                     <div class="poster-anio"><?php echo $peliculas[$p]['anio'];?></div>
+                                    <div class="poster-anio"><?php echo $peliculas[$p]['genero'];?></div>
+                                    <div class="poster-titulo">
+                                      <?php for ($i=0; $i <ceil($peliculas[$p]['calificacion']) ; $i++) { ?>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                      <?php } ?>
+                                      <?php for ($i=0; $i <5-ceil($peliculas[$p]['calificacion']) ; $i++) { ?>
+                                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                      <?php } ?>
+                                    </div>
                                   </div>
                               </div>
                               <?php } ?>
