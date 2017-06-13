@@ -81,7 +81,7 @@ function validarLogin(campo1, campo2, formulario)
     	mensaje += "El nombre de usuario debe tener mas de 6 caracteres \n\r";
     	//Estos alert despues deberian ser cambiados por unos tooltip, y que haga tooltip.show 
 	}
-	if(!ExpContra.test(password)){
+	if(!ExpPass.test(password)){
 		todo_correcto = false;
 		mensaje += "La contraseña debe tener mas de 6 caracteres \n\r";
 	}
