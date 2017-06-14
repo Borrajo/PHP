@@ -67,7 +67,7 @@
               <li><a href="#">Modificar</a></li>
               <?php if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
               { ?>
-              <li><a href="#">Administrar peliculas</a></li>
+              <li><a href="../../php/paginas/AdministrarPeliculas.php">Administrar peliculas</a></li>
               <?php } ?>
               <li role="separator" class="divider"></li>
               <li><a href="../../php/paginas/logout.php">Cerrar Sesión</a></li>
