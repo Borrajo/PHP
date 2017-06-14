@@ -13,12 +13,14 @@
 
                 if(!preg_match($alfanumerico,$username) || strlen($username) < 6 )
                 {
+                    throw new Exception('Nombre de usuario demasiado corto');
                     $mensaje = 1;
                 }
 
                 if(!preg_match($ExpPass,$pass) || strlen($username) < 6 )
                 {
-                    $mensaje .= 2;
+                    throw new Exception('Contraseña demasiado corta');
+                    $mensaje = 2;
                 }
 
                 $sql = "SELECT COUNT(*) AS existe
@@ -53,9 +55,9 @@
                         setcookie("user_session", session_id(), time()+3600,'/');
                         $mensaje = 0;
                     }
-                    else $mensaje = 4;
+                    else { throw new Exception('La contraseña es incorrecta'); $mensaje = 4; }
                 }
-                else $mensaje = 3;
+                else{ throw new Exception('El usuario no existe'); $mensaje = 3; }
      print_r($mensaje);
     }
    header("Location: ../index.php?login=$mensaje");
