@@ -70,7 +70,18 @@
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
 					<h4> <?php echo $_SESSION['nombreusuario'] ?> </h4> 
-					<input type="text" class="form-control" name="comment" placeholder="Escriba su comentario aqui">
+					<form name="formComentario" action="NuevoComentario.php" method="post">
+					<select class="form-control" name="puntaje">
+          			<option value="" >--Calificacion--</option>
+          			<?php for ($i=0; $i < 5 ; $i++) 
+          			{ ?>
+          				<option value="<?php echo $i ?>"><?php echo $i ?></option>
+          			<?php } ?>
+         			 </select>
+					<input type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aqui">
+					<input type="submit" class="button" value="Enviar Comentario">
+					</form>
+					
 				</div>
 			</div>
 			</div>
