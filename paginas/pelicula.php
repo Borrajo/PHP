@@ -71,15 +71,17 @@
 					<!-- INPUTEXT PARA COMENTARIO -->
 					<h4> <?php echo $_SESSION['nombreusuario'] ?> </h4> 
 					<form name="formComentario" action="NuevoComentario.php" method="post">
-					<select class="form-control" name="puntaje">
-          			<option value="" >--Calificacion--</option>
-          			<?php for ($i=0; $i < 5 ; $i++) 
-          			{ ?>
-          				<option value="<?php echo $i ?>"><?php echo $i ?></option>
-          			<?php } ?>
-         			 </select>
-					<input type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aqui">
-					<input type="submit" class="button" value="Enviar Comentario">
+						<select class="form-control" name="calificacion">
+          					<option value="" >--Calificacion--</option>
+		          			<?php for ($i=1; $i <= 5 ; $i++) 
+		          			{ ?>
+		          				<option value="<?php echo $i ?>"><?php echo $i ?></option>
+		          			<?php } ?>
+		         		</select>
+		         	<input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+		         	<input type="hidden" class="form-control" name="pelicula_id" value="<?php echo $data['id'] ?>">
+						<input type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aqui">
+						<input type="submit" class="form-control" class="button" value="Enviar Comentario">
 					</form>
 					
 				</div>

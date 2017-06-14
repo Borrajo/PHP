@@ -1,24 +1,19 @@
 <?php
 include ('conexion.php');
-if(isset($HTTP_POST["peliculas_id"]) && isset($HTTP_POST["usuarios_id"]) && isset($HTTP_POST["comentario"])&& isset($HTTP_POST["calificacion"])) {
-		
-		if($HTTP_POST["comentario"] != "")
-		{	$comentarios = mysql_query("SELECT id FROM comentarios ORDER BY id DESC LIMIT 0,1");
-			$rowCom = mysql_fetch_array($comentarios);
-			$id = $rowCom["id"];
-			mysql_free_result($comentarios);
-
-			$id++;
-			$peliculas_id = $HTTP_POST["peliculas_id"];
-			$comentario = $HTTP_POST["comentario"];
+if(isset($_POST["pelicula_id"]) && isset($_POST["usuario_id"]) && isset($_POST["comentario"])&& isset($_POST["calificacion"])) 
+{
+		if($_POST["comentario"] != "")
+		{	
+			/*Estuvo bien copiar esto, pero el id es autoincremental, no es necesario traerse el ultimo id.*/
+			$pelicula_id = $_POST["pelicula_id"];
+			$comentario = $_POST["comentario"];
 			$fecha = date("Y-m-d");
-			$usuarios_id = $HTTP_POST["usuarios_id"];
-			$calificacion = $HTTP_POST["calificacion"];
-
-			mysql_query("INSERT INTO comentarios VALUES
-			('$con','$id', '$comentario','$fecha','$peliculas_id,'$usuarios_id','$calificacion')");
-			
+			$usuario_id = $_POST["usuario_id"];
+			$calificacion = $_POST["calificacion"];
+			$insert = "INSERT INTO comentarios (id, comentario, fecha, peliculas_id, usuarios_id, calificacion) VALUES
+			(NULL,'$comentario','$fecha', '$pelicula_id' , '$usuario_id' , '$calificacion')";
+			mysqli_query($conn, $insert); 		
 		}
-	}
-	header("Location: ../pelicula.php?id=$peliculas_id");
+}
+header("Location: ../paginas/pelicula.php?id=$pelicula_id");
 ?>
