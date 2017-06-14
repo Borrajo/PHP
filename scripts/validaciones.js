@@ -7,7 +7,9 @@ function validar()
 	var alfabetico=/^[a-z]+$/i;
 	var alfanumerico=/^[a-z0-9]+$/i;
 	var ExpEmail=/^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i; // /^[a-z][\w.-]+@\w[\w.-]?+(\.[\w.-])*[a-z][a-z]$/ puede que esté mal
-	var ExpContra=/^(?=.*\d)(?=.*[A-Z])(?=.*\W).{6,15}))$/; //NO ESTA BIEN LA CONDICION TIENE QUE SER AL MENOS UN NUMERO O SIMBOLO
+	var ExpPass1=/([0-9]|[!#$%&()=?¡¿@-_*+])+/; //la condicion verifica que tenga al menos un numero o un simbolo
+	var ExpPass2=/[A-Z]+/; //la condicion verifica que exista al menos una mayuscula
+	var ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
 
 	/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
 	la condición, en este caso, que no sea vacio y tenga sólo caracteres alfabéticos*/
@@ -47,7 +49,7 @@ function validar()
 
 	if(strcmp($password,$password2)==0)
 	{
-		if(!ExpContra.test(password))
+		if(!ExpPass1.test(password) || !ExpPass2.test(password) || !ExpPass3.test(password) )
 		{
 			todo_correcto = false;
 		}
@@ -66,6 +68,44 @@ function validar()
 
 return todo_correcto;
 }
+
+var errores = { 		0 : "Login Correcto", 
+						1 : "El nombre de usuario es demasiado corto", 
+						2:"La contraseña es demasiado corta", 
+						3:"El usuario ingresado no existe", 
+						4:"La contraseña es incorrecta"
+				};
+
+function openModal(error)
+{
+	/*
+	 -1 : el mensaje no existe
+      0 : el login es correcto
+      1 : nombre de usuario no cumple condicion
+      2 : contraseña no cumple condicion
+      3 : el usuario no existe
+      4 : contraseña incorrecta
+    */
+	if( error >= 1 )
+	{
+		
+		$('#modalIngreso').modal('show') ;
+		$('#modalIngreso').on('shown.bs.modal', function () {
+	  	$('#usernameL').focus()
+		});
+		if(error == 1 || error == 3)
+		{
+			$('#usernameL').popover({animation: "true", title: "error", content: errores[error], placement: "right"});
+			$('#usernameL').popover('show');
+		}
+		if(error == 2 || error == 4)
+		{
+			$('#passwordL').popover({animation: "true", title: "error", content: errores[error], placement: "right"});
+			$('#passwordL').popover('show');
+		}
+	}
+}
+window.onload = openModal();
 
 function validarLogin(campo1, campo2, formulario)
 {
@@ -95,4 +135,5 @@ function validarLogin(campo1, campo2, formulario)
 		alert(mensaje);
 	}
 }
+
 

@@ -1,7 +1,7 @@
-<script type="text/javascript" src="./scripts/validaciones.js"></script>
+<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
 <?php   
  
- // include "../../php/paginas/getGeneros.php"; Da problemas dependiendo la ubicacion
+  include ('loginMensaje.php');
  	include ('conexion.php');
     $sql = "SELECT * FROM `generos`";
 	if(!$result = mysqli_query($conn, $sql)) die();
@@ -14,6 +14,13 @@
    	}
    	/* DATOS 
  		$generos --> contiene todos los generos que existen.
+    $id_mensaje --> contiene el numero de error del login
+     -1 : el mensaje no existe
+      0 : el login es correcto
+      1 : nombre de usuario no cumple condicion
+      2 : contraseña no cumple condicion
+      3 : el usuario no existe
+      4 : contraseña incorrecta
   	*/
 ?>
 <nav class="navbar navbar-inverse" id="top">
@@ -33,7 +40,7 @@
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre" onload = "codeAddress;">
           <input type="number" class="form-control" placeholder="Año de estreno" name="anio">
           <select class="form-control" name="genero">
           	<option value="" >--Genero--</option>
@@ -51,7 +58,7 @@
       if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
               Mi Cuenta<span class="glyphicon glyphicon-user"></span>
               <span class="caret"></span>
             </button>
@@ -69,7 +76,7 @@
         </ul>
       <?php }else{?> <!-- Sino existe la sesion -->
         <ul class="nav navbar-nav navbar-right">
-          <li><a type="button" class="btn btn-bc navbar-btn" data-toggle="modal" data-target="#modalIngreso">  Ingresar <span class="glyphicon glyphicon-user"></span></a></li>
+          <li><a type="button" class="btn btn-bc navbar-btn" data-toggle="modal" onclick="openModal(9)">  Ingresar <span class="glyphicon glyphicon-user"></span></a></li>
         </ul>
       <?php } ?>
     </div><!-- /.navbar-collapse -->
@@ -91,15 +98,15 @@
       <form action="../../php/paginas/getUsuario.php" method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
           <div class="form-group">
               <label for="username">Nombre de usuario:</label>
-              <input type="text" class="form-control" name="username" id="username" required placeholder="Nombre de usuario">
+              <input type="text" class="form-control" name="username" id="usernameL" required placeholder="Nombre de usuario" autofocus="true">
           </div>
           
           <div class="form-group">
               <label for="password">Contraseña:</label>
-              <input type="password" class="form-control" name="password" type="password" id="password" required placeholder="Contraseña">
+              <input type="password" class="form-control" name="password" type="password" id="passwordL" required placeholder="Contraseña">
           </div>
-
-          <button  type="button" onclick='validarLogin("username", "password","login")'  class="btn btn-ingreso navbar-btn"> Entrar</button>
+          <input type="hidden" id='dir' value=>
+          <button  type="button" onclick='validarLogin("usernameL", "passwordL","login")'  class="btn btn-ingreso navbar-btn"> Entrar</button>
       </form>
       </div>
       <!-- footer del modal -->

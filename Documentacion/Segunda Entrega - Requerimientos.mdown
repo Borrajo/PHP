@@ -1,0 +1,24 @@
+# Requerimientos de usuario
+
+## Segunda entrega Backend
+
+* El usuario debe poder comentar en las peliculas y puntuarla. solo una vez cada usuario.
+
+* Formulario de registro:
+	+ Nombre (no debe ser vacio)(solo alfabetico)
+	+ Apellido (no debe ser vacio)(solo alfabetico)
+	+ Nombre de Usuario (mas de 6 caracteres)(solo alfanumerico)
+	+ Clave (deberá escribirse dos veces para validacion) (mas de 6 caracteres) (letras Mayus y minus) (minimo un numero o un simbolo)
+
+* Login:
+	+ Nombre de Usuario (minimo 6 caracteres)(solo alfanumerico)
+	+ Contraseña (minimo 6 caracteres)
+
+* Administrador:
+	+ crear peliculas
+	+ editar y eliminar peliculas (validar que sea un administrador en el lado del servidor y del cliente)
+	+ En el dropdown enlace a administrar peliculas (ya está hecho)
+
+* También se debe verificar que haya un usuario logueado para poder comentar y calificar películas. (ya está hecho)
+* Del lado del servidor se debe verificar que el nombre de usuario elegido no exista previamente en la base de datos.
+* En caso de éxito redirigir a la página de inicio indicando que el usuario está logueado y en caso de falla informar que el nombre de usuario o clave es incorrecto.
