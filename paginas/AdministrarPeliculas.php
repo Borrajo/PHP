@@ -4,6 +4,7 @@
 <?php include "header.php" ?>
 
 <link rel="stylesheet" href="../../php/Styles/estilos.css" type="text/css">
+<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
 <!--<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> -->
 <!--<script type="text/javascript" src="carousel.js"></script>-->
 
@@ -24,6 +25,8 @@
 
     <div class="col-md-10 col-md-offset-1">
         <div class="well">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
             <?php if(count($peliculas) > 0 )
             { ?>
 
@@ -36,8 +39,8 @@
               <div class="tab-content">
                 <div id="tabPelis" class="tab-pane fade in active">
                   <h3>Puede agregar, editar o incluso eliminar peliculas</h3>
-                  <div class="col-md-10 col-md-offset-1">
-                    <table>
+                  <div class="col-md-12">
+                    <table class="table table-striped">
                       <thead>
                       <tr>
                          <th>Nombre</th>
@@ -50,28 +53,18 @@
                       </tr>
                      </thead>
                      <tbody>
-  <tr>
-     <td>January</td>
-     <td>$100</td>
-     <td>January</td>
-     <td>$100</td>
-     <td>January</td>
-     <td>$100</td>
-     <td>January</td>
-     <td>$100</td>
-  </tr>
-  <tr>
-     <td>February</td>
-     <td>$80</td>
-     <td>January</td>
-     <td>$100</td>
-     <td>January</td>
-     <td>$100</td>
-     <td>January</td>
-     <td>$100</td>
-     
-  </tr>
- </tbody>
+                     <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
+                      <tr>
+                         <td><?php echo $peliculas[$p]['nombre'] ?></td>
+                         <td><?php echo $peliculas[$p]['anio'] ?></td>
+                         <td><?php echo $peliculas[$p]['genero'] ?></td>
+                         <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
+                         <td><?php echo $peliculas[$p]['calificacion'] ?></td>
+                         <td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button></td>
+                         <td><button type="button" class="btn btn-danger" onclick="eliminarPelicula(<?php print_r($peliculas[$p]) ?>)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                      </tr>
+                      <?php } ?>
+                     </tbody>
                     </table>
                   </div>
                 </div>
@@ -84,28 +77,10 @@
 
                 </div>
               </div>
-                          <div class="row justify-content-center">
-                              <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
-                              <div class="col-sm-10 col-md-3 align-items-center poster">
-                                  
-                                 
-                                  <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
-                                    <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
-                                    <div class="poster-anio"><?php echo $peliculas[$p]['anio'];?></div>
-                                    <div class="poster-anio"><?php echo $peliculas[$p]['genero'];?></div>
-                                    <div class="poster-titulo">
-                                      <?php for ($i=0; $i <ceil($peliculas[$p]['calificacion']) ; $i++) { ?>
-                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                      <?php } ?>
-                                      <?php for ($i=0; $i <5-ceil($peliculas[$p]['calificacion']) ; $i++) { ?>
-                                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                      <?php } ?>
-                                    </div>
-                                  </div>
-                              </div>
-                              <?php } ?>
-                          </div><!--/row-->
+
             <?php } ?>
+            </div> <!-- div col-12 -->
+            </div> <!-- row -->
         </div>
         <!--/well-->
     </div>

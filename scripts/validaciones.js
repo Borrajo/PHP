@@ -105,7 +105,11 @@ function openModal(error)
 		}
 	}
 }
-window.onload = openModal();
+
+function eliminarPelicula(pelicula)
+{
+	console.log(pelicula);
+}
 
 function validarLogin(campo1, campo2, formulario)
 {
@@ -115,7 +119,8 @@ function validarLogin(campo1, campo2, formulario)
 	var mensaje='';
 	username=document.getElementById(campo1).value;
 	password=document.getElementById(campo2).value;
-
+try
+{
 	if(username.length<6 || !alfanumerico.test(username)){
     	todo_correcto = false;
     	mensaje += "El nombre de usuario debe tener mas de 6 caracteres \n\r";
@@ -125,7 +130,11 @@ function validarLogin(campo1, campo2, formulario)
 		todo_correcto = false;
 		mensaje += "La contraseña debe tener mas de 6 caracteres \n\r";
 	}
-
+}
+catch (e)
+{
+	alert(e);
+}
 	if(todo_correcto)
 	{
 		document.getElementById(formulario).submit();
