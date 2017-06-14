@@ -70,17 +70,42 @@ ob_start();
                          <form action="../../php/paginas/deletePelicula.php" method="post" id="deletePelicula">
                           <input type="hidden" id='idPelicula' name='id' value="<?php echo $peliculas[$p]['id'] ?>">
                           <input type="hidden" id='idUser' name='user' value="<?php echo $_SESSION['id'] ?>">
-                          <button type="submit" class="btn btn-danger" data-toggle="modal" data-id="<?php echo $peliculas[$p]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-remove"></i></button></td>
+                          <button type="submit" class="btn btn-danger" data-toggle="modal" data-id="<?php echo $peliculas[$p]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-remove"></i></button>
                          </form>
+                         </td>
                       </tr>
                       <?php } ?>
                      </tbody>
                     </table>
                   </div>
                 </div>
+                <!-- TAB DE GENEROS -->
                 <div id="tabGeneros" class="tab-pane fade">
                   <h3>Puede agregar, editar o incluso eliminar generos</h3>
-
+                  <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                      <tr>
+                         <th>Nombre</th>
+                         <th>Editar</th>
+                      </tr>
+                     </thead>
+                     <tbody>
+                     <?php for ($g=0; $g < count($generos) ; $g++) { ?>
+                      <tr>
+                         <td><?php echo $generos[$g]['nombre'] ?></td>
+                         <td>
+                            <form action="../../php/paginas/editGenero.php" method="post" id="editarGenero">
+                              <input type="hidden" id='idGenero' name='id' value="<?php echo $generos[$g]['id'] ?>">
+                              <input type="hidden" id='idUser' name='user' value="<?php echo $_SESSION['id'] ?>">
+                              <button type="submit" class="btn btn-success" data-toggle="modal" data-id="<?php echo $generos[$g]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-pencil"></i></button>
+                            </form>
+                         </td>
+                      </tr>
+                      <?php } ?>
+                     </tbody>
+                    </table>
+                  </div>
                 </div>
                 <div id="tabUsuarios" class="tab-pane fade">
                   <h3>Puede agregar, editar o incluso eliminar usuarios</h3>
@@ -122,3 +147,4 @@ ob_start();
         </div>
     </div>
 </div>
+
