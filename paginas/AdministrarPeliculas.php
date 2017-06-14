@@ -13,12 +13,17 @@
 
 
 <?php
+ob_start();
 //Se requiere que el usuario sea administrador */
   /*  DATOS
   $peliculas --> contiene las peliculas
   */
   include "listarPeliculas.php" ;
   include "nav_top.php" ;
+  if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) 
+  {
+    if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
+    { 
 ?>
         
 <div class="container-fluid fondo">
@@ -61,7 +66,12 @@
                          <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
                          <td><?php echo $peliculas[$p]['calificacion'] ?></td>
                          <td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button></td>
-                         <td><button type="button" class="btn btn-danger" onclick="eliminarPelicula(<?php print_r($peliculas[$p]) ?>)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                         <td>
+                         <form action="../../php/paginas/deletePelicula.php" method="post" id="deletePelicula">
+                          <input type="hidden" id='idPelicula' name='id' value="<?php echo $peliculas[$p]['id'] ?>">
+                          <input type="hidden" id='idUser' name='user' value="<?php echo $_SESSION['id'] ?>">
+                          <button type="submit" class="btn btn-danger" data-toggle="modal" data-id="<?php echo $peliculas[$p]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-remove"></i></button></td>
+                         </form>
                       </tr>
                       <?php } ?>
                      </tbody>
@@ -92,3 +102,23 @@
   <?php include "footer.php";?>
 </footer>
 </html>
+<?php } else  header("Location: ../index.php");
+  }else  header("Location: ../index.php");
+  ob_end_flush();
+?>
+<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirmar
+            </div>
+            <div class="modal-body">
+                Esta seguro que desea borrar la pelicula?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-danger btn-ok" onclick="eliminarPelicula(this)">Borrar</a>
+            </div>
+        </div>
+    </div>
+</div>

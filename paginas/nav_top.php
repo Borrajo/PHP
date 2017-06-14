@@ -23,7 +23,7 @@
       4 : contraseña incorrecta
   	*/
 ?>
-<nav class="navbar navbar-inverse" id="top">
+<nav class="navbar navbar-inverse" id="top" style="z-index: 100">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" name="nombre" onload = "codeAddress;">
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
           <input type="number" class="form-control" placeholder="Año de estreno" name="anio">
           <select class="form-control" name="genero">
           	<option value="" >--Genero--</option>
@@ -105,7 +105,6 @@
               <label for="password">Contraseña:</label>
               <input type="password" class="form-control" name="password" type="password" id="passwordL" required placeholder="Contraseña">
           </div>
-          <input type="hidden" id='dir' value=>
           <button  type="button" onclick='validarLogin("usernameL", "passwordL","login")'  class="btn btn-ingreso navbar-btn"> Entrar</button>
       </form>
       </div>
