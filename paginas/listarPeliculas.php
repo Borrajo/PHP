@@ -1,5 +1,4 @@
 <!-- Obtencion de datos de pelicula -->
-<!-- Parametros: nombre, anio, genero, page, order_anio, order_nombre -->
 <?php 
 	include ('conexion.php');
     			$sql = "SELECT peliculas.* , generos.genero, AVG(comentarios.calificacion) AS calificacion 

@@ -1,6 +1,6 @@
 
 <!-- Latest compiled and minified CSS -->
-<script src="../../php/scripts/jquery.min.js"></script>
+<script src="../../php/scripts/jquery-3.2.1.min.js"></script>
 
 <link rel="stylesheet" href="../../php/scripts/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
 

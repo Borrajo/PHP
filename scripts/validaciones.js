@@ -108,7 +108,33 @@ function openModal(error)
 
 function eliminarPelicula(pelicula)
 {
-	console.log(pelicula);
+	document.getElementById('peli_id').value = pelicula;
+	console.log(document.getElementById('peli_id').value);
+	$('#deletePeliculaModal').modal('show') ;
+}
+
+function editarGenero(id_genero,nombre_genero)
+{
+	document.getElementById('nombre_edit_gen').value = nombre_genero;
+	document.getElementById('genero_id').value = id_genero;
+	$('#editGenero').modal('show') ;
+	$('#editGenero').on('shown.bs.modal', function () {
+	$('#nombre_edit_gen').focus()
+		});
+}
+
+function editarPelicula(id,nombre,sinopsis,anio,genero)
+{
+	document.getElementById('id_edit_peli').value = id;
+	document.getElementById('nombre_edit_peli').value = nombre;
+	document.getElementById('sinopsis_edit_peli').value = sinopsis;
+	document.getElementById('anio_edit_peli').value = anio;
+	document.getElementById('genero_edit_peli').value = genero;
+
+	$('#editPelicula').modal('show') ;
+	$('#editPelicula').on('shown.bs.modal', function () {
+	$('#nombre_edit_peli').focus()
+		});
 }
 
 function validarLogin(campo1, campo2, formulario)

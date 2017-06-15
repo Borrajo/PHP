@@ -65,12 +65,13 @@ ob_start();
                          <td><?php echo $peliculas[$p]['genero'] ?></td>
                          <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
                          <td><?php echo $peliculas[$p]['calificacion'] ?></td>
-                         <td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button></td>
                          <td>
-                         <form action="../../php/paginas/deletePelicula.php" method="post" id="deletePelicula">
-                          <input type="hidden" id='idPelicula' name='id' value="<?php echo $peliculas[$p]['id'] ?>">
-                          <input type="hidden" id='idUser' name='user' value="<?php echo $_SESSION['id'] ?>">
-                          <button type="submit" class="btn btn-danger" data-toggle="modal" data-id="<?php echo $peliculas[$p]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-remove"></i></button>
+                          <?php $cadena = $peliculas[$p]['id']." , '".$peliculas[$p]['nombre']."' , '".$peliculas[$p]['sinopsis']."' , ".$peliculas[$p]['anio']." , ".$peliculas[$p]['generos_id']?>
+                          <button type="button" class="btn btn-success" data-toggle="modal" 
+                              onclick="editarPelicula(<?php echo $cadena ?>)"><i class="glyphicon glyphicon-pencil"></i></button></td>
+                         <td>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" 
+                          onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'] ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
                          </form>
                          </td>
                       </tr>
@@ -82,7 +83,7 @@ ob_start();
                 <!-- TAB DE GENEROS -->
                 <div id="tabGeneros" class="tab-pane fade">
                   <h3>Puede agregar, editar o incluso eliminar generos</h3>
-                  <div class="col-md-12">
+                  <div class="col-md-4 col-md-offset-4">
                     <table class="table table-striped">
                       <thead>
                       <tr>
@@ -93,13 +94,10 @@ ob_start();
                      <tbody>
                      <?php for ($g=0; $g < count($generos) ; $g++) { ?>
                       <tr>
-                         <td><?php echo $generos[$g]['nombre'] ?></td>
+                         <td><?php echo $generos[$g]['genero'] ?></td>
                          <td>
-                            <form action="../../php/paginas/editGenero.php" method="post" id="editarGenero">
-                              <input type="hidden" id='idGenero' name='id' value="<?php echo $generos[$g]['id'] ?>">
-                              <input type="hidden" id='idUser' name='user' value="<?php echo $_SESSION['id'] ?>">
-                              <button type="submit" class="btn btn-success" data-toggle="modal" data-id="<?php echo $generos[$g]['id'] ?>" data-target="#confirmar"><i class="glyphicon glyphicon-pencil"></i></button>
-                            </form>
+                              <button type="button" class="btn btn-success" data-toggle="modal" 
+                              onclick="editarGenero(<?php echo $generos[$g]['id'] .",'" . $generos[$g]['genero'] ."'" ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
                          </td>
                       </tr>
                       <?php } ?>
@@ -131,20 +129,98 @@ ob_start();
   }else  header("Location: ../index.php");
   ob_end_flush();
 ?>
-<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+
+<div class="modal fade" id="deletePeliculaModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 Confirmar
             </div>
-            <div class="modal-body">
+            <form action="../../php/paginas/deletePelicula.php" method="post" id="deletePelicula_form">
+              <div class="modal-body">
                 Esta seguro que desea borrar la pelicula?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-danger btn-ok" onclick="eliminarPelicula(this)">Borrar</a>
-            </div>
+                <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+                <input type="hidden" class="form-control" name="peli_id" id="peli_id">
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-danger btn-ok">Borrar</button>
+              </div>
+            </form>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="editGenero" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Editar nombre
+            </div>
+            <form action="../../php/paginas/editGenero.php" method="post" id="editGenero_form">
+              <div class="modal-body">
+                <div class="form-group">
+                    <label for="nombre">Ingrese el nuevo nombre</label>
+                    <input type="text" class="form-control" name="nombre_gen" id="nombre_edit_gen" required autofocus="true">
+                </div>
+                <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+                <input type="hidden" class="form-control" name="genero_id" id="genero_id">
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success btn-ok">Guardar</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editPelicula" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Editar Pelicula
+            </div>
+            <form action="../../php/paginas/editPelicula.php" method="post" id="editPelicula_form">
+              <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label for="pelicula_nombre">Nombre</label>
+                      <input type="text" class="form-control" name="pelicula_nombre" id="nombre_edit_peli" required autofocus="true">
+                  </div>
+                  <div class="form-group">
+                      <label for="pelicula_sinopsis">Sinopsis</label>
+                      <textarea class="form-control" name="pelicula_sinopsis" id="sinopsis_edit_peli" required autofocus="true" style="resize: vertical;"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="pelicula_anio">Año</label>
+                      <input type="number" class="form-control" name="pelicula_anio" id="anio_edit_peli" required autofocus="true">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="pelicula_genero">Genero</label>
+                        <select class="form-control" name="pelicula_gen" id="genero_edit_peli">
+                          <option value="" >--Genero--</option>
+                          <?php for ($i=0; $i < count($generos) ; $i++) 
+                          { ?>
+                          <option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
+                          <?php } ?>
+                        </select>
+                    </div>
+                    <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+                    <input type="hidden" class="form-control" name="pelicula_id" id="id_edit_peli">
+                </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success btn-ok">Guardar</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
