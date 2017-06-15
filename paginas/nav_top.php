@@ -43,7 +43,7 @@
           <input type="text" class="form-control" placeholder="Nombre" name="nombre">
           <input type="number" class="form-control" placeholder="Año de estreno" name="anio">
           <select class="form-control" name="genero">
-          	<option value="" >--Genero--</option>
+          	<option value="" >--Género--</option>
           <?php for ($i=0; $i < count($generos) ; $i++) 
           { ?>
           	<option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
@@ -58,13 +58,13 @@
       if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+            <button class="btn btn-bc navbar-btn dropdown-toggle" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
               Mi Cuenta<span class="glyphicon glyphicon-user"></span>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
               <li><a href="#"><?php echo $_SESSION['nombre'];?></a></li>
-              <li><a href="#">Modificar</a></li>
+              <!--<li><a href="#">Modificar</a></li>-->
               <?php if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
               { ?>
               <li><a href="../../php/paginas/AdministrarPeliculas.php">Administrar peliculas</a></li>
@@ -76,7 +76,7 @@
         </ul>
       <?php }else{?> <!-- Sino existe la sesion -->
         <ul class="nav navbar-nav navbar-right">
-          <li><a type="button" class="btn btn-bc navbar-btn" data-toggle="modal" onclick="openModal(9)">  Ingresar <span class="glyphicon glyphicon-user"></span></a></li>
+          <li><button class="btn btn-bc navbar-btn" data-toggle="modal" onclick="openModal(9)">  Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
         </ul>
       <?php } ?>
     </div><!-- /.navbar-collapse -->

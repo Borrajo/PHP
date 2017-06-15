@@ -114,11 +114,11 @@
               <input type="hidden" name="order_nombre" value="<?php echo $order_nombre ?>" >
               <div class="btn-group" role="group">
                     <?php if($page > 1){ ?> 
-                    <button type="submit" name="page" value="<?php echo $page-1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-left"></span></button> <?php }?>
+                    <button type="submit" name="page" value="<?php echo $page-1 ?>" class="btn btn-bc" ><span class="glyphicon glyphicon-chevron-left"></span></button> <?php }?>
                     <?php for ($l=0; $l < $paginas ; $l++) { ?>
-                    <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
+                    <button type="submit" name="page" value="<?php echo $l+1 ?>" class="btn btn-bc"<?php if($page-1==$l){ echo "disabled"; } ?>><?php echo $l+1 ?></button><?php } ?>
                     <?php if($paginas > 1 && $page != $paginas){ ?>
-                    <button type="submit" name="page" value="<?php echo $page+1 ?>" class="btn btn" ><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button type="submit" name="page" value="<?php echo $page+1 ?>" class="btn btn-bc" ><span class="glyphicon glyphicon-chevron-right"></span></button>
                     <?php } ?>
               </div>
           </form>

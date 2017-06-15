@@ -69,19 +69,24 @@
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
-					<h4> <?php echo $_SESSION['nombreusuario'] ?> </h4> 
+					<h4> <strong><?php echo $_SESSION['nombreusuario'] ?> </strong></h4> 
+					<p>
 					<form name="formComentario" action="NuevoComentario.php" method="post">
-						<select class="form-control" name="calificacion">
-          					<option value="" >--Calificacion--</option>
+						<select class="form-control" name="calificacion" style="width:120px">
+          					<option value="" >--Calificación--</option>
 		          			<?php for ($i=1; $i <= 5 ; $i++) 
 		          			{ ?>
 		          				<option value="<?php echo $i ?>"><?php echo $i ?></option>
 		          			<?php } ?>
 		         		</select>
-		         	<input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+		         	</p>
+		         	<p>
+		         	<input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>"></p>
+		        
 		         	<input type="hidden" class="form-control" name="pelicula_id" value="<?php echo $data['id'] ?>">
-						<input type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aqui">
-						<input type="submit" class="form-control" class="button" value="Enviar Comentario">
+		         	<p>
+						<input type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aquí" style="height:100px"></p><p>
+						<input type="submit" class="form-control" class="button" value="Enviar Comentario"></p>
 					</form>
 					
 				</div>

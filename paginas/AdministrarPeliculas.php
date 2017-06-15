@@ -36,8 +36,8 @@ ob_start();
             { ?>
 
               <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#tabPelis">Administrar Peliculas</a></li>
-                <li><a data-toggle="tab" href="#tabGeneros">Administrar generos</a></li>
+                <li class="active"><a data-toggle="tab" href="#tabPelis">Administrar Películas</a></li>
+                <li><a data-toggle="tab" href="#tabGeneros">Administrar Géneros</a></li>
                 <li><a data-toggle="tab" href="#tabUsuarios">Administrar Usuarios</a></li>
               </ul>
 
@@ -218,7 +218,7 @@ ob_start();
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="pelicula_genero">Genero</label>
+                        <label for="pelicula_genero">Género</label>
                         <select class="form-control" name="pelicula_gen" id="genero_edit_peli">
                           <option value="" >--Genero--</option>
                           <?php for ($i=0; $i < count($generos) ; $i++) 
