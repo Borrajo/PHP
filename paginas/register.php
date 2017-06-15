@@ -56,53 +56,56 @@ if(isset($_POST['register']))
  $message = "Error al ingresar los datos";
 
  }
-
+}
 ?>
  
 <?php if (!empty($message)) {echo "<p class=\"error\">" . "Mensaje: ". $message . "</p>";} ?>
- 
+<div class="row">
 <div class="container-fluid uregister">
-
+<div class="col-md-2 col-md-offset-5">
  	<div id="register">
  		<h1>Registrar</h1> 
  		<!--OnSubmit llama a la funcion validar() para validar formulario desde el lado del cliente-->
 		<form name="registerform" id="registerform" action="index.php" onsubmit='validar()' method="post">
  		<p>
 		 <label for="user_login">Nombre<br />
- 		<input type="text" name="nombre" id="nombre" class="input" size="32" value="" /></label>
+ 		<input type="text" class="form-control" name="nombre" id="nombre"  size="32" /></label>
  		</p>
  
 		  <p>
  		<label for="user_login">Apellido<br />
- 		<input type="text" name="apellido" id="apellido" class="input" size="32" value="" /></label>
+ 		<input type="text" class="form-control" name="apellido" id="apellido" size="32" /></label>
  		</p>
  		<p>
  		<label for="user_pass">E-mail<br />
- 		<input type="email" name="email" id="email" class="input" value="" size="32" /></label>
+ 		<input type="email" class="form-control" name="email" id="email" size="32" /></label>
  		</p>
  
 		 <p>
  		<label for="user_pass">Nombre De Usuario<br />
- 		<input type="text" name="username" id="username" class="input" value="" size="20" /></label>
+ 		<input type="text" class="form-control"  name="username" id="username" size="20" /></label>
  		</p>
  
  		<p>
  		<label for="user_pass">Contraseña<br />
- 		<input type="password" name="password" id="password" class="input" value="" size="32" /></label> </p>
+ 		<input type="password" class="form-control" name="password" id="password" size="32" /></label> </p>
 		<p>
  		<label for="user_pass2">Ingrese nuevamente la contraseña<br />
- 		<input type="password" name="password2" id="password2" class="input" value="" size="32" /></label> </p> 
+ 		<input type="password" class="form-control" name="password2" id="password2"  size="32" /></label> </p> 
 	<p class="submit">
- 	<input type="submit" name="register" id="register" class="button" value="Registrar" />
+ 	<button type="submit" name="register" id="register" class="btn btn-bc">Registrar</button>
  	</p>
  
  	<p class="texto">Ya tienes una cuenta? <a href="login.php" >Ingresa aquí!</a></p>
 	</form>
  
  	</div>
+ 	</div>
+ 	</div>
  </div>
+
  		<footer>
- 			<?php  } include "../paginas/footer.php";?>
+ 			<?php  include "../paginas/footer.php";?>
 		</footer>
 	</body>
 </html>
