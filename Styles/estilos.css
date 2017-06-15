@@ -17,7 +17,7 @@
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-size: 10ex;
-    color: #d5d5d5 !important; //color gris para todos los links de la barra
+    color: #e5e5e5 !important; //color gris para todos los links de la barra
 }
 
 /* borde transparente*/
@@ -217,7 +217,7 @@ footer {
 }
 
 a{
-    color: #f5f5f5;
+    color: #a5a5a5;
 }
 
 a:hover {

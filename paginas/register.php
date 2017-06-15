@@ -7,14 +7,12 @@
 </head>
 <body>
 
-<?php include "nav_top.php" ?>
-
-
-<?php include('conexion.php');?>
+<?php 
+	include "nav_top.php" ;
+	include('conexion.php') ;
  
- <?php
- 
-if(isset($_POST['register'])){
+if(isset($_POST['register']))
+{
 
 
   	/*VALIDACION DESDE EL LADO DEL SERVIDOR*/
@@ -104,7 +102,7 @@ if(isset($_POST['register'])){
  	</div>
  </div>
  		<footer>
- 			<?php include "../paginas/footer.php";?>
+ 			<?php  } include "../paginas/footer.php";?>
 		</footer>
 	</body>
 </html>

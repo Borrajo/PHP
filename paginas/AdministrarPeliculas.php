@@ -101,6 +101,22 @@ ob_start();
                          </td>
                       </tr>
                       <?php } ?>
+                      
+                     </tbody>
+                     <thead>
+                      <tr>
+                         <th>Agregar un nuevo género</th>
+                         <th></th>
+                      </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                        <form action="../../php/paginas/addGenero.php" method="post" id="addGenero_form">
+                          <td><input class="form-control" type="text" name="addGenero" placeholder="Ingrese el nombre del genero" required></td>
+                          <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+                          <td><button type="submit" class="btn btn-bc">Agregar</button></td>
+                        </form>
+                      </tr>
                      </tbody>
                     </table>
                   </div>
