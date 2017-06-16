@@ -73,7 +73,7 @@ ob_start();
                          <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
                          <td><?php echo $peliculas[$p]['calificacion'] ?></td>
                          <td>
-                          <?php $cadena = $peliculas[$p]['id']." , '".$peliculas[$p]['nombre']."' , '".$peliculas[$p]['sinopsis']."' , ".$peliculas[$p]['anio']." , ".$peliculas[$p]['generos_id']?>
+                          <?php $cadena = $peliculas[$p]['id']." , '".addslashes($peliculas[$p]['nombre'])."' , '".addslashes($peliculas[$p]['sinopsis'])."' , ".$peliculas[$p]['anio']." , ".$peliculas[$p]['generos_id']?>
                           <button type="button" class="btn btn-success" data-toggle="modal" 
                               onclick="editarPelicula(<?php echo $cadena ?>)"><i class="glyphicon glyphicon-pencil"></i></button></td>
                          <td>
@@ -104,7 +104,7 @@ ob_start();
                          <td><?php echo $generos[$g]['genero'] ?></td>
                          <td>
                               <button type="button" class="btn btn-success" data-toggle="modal" 
-                              onclick="editarGenero(<?php echo $generos[$g]['id'] .",'" . $generos[$g]['genero'] ."'" ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
+                              onclick="editarGenero(<?php echo $generos[$g]['id'] .",'" . addslashes($generos[$g]['genero']) ."'" ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
                          </td>
                       </tr>
                       <?php } ?>

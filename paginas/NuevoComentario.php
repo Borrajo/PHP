@@ -6,7 +6,7 @@ if(isset($_POST["pelicula_id"]) && isset($_POST["usuario_id"]) && isset($_POST["
 		{	
 			/*Estuvo bien copiar esto, pero el id es autoincremental, no es necesario traerse el ultimo id.*/
 			$pelicula_id = $_POST["pelicula_id"];
-			$comentario = $_POST["comentario"];
+			$comentario = addslashes($_POST["comentario"]);
 			$fecha = date("Y-m-d");
 			$usuario_id = $_POST["usuario_id"];
 			$calificacion = $_POST["calificacion"];

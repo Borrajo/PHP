@@ -20,21 +20,21 @@
 				// Los parametros de busqueda son los mismos tanto en la consulta de las peliculas como la consulta de la cantidad de peliculas.
 				if(isset($_GET['nombre']) && $_GET['nombre'] != "" )
 				{
-					$nombre = $_GET['nombre'];
-					$sql .= " peliculas.nombre LIKE '%". $_GET['nombre'] ."%' AND ";
-					$consulta_cant .= " peliculas.nombre LIKE '%". $_GET['nombre'] ."%' AND ";
+					$nombre = addslashes($_GET['nombre']);
+					$sql .= " peliculas.nombre LIKE '%$nombre%' AND ";
+					$consulta_cant .= " peliculas.nombre LIKE '%$nombre%' AND ";
 				}
 				if(isset($_GET['anio']) && $_GET['anio'] != "" && is_numeric($_GET['anio'])) 
 				{
 					$anio = $_GET['anio'];
-					$sql .= " peliculas.anio = ".$_GET['anio'] ." AND ";
-					$consulta_cant .= " peliculas.anio = ".$_GET['anio'] ." AND ";
+					$sql .= " peliculas.anio = $anio AND ";
+					$consulta_cant .= " peliculas.anio = $anio AND ";
 				}
 				if(isset($_GET['genero'])  && $_GET['genero'] != "" && is_numeric($_GET['genero'])) 
 				{
 					$genero = $_GET['genero'];
-					$sql .= " peliculas.generos_id = ".$_GET['genero'] ." AND ";
-					$consulta_cant .= " peliculas.generos_id = ".$_GET['genero'] ." AND ";
+					$sql .= " peliculas.generos_id = $genero AND ";
+					$consulta_cant .= " peliculas.generos_id = $genero AND ";
 				}
 				//Se agrega un 1 al comienzo para que cuando no tenga parametros quede 'WHERE 1' y poder hacer la busqueda agregando los parametros terminando con un 'AND'
 				$sql = $sql . " 1 GROUP BY peliculas.id ";

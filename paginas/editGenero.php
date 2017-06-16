@@ -7,7 +7,7 @@
         {
                 $id_genero = $_POST['genero_id'];
                 $id_user = $_POST['usuario_id'];
-                $nombre = $_POST['nombre_gen'];
+                $nombre = addslashes($_POST['nombre_gen']);
 
                 if(isAdmin($id_user,$conn))
                 {

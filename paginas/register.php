@@ -49,7 +49,7 @@
 
 	 	</p><button  type="button" onclick='validarRegistro("nombreR", "apellidoR","emailR","usernameR","passwordR","password2R","registerForm")'  class="btn btn-ingreso navbar-btn">Registrar</button>
  
- 	<p class="texto">Ya tienes una cuenta? <a href="login.php" >Ingresa aquí!</a></p>
+ 	<p class="texto">Ya tienes una cuenta? <a onclick="openModal(9)" >Ingresa aquí!</a></p>
 	</form>
  
  	</div>

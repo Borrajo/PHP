@@ -11,6 +11,8 @@
                 $genero = $_POST['pelicula_gen'];
                 $id_user = $_POST['usuario_id'];
                 $id_peli = $_POST['pelicula_id'];
+                $nombre = addslashes($nombre);
+                $sinopsis =addslashes($sinopsis);
                 $insert = false;
                 if($id_peli < 0) // si el id es menor a 0, indica que es una insercion
                 {
