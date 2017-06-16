@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,94 +8,46 @@
 </head>
 <body>
 
-<?php 
-	include "nav_top.php" ;
+<?php include "nav_top.php" ;
 	include('conexion.php') ;
- 
-if(isset($_POST['register']))
-{
-
-
-  	/*VALIDACION DESDE EL LADO DEL SERVIDOR*/
-    /*Verifico resultado de funcion js*/
-  	if(validar()){
-
-  		$nombre=$_POST['nombre'];
- 		$apellido=$_POST['apellido'];
- 		$email=$_POST['email'];
- 		$username=$_POST['username'];
- 		$password=$_POST['password'];
-  		 	/*Verifica que no exista ese nombre de usuario*/
- 		$query=mysql_query("SELECT * FROM usuarios WHERE nombreusuario='".$username."'");
- 		$numrows=mysql_num_rows($query);
- 
-	 	/*Si el nombre de usuario esta disponible, inserta el nuevo usuario en la tabla*/
- 		if($numrows==0)
- 		{
- 			$sql="INSERT INTO usuarios
- 			(nombre,apellido, email, username,password)
- 			VALUES('$nombre','$apellido','$email', '$username', '$password')";
- 
-			$result=mysql_query($sql);
-
-  		}
-  		else{
-  			$message="El nombre de usuario ya existe! Por favor, intenta con otro!";
-  		}
-  	}
-
-  	else{
-  		$message= "Todos los campos deben estar completos";
-  	}
-
- 
- if($result){
- 	$message = "Cuenta creada correctamente";
- } 
-
- else {
- $message = "Error al ingresar los datos";
-
- }
-}
 ?>
- 
-<?php if (!empty($message)) {echo "<p class=\"error\">" . "Mensaje: ". $message . "</p>";} ?>
+
+
 <div class="row">
 <div class="container-fluid uregister">
-<div class="col-md-2 col-md-offset-5">
+<div class="col-md col-md-offset-5">
  	<div id="register">
+      </form>
  		<h1>Registrar</h1> 
  		<!--OnSubmit llama a la funcion validar() para validar formulario desde el lado del cliente-->
-		<form name="registerform" id="registerform" action="index.php" onsubmit='validar()' method="post">
+		<form action="../../php/paginas/regUsuario.php" method="post" id="register"> <!-- si la funcion devuelve true, entonces hace el submit-->
  		<p>
-		 <label for="user_login">Nombre<br />
- 		<input type="text" class="form-control" name="nombre" id="nombre"  size="32" /></label>
+		 <label for="user_name">Nombre<br />
+ 		<input type="text" class="form-control" name="nombre" id="nombreR"  size="32" /></label>
  		</p>
  
 		  <p>
- 		<label for="user_login">Apellido<br />
- 		<input type="text" class="form-control" name="apellido" id="apellido" size="32" /></label>
+ 		<label for="user_ape">Apellido<br />
+ 		<input type="text" class="form-control" name="apellido" id="apellidoR" size="32" /></label>
  		</p>
  		<p>
- 		<label for="user_pass">E-mail<br />
- 		<input type="email" class="form-control" name="email" id="email" size="32" /></label>
+ 		<label for="user_email">E-mail<br />
+ 		<input type="email" class="form-control" name="email" id="emailR" size="32" /></label>
  		</p>
  
 		 <p>
- 		<label for="user_pass">Nombre De Usuario<br />
- 		<input type="text" class="form-control"  name="username" id="username" size="20" /></label>
+ 		<label for="user_username">Nombre De Usuario<br />
+ 		<input type="text" class="form-control"  name="username" id="usernameR" size="32" /></label>
  		</p>
  
  		<p>
  		<label for="user_pass">Contraseña<br />
- 		<input type="password" class="form-control" name="password" id="password" size="32" /></label> </p>
+ 		<input type="password" class="form-control" name="password" id="passwordR" size="32" /></label> </p>
 		<p>
  		<label for="user_pass2">Ingrese nuevamente la contraseña<br />
- 		<input type="password" class="form-control" name="password2" id="password2"  size="32" /></label> </p> 
-	<p class="submit">
- 	<button type="submit" name="register" id="register" class="btn btn-bc">Registrar</button>
- 	</p>
+ 		<input type="password" class="form-control" name="password2" id="password2R"  size="32" /></label> </p> 
+
+	 	</p><button  type="button" onclick='validarRegistro("nombreR", "apellidoR","emailR","usernameR","passwordR","password2R")'  class="btn btn-ingreso navbar-btn">Registrar</button>
  
  	<p class="texto">Ya tienes una cuenta? <a href="login.php" >Ingresa aquí!</a></p>
 	</form>

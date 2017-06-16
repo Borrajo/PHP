@@ -1,6 +1,6 @@
 /*VALIDACION DEL LADO DEL CLIENTE*/
 
-function validar()
+function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2R)
 {
 
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false
@@ -11,47 +11,56 @@ function validar()
 	var ExpPass2=/[A-Z]+/; //la condicion verifica que exista al menos una mayuscula
 	var ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
 
+	nombre=document.getElementById('nombreR').value;
+	apellido=document.getElementById('apellidoR').value;
+	username=document.getElementById('usernameR').value;
+	email = document.getElementById('emailR').value; 
+	password=document.getElementById('passwordR');
+	password2=document.getElementById('password2R');
+
+
+try{
+	
 	/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
 	la condición, en este caso, que no sea vacio y tenga sólo caracteres alfabéticos*/
 
-	var nombre=document.getElementById('nombre').value;
 	if(nombre == null || !alfabetico.test(nombre))
 	{
 	    todo_correcto = false;
+	    mensaje += "El nombre no debe ser vacío y debe tener sólo caracteres alfabéticos \n\r";
 	}
 
-	var apellido=document.getElementById('apellido').value;
+	
 	/*Verifiamos que apellido no sea vacio y tenga sólo caracteres alfabéticos**/
 	if(apellido == null || !alfabetico.test(apellido))
 	{
 	    todo_correcto = false;
+	    mensaje += "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos\n\r";
 	}
 
 	/*Verificamos el valor ingresado por el usuario tiene estructura de 
 	e-mail.*/
 
-	var email = document.getElementById('email').value; 
 	if (!ExpEmail.test(email))
 	{
 	    todo_correcto = false;
+	    mensaje += "Los datos ingresados no corresponden al formato de un e-mail\n\r";
 	}
 
 	/* Nombre de usuario debe tener por lo menos 6 caracteres y que sean alfanuméricos*/
 
-	username=document.getElementById.value;
 	if(username.length<6 || !alfanumerico.test(username))
 	{
 	    todo_correcto = false;
+	    mensaje += "La nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos\n\r";
 	}
-
-	password=document.getElementById('password');
-	password2=document.getElementById('password2');
 
 	if(strcmp($password,$password2)==0)
 	{
 		if(!ExpPass1.test(password) || !ExpPass2.test(password) || !ExpPass3.test(password) )
 		{
 			todo_correcto = false;
+			mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
 		}
 	}
 	else
@@ -60,11 +69,24 @@ function validar()
 		alert('Las contraseñas no coinciden');
 	}
 
-	/*TIENE QUE LANZAR UNA EXCEPCION - CORREGIR*/
 	if(!todo_correcto)
 	{
 		alert('Algunos campos no están correctos, vuelva a revisarlos');
 	}
+}
+catch (e)
+{
+	alert(e);
+}
+	if(todo_correcto)
+	{
+		document.getElementById(formulario).submit();
+	}
+	else
+	{
+		alert(mensaje);
+	}
+}
 
 return todo_correcto;
 }
