@@ -1,7 +1,7 @@
 <?php 
     include ('conexion.php');
     include('funciones.php');
-
+    print_r($_POST);/*
     if( isset($_POST['pelicula_nombre']) && isset($_POST['pelicula_sinopsis']) && isset($_POST['pelicula_anio']) && isset($_POST['usuario_id']) && isset($_POST['pelicula_id']) )
     {
         if(is_numeric($_POST['pelicula_anio']) && is_numeric($_POST['pelicula_gen']) && is_numeric($_POST['usuario_id']) && is_numeric($_POST['pelicula_id']) && $_POST['pelicula_nombre'] != '' && $_POST['pelicula_sinopsis'] != '')
@@ -22,5 +22,5 @@
                 }    
             header("Location: ../../php/paginas/AdministrarPeliculas.php");
         }
-    }
+    }*/
 ?>

@@ -60,7 +60,7 @@ ob_start();
                      <tbody>
                      <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
                       <tr>
-                         <td><?php echo $peliculas[$p]['nombre'] ?></td>
+                         <td><a href="../../php/paginas/pelicula.php?id=<?php echo $peliculas[$p]['id'] ?>" ><?php echo $peliculas[$p]['nombre'] ?></a></td>
                          <td><?php echo $peliculas[$p]['anio'] ?></td>
                          <td><?php echo $peliculas[$p]['genero'] ?></td>
                          <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
@@ -229,6 +229,12 @@ ob_start();
                     </div>
                     <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
                     <input type="hidden" class="form-control" name="pelicula_id" id="id_edit_peli">
+                </div>
+                <div class="col-md-10">
+                  <div class="form-group">
+                    <label for="file_pic">Cargue una nueva portada ( opcional ) </label>
+                    <input type="file" class="form-control-file" name="file_pic">
+                  </div>
                 </div>
               </div>
               </div>

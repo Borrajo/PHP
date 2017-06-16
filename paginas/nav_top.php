@@ -59,7 +59,7 @@
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
             <button class="btn btn-bc navbar-btn dropdown-toggle" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-              Mi Cuenta<span class="glyphicon glyphicon-user"></span>
+              Mi Cuenta <span class="glyphicon glyphicon-user"></span>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="cuentaMenu">

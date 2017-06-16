@@ -86,10 +86,9 @@ catch (e)
 	{
 		alert(mensaje);
 	}
+	return todo_correcto;
 }
 
-return todo_correcto;
-}
 
 var errores = { 		0 : "Login Correcto", 
 						1 : "El nombre de usuario es demasiado corto", 
