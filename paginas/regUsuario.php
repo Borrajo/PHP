@@ -92,7 +92,12 @@
 			 		{
 			 			$sql="INSERT INTO usuarios
 			 			(id, nombreusuario, email, password, nombre, apellido, administrador) VALUES(NULL,'$username','$email','$password', '$nombre', '$apellido', 0)";
-					
+ 					
+ 					if(!$result = mysqli_query($conn, $sql))
+                    { 
+                        echo mysqli_error($conn); 
+                        die();
+                    } 
                 	}
                     else { throw new Exception('El nombre de usuario ya existe'); $mensaje = 5;
                 	}
