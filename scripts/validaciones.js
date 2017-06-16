@@ -145,6 +145,24 @@ function editarGenero(id_genero,nombre_genero)
 		});
 }
 
+function nuevaPelicula()
+{
+	console.log(document.getElementById('title_edit').value);
+	document.getElementById('id_edit_peli').value = -1;
+	document.getElementById('label_file').value = "Cargue una portada" 
+	document.getElementById('title_edit').value = "Nueva Película" 
+	document.getElementById('nombre_edit_peli').value = "";
+	document.getElementById('sinopsis_edit_peli').value = "";
+	document.getElementById('anio_edit_peli').value = "";
+	document.getElementById('genero_edit_peli').value = "";
+
+	$('#editPelicula').modal('show') ;
+	$('#editPelicula').on('shown.bs.modal', function () {
+	$('#nombre_edit_peli').focus()
+		});
+}
+
+
 function editarPelicula(id,nombre,sinopsis,anio,genero)
 {
 	document.getElementById('id_edit_peli').value = id;
@@ -152,6 +170,7 @@ function editarPelicula(id,nombre,sinopsis,anio,genero)
 	document.getElementById('sinopsis_edit_peli').value = sinopsis;
 	document.getElementById('anio_edit_peli').value = anio;
 	document.getElementById('genero_edit_peli').value = genero;
+	document.getElementById('title_edit').value = "Editar Película" 
 
 	$('#editPelicula').modal('show') ;
 	$('#editPelicula').on('shown.bs.modal', function () {

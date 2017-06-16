@@ -43,7 +43,14 @@ ob_start();
 
               <div class="tab-content">
                 <div id="tabPelis" class="tab-pane fade in active">
-                  <h3>Puede agregar, editar o incluso eliminar peliculas</h3>
+                  <h3>Puede agregar, editar o incluso eliminar peliculas 
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-success" data-toggle="modal" onclick="nuevaPelicula()">
+                          agregar pelicula 
+                          <i class="glyphicon glyphicon-plus"></i>
+                        </button>
+                      </div>
+                  </h3>
                   <div class="col-md-12">
                     <table class="table table-striped">
                       <thead>
@@ -195,9 +202,9 @@ ob_start();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                Editar Pelicula
+                <a id="title_edit">Editar Pelicula</a>
             </div>
-            <form action="../../php/paginas/editPelicula.php" method="post" id="editPelicula_form">
+            <form action="../../php/paginas/editPelicula.php" method="post" id="editPelicula_form" enctype="multipart/form-data">
               <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
@@ -232,8 +239,8 @@ ob_start();
                 </div>
                 <div class="col-md-10">
                   <div class="form-group">
-                    <label for="file_pic">Cargue una nueva portada ( opcional ) </label>
-                    <input type="file" class="form-control-file" name="file_pic">
+                    <label for="file_pic" id="label_file">Cargue una nueva portada ( opcional ) </label>
+                    <input type="file" accept="image/*" class="form-control-file" name="file_pic">
                   </div>
                 </div>
               </div>

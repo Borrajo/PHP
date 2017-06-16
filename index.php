@@ -80,7 +80,7 @@
                               <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
                               <div class="col-sm-10 col-md-3 align-items-center poster">
                                   <a href="<?php echo 'paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
-                                    <img class="poster-img" src="data:image/jpeg;base64,<?php echo base64_encode($peliculas[$p]['contenidoimagen']); ?>" onload="openModal(<?php echo $id_mensaje ?>)"/>
+                                    <img class="poster-img" src="data:<?php echo $peliculas[$p]['tipoimagen'].';base64, '.base64_encode($peliculas[$p]['contenidoimagen']); ?>" onload="openModal(<?php echo $id_mensaje ?>)"/>
                                   </a>
                                   <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
                                     <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
