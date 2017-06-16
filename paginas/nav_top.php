@@ -43,13 +43,13 @@
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="<?php echo $nombre ?>">
-          <input type="number" class="form-control" placeholder="Año de estreno" name="anio" value="<?php echo $anio ?>">
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="<?php if(isset($nombre)) echo $nombre ?>">
+          <input type="number" class="form-control" placeholder="Año de estreno" name="anio" value="<?php if(isset($nombre)) echo $anio ?>">
           <select class="form-control" name="genero">
           	<option value="" >--Género--</option>
           <?php for ($i=0; $i < count($generos) ; $i++) 
           { ?>
-          	<option value="<?php echo $generos[$i]['id'] ?>" <?php if($genero == $generos[$i]['id']) echo 'selected'?> ><?php echo $generos[$i]['genero'] ?></option>
+          	<option value="<?php echo $generos[$i]['id'] ?>" <?php if(isset($genero) && ($genero == $generos[$i]['id'])) echo 'selected'?> ><?php echo $generos[$i]['genero'] ?></option>
           <?php } ?>
           </select>
         </div>
