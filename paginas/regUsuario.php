@@ -33,6 +33,7 @@
 				if($apellido == null || !preg_match($alfabetico,$apellido) )
 				{
 				 	throw new Exception('Apellido demasiado corto y no puede contener números ni símbolos');
+
 				}
 
 				/*Verificamos el valor ingresado por el usuario tiene estructura de 
@@ -54,18 +55,14 @@
 				{
 					if(!preg_match($ExpPass1,$password) || !preg_match($ExpPass2,$password)  || !preg_match($ExpPass3,$password) )
 					{
-						throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula');
+						throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula');
 					}
 				}
 				else if(strcmp($password,$password2)!=0)
-					{throw new Exception('Las contraseñas no coinciden');
+					{
+						throw new Exception('Las contraseñas no coinciden');
 				}
 
-                if(!preg_match($alfanumerico,$username) || strlen($username) < 6 )
-                {
-                    throw new Exception('Nombre de usuario demasiado corto');
-                    $mensaje = 1;
-                }
 
                 
               $correcto=1;
