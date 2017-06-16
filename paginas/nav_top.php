@@ -21,6 +21,9 @@
       2 : contraseña no cumple condicion
       3 : el usuario no existe
       4 : contraseña incorrecta
+    $nombre --> contiene el nombre de busqueda
+    $anio --> contiene el año de busqueda
+    $genero --> contiene el genero de busqueda
   	*/
 ?>
 <nav class="navbar navbar-inverse" id="top" style="z-index: 100">
@@ -40,13 +43,13 @@
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-          <input type="number" class="form-control" placeholder="Año de estreno" name="anio">
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="<?php echo $nombre ?>">
+          <input type="number" class="form-control" placeholder="Año de estreno" name="anio" value="<?php echo $anio ?>">
           <select class="form-control" name="genero">
           	<option value="" >--Género--</option>
           <?php for ($i=0; $i < count($generos) ; $i++) 
           { ?>
-          	<option value="<?php echo $generos[$i]['id'] ?>"><?php echo $generos[$i]['genero'] ?></option>
+          	<option value="<?php echo $generos[$i]['id'] ?>" <?php if($genero == $generos[$i]['id']) echo 'selected'?> ><?php echo $generos[$i]['genero'] ?></option>
           <?php } ?>
           </select>
         </div>
