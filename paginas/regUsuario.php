@@ -24,7 +24,7 @@
 			if ($correcto==0) {
 					
 				if($nombre == null || !preg_match($alfabetico,$nombre) )
-				{throw new Exception('Nombre  demasiado corto o no contiene caracteres alfabéticos');
+				{throw new Exception('Nombre  demasiado corto y no puede contener números ni símbolos');
 				$mensaje = 5;
 				}
 
@@ -32,7 +32,7 @@
 				/*Verifiamos que apellido no sea vacio y tenga sólo caracteres alfabéticos**/
 				if($apellido == null || !preg_match($alfabetico,$apellido) )
 				{
-				 	throw new Exception('Apellido demasiado corto o no contiene caracteres alfabéticos');
+				 	throw new Exception('Apellido demasiado corto y no puede contener números ni símbolos');
 				}
 
 				/*Verificamos el valor ingresado por el usuario tiene estructura de 
@@ -47,7 +47,7 @@
 
 				if(strlen($username) < 6  || !preg_match($alfanumerico,$username) )
 				{
-				    throw new Exception('Nombre de usuario demasiado corto o no contiene caracteres alfanuméricos');
+				    throw new Exception('Nombre de usuario demasiado corto y debe contener sólo números y letras');
 				}
 
 				if(strcmp($password,$password2)==0)
