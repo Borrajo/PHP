@@ -71,13 +71,18 @@
               $correcto=1;
             }
 
+                $sql="";
                 
                 if($correcto){
                 	$sql = "SELECT COUNT(*) AS existe
                         FROM usuarios 
                         WHERE usuarios.nombreusuario = '$username'";
                 	
-                	if(!$result = mysqli_query($conn, $sql)) die();
+                	 if(!$result = mysqli_query($conn, $sql))
+                    { 
+                        echo mysqli_error($conn); 
+                        die();
+                    }
 
                 	$existe = mysqli_fetch_assoc($result);
                 	$existe = $existe['existe']; //Existe vale 1 si existe el Usuario o 0 si no existe
@@ -86,9 +91,7 @@
  					if($existe==0)
 			 		{
 			 			$sql="INSERT INTO usuarios
-			 			(id, nombreusuario, email, password, nombre, apellido, administrador)
-			 			VALUES(NULL,$username','$email','$password', '$nombre, '$apellido',0)";
-			 			$sql  = 'INSERT INTO `usuarios` (`id`, `nombreusuario`, `email`, `password`, `nombre`, `apellido`, `administrador`) VALUES (NULL, \'$username\', \'$email\', \'$password\', \'$nombre\', \'$apellido\', \'0\')';
+			 			(id, nombreusuario, email, password, nombre, apellido, administrador) VALUES(NULL,'$username','$email','$password', '$nombre', '$apellido', 0)";
 					
                 	}
                     else { throw new Exception('El nombre de usuario ya existe'); $mensaje = 5;
