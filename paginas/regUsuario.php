@@ -2,15 +2,15 @@
 
 <?php 
     include ('conexion.php');
-    if( isset($_POST['nombre'], $_POST['apellido'], $_POST['email'], $_POST['username'], $_POST['password']), $_POST['password2']) //Comprobamos que existan los parametros del registro enviados por el metodo POST
+    if( isset($_POST['nombre'], $_POST['apellido'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password2'])) //Comprobamos que existan los parametros del registro enviados por el metodo POST
     {
         /* Se verifica la validez de los datos del usuario*/
-                $alfabetico=/^[a-z]+$/i;
-				$alfanumerico=/^[a-z0-9]+$/i;
-				$ExpEmail=/^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i; // /^[a-z][\w.-]+@\w[\w.-]?+(\.[\w.-])*[a-z][a-z]$/ puede que esté mal
-				$ExpPass1=/([0-9]|[!#$%&()=?¡¿@-_*+])+/; //la condicion verifica que tenga al menos un numero o un simbolo
-				$ExpPass2=/[A-Z]+/; //la condicion verifica que exista al menos una mayuscula
-				$ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
+                $alfabetico="/^[a-z]+$/i";
+				$alfanumerico="/^[a-z0-9]+$/i";
+				$ExpEmail="/^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i"; // /^[a-z][\w.-]+@\w[\w.-]?+(\.[\w.-])*[a-z][a-z]$/ puede que esté mal
+				$ExpPass1="/([0-9]|[!#$%&()=?¡¿@-_*+])+/"; //la condicion verifica que tenga al menos un numero o un simbolo
+				$ExpPass2="/[A-Z]+/"; //la condicion verifica que exista al menos una mayuscula
+				$ExpPass3="/[a-z]+/"; //la condicion verifica que exista al menos una minuscula
 				$correcto=0;
 
                 $nombre = $_POST['nombre'];
@@ -21,10 +21,11 @@
                 $password2 = $_POST['password2'];
                 $mensaje = "";
 
-			if ($correcto=0) {
+			if ($correcto==0) {
 					
 				if($nombre == null || !preg_match($alfabetico,$nombre) )
 				{throw new Exception('Nombre  demasiado corto o no contiene caracteres alfabéticos');
+				$mensaje = 5;
 				}
 
 	
@@ -66,32 +67,31 @@
                     $mensaje = 1;
                 }
 
-                if(!preg_match($ExpPass,$pass) || strlen($username) < 6 )
-                {
-                    throw new Exception('Contraseña demasiado corta');
-                    $mensaje = 2;
-                }
+                
               $correcto=1;
             }
 
                 
                 if($correcto){
+                	$sql = "SELECT COUNT(*) AS existe
+                        FROM usuarios 
+                        WHERE usuarios.nombreusuario = '$username'";
+                	
+                	if(!$result = mysqli_query($conn, $sql)) die();
 
-  		 			/*Verifica que no exista ese nombre de usuario*/
- 					$query=mysql_query("SELECT * FROM usuarios WHERE nombreusuario='".$username."'");
- 					$numrows=mysql_num_rows($query);
- 
+                	$existe = mysqli_fetch_assoc($result);
+                	$existe = $existe['existe']; //Existe vale 1 si existe el Usuario o 0 si no existe
+ 						
 	 				/*Si el nombre de usuario esta disponible, inserta el nuevo usuario en la tabla*/
- 					if($numrows==0)
+ 					if($existe==0)
 			 		{
 			 			$sql="INSERT INTO usuarios
-			 			(nombre,apellido, email, username,password)
-			 			VALUES('$nombre','$apellido','$email', '$username', '$password')";
-			 
-						$result=mysql_query($sql);
-
+			 			(id, nombreusuario, email, password, nombre, apellido, administrador)
+			 			VALUES(NULL,$username','$email','$password', '$nombre, '$apellido',0)";
+			 			$sql  = 'INSERT INTO `usuarios` (`id`, `nombreusuario`, `email`, `password`, `nombre`, `apellido`, `administrador`) VALUES (NULL, \'$username\', \'$email\', \'$password\', \'$nombre\', \'$apellido\', \'0\')';
+					
                 	}
-                    else { throw new Exception('El nombre de usuario ya existe');
+                    else { throw new Exception('El nombre de usuario ya existe'); $mensaje = 5;
                 	}
                 }
 

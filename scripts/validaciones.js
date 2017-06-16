@@ -1,6 +1,6 @@
 /*VALIDACION DEL LADO DEL CLIENTE*/
 
-function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2R)
+function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2R,registerForm)
 {
 
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false
@@ -10,6 +10,7 @@ function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2
 	var ExpPass1=/([0-9]|[!#$%&()=?¡¿@-_*+])+/; //la condicion verifica que tenga al menos un numero o un simbolo
 	var ExpPass2=/[A-Z]+/; //la condicion verifica que exista al menos una mayuscula
 	var ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
+	var mensaje='';
 
 	nombre=document.getElementById('nombreR').value;
 	apellido=document.getElementById('apellidoR').value;
@@ -55,7 +56,7 @@ try{
 	    mensaje += "La nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos\n\r";
 	}
 
-	if(strcmp($password,$password2)==0)
+	if(password.toString().localeCompare(password2)==0)
 	{
 		if(!ExpPass1.test(password) || !ExpPass2.test(password) || !ExpPass3.test(password) )
 		{
@@ -80,7 +81,7 @@ catch (e)
 }
 	if(todo_correcto)
 	{
-		document.getElementById(formulario).submit();
+		document.getElementById(registerForm).submit();
 	}
 	else
 	{
