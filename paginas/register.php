@@ -1,15 +1,15 @@
-<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="../../php" />
 	<?php include "header.php" ?>
-	<link rel="stylesheet" href="../Styles/estilos.css" type="text/css">
-	<script type="text/javascript" src="/scripts/validaciones.js"></script>
+	<link rel="stylesheet" href="php/Styles/estilos.css" type="text/css">
+	<script type="text/javascript" src="php/scripts/validaciones.js"></script>
 </head>
 <body>
 
-<?php include "nav_top.php" ;
-	include('conexion.php') ;
+<?php 
+	include "nav_top.php" ;
 ?>
 
 
@@ -20,7 +20,7 @@
       </form>
  		<h1>Registrar</h1> 
  		<!--OnSubmit llama a la funcion validar() para validar formulario desde el lado del cliente-->
-		<form action="../../php/paginas/regUsuario.php" method="post" id="registerForm"> <!-- si la funcion devuelve true, entonces hace el submit-->
+		<form action="php/paginas/regUsuario.php" method="post" id="registerForm"> <!-- si la funcion devuelve true, entonces hace el submit-->
  		<p>
 		 <label for="user_name">Nombre<br />
  		<input type="text" class="form-control" name="nombre" id="nombreR"  size="32" /></label>
@@ -49,7 +49,7 @@
 
 	 	</p><button  type="button" onclick='validarRegistro("nombreR", "apellidoR","emailR","usernameR","passwordR","password2R","registerForm")'  class="btn btn-ingreso navbar-btn">Registrar</button>
  
- 	<p class="texto">Ya tienes una cuenta? <a onclick="openModal(9)" >Ingresa aquí!</a></p>
+ 	<p class="texto">Ya tienes una cuenta? <a onclick="openModal()" >Ingresa aquí!</a></p>
 	</form>
  
  	</div>
@@ -58,7 +58,7 @@
  </div>
 
  		<footer>
- 			<?php  include "../paginas/footer.php";?>
+ 			<?php  include "footer.php";?>
 		</footer>
 	</body>
 </html>

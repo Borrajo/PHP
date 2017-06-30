@@ -1,5 +1,6 @@
-<!-- Obtencion de datos de un usuario -->
+
 <?php 
+    //Obtencion de datos de un usuario
     include ('conexion.php');
     if( isset($_POST['username'], $_POST['password'])) //Corroboramos que existan los parametros 'username' y 'password' enviados por el metodo POST
     {
@@ -13,14 +14,16 @@
 
                 if(!preg_match($alfanumerico,$username) || strlen($username) < 6 )
                 {
-                    //throw new Exception('Nombre de usuario demasiado corto');
-                    $mensaje = 1;
+                    $mensaje = new StdClass();
+                    $mensaje->ERROR = 1;
+                    $mensaje->DESCRIP = 'Nombre de usuario demasiado corto';
                 }
 
                 if(!preg_match($ExpPass,$pass) || strlen($username) < 6 )
                 {
-                    //throw new Exception('Contraseña demasiado corta');
-                    $mensaje = 2;
+                    $mensaje = new StdClass();
+                    $mensaje->ERROR = 2;
+                    $mensaje->DESCRIP = 'Contraseña demasiado corta';
                 }
 
                 $sql = "SELECT COUNT(*) AS existe
@@ -53,12 +56,23 @@
                             $_SESSION["$key"] = $value;
                         }
                         setcookie("user_session", session_id(), time()+3600,'/');
-                        $mensaje = 0;
+                        $mensaje = new StdClass();
+                        $mensaje->OK = 0;
+                        $mensaje->DESCRIP = 'Login Correcto';
                     }
-                    else { /*throw new Exception('La contraseña es incorrecta');*/ $mensaje = 4; }
+                    else {                   
+                            $mensaje = new StdClass();
+                            $mensaje->ERROR = 4;
+                            $mensaje->DESCRIP = 'La contraseña es incorrecta'; 
+                         }
                 }
-                else{ /*throw new Exception('El usuario no existe');*/ $mensaje = 3; }
-     print_r($mensaje);
+                else{ 
+                        $mensaje = new StdClass();
+                        $mensaje->ERROR = 3;
+                        $mensaje->DESCRIP = 'El usuario no existe';
+                    }
+                $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
+                header('Content-Type: application/json');
+                echo $json;
     }
-   header("Location: ../index.php?login=$mensaje");
 ?>

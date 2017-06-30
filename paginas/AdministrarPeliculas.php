@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="../../php" />
 <?php include "header.php" ?>
 
-<link rel="stylesheet" href="../../php/Styles/estilos.css" type="text/css">
-<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
-<!--<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> -->
-<!--<script type="text/javascript" src="carousel.js"></script>-->
+<link rel="stylesheet" href="php/Styles/estilos.css" type="text/css">
+<script type="text/javascript" src="php/scripts/validaciones.js"></script>
 
 </head>
 <body>
@@ -67,7 +66,7 @@ ob_start();
                      <tbody>
                      <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
                       <tr>
-                         <td><a href="../../php/paginas/pelicula.php?id=<?php echo $peliculas[$p]['id'] ?>" ><?php echo $peliculas[$p]['nombre'] ?></a></td>
+                         <td><a href="php/paginas/pelicula.php?id=<?php echo $peliculas[$p]['id'] ?>" ><?php echo $peliculas[$p]['nombre'] ?></a></td>
                          <td><?php echo $peliculas[$p]['anio'] ?></td>
                          <td><?php echo $peliculas[$p]['genero'] ?></td>
                          <td><?php echo substr($peliculas[$p]['sinopsis'], 0, 100); ?></td>
@@ -118,7 +117,7 @@ ob_start();
                      </thead>
                      <tbody>
                      <tr>
-                        <form action="../../php/paginas/addGenero.php" method="post" id="addGenero_form">
+                        <form action="php/paginas/addGenero.php" method="post" id="addGenero_form">
                           <td><input class="form-control" type="text" name="addGenero" placeholder="Ingrese el nombre del genero" required></td>
                           <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
                           <td><button type="submit" class="btn btn-bc">Agregar</button></td>
@@ -148,8 +147,8 @@ ob_start();
   <?php include "footer.php";?>
 </footer>
 </html>
-<?php } else  header("Location: ../index.php");
-  }else  header("Location: ../index.php");
+<?php } else  header("Location: /php/index.php");
+  }else  header("Location: /php/index.php");
   ob_end_flush();
 ?>
 
@@ -159,7 +158,7 @@ ob_start();
             <div class="modal-header">
                 Confirmar
             </div>
-            <form action="../../php/paginas/deletePelicula.php" method="post" id="deletePelicula_form">
+            <form action="php/paginas/deletePelicula.php" method="post" id="deletePelicula_form">
               <div class="modal-body">
                 Esta seguro que desea borrar la pelicula?
                 <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
@@ -180,7 +179,7 @@ ob_start();
             <div class="modal-header">
                 Editar nombre
             </div>
-            <form action="../../php/paginas/editGenero.php" method="post" id="editGenero_form">
+            <form action="php/paginas/editGenero.php" method="post" id="editGenero_form">
               <div class="modal-body">
                 <div class="form-group">
                     <label for="nombre">Ingrese el nuevo nombre</label>
@@ -204,7 +203,7 @@ ob_start();
             <div class="modal-header">
                 <a id="title_edit">Editar Pelicula</a>
             </div>
-            <form action="../../php/paginas/editPelicula.php" method="post" id="editPelicula_form" enctype="multipart/form-data">
+            <form action="php/paginas/editPelicula.php" method="post" id="editPelicula_form" enctype="multipart/form-data">
               <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
@@ -240,7 +239,7 @@ ob_start();
                 <div class="col-md-10">
                   <div class="form-group">
                     <label for="file_pic" id="label_file">Cargue una nueva portada ( opcional ) </label>
-                    <input type="file" accept="image/*" class="form-control-file" name="file_pic">
+                    <input type="file" accept="image/*" class="form-control-file" name="file_pic" required>
                   </div>
                 </div>
               </div>

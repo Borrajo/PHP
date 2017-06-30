@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="../../php" />
 	<?php include "header.php" ?>
-	<link rel="stylesheet" href="../Styles/estilos.css" type="text/css">
+	<link rel="stylesheet" href="php/Styles/estilos.css" type="text/css">
 </head>
 <body>
 
@@ -13,6 +14,7 @@
 <!-- PELICULA DE EJEMPLO PARA CARGAR LOS DATOS -->
 <?php 
 	include ('getPelicula.php');
+	include ('funciones.php');
 	/* NOS DEVUELVE UN ARREGLO $data CON LA INFORMACION */
 	$nombre = $data['nombre'];
 	$anio = $data['anio'];
@@ -22,6 +24,7 @@
 	$poster = $data['contenidoimagen'];
 	$comments = $comentarios; /* Proviene desde la consulta SQL */
 	$usuarios = array_column($comments, 'nombreusuario'); /* lista de los usuarios que hicieron comentarios */
+	//sendMensaje("nombre: $nombre\naño: $anio\ncalificacion: $calif\nsinopsis: $sinopsis\ngenero: $genero");
 ?>
 
 	<!-- PAGINA DE LA PELICULA -->
@@ -65,7 +68,7 @@
 			<div class="panel-body">
 				<div class="col-md-1 col-xs-1">
 					<!-- FOTO -->
-					<img src="../img/perfil.jpg" width="100%">
+					<img src="php/img/perfil.jpg" width="100%">
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
@@ -110,7 +113,7 @@
 		<div class="col-md-12">
 			<div class="col-md-1 col-xs-1">
 				<!-- FOTO -->
-				<img src="../img/perfil.jpg" width="100%">
+				<img src="php/img/perfil.jpg" width="100%">
 			</div>
 			<div class="col-md-11 col-xs-11">
 				<!-- COMENTARIO -->
@@ -132,7 +135,7 @@
 	</div><!--fin del col-lg-10 -->
 </div><!-- fin del container -->
 <footer>
-  <?php include "../paginas/footer.php";?>
+  <?php include "footer.php";?>
 </footer>
 </body>
 </html>

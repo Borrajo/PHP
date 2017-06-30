@@ -1,7 +1,6 @@
-<script type="text/javascript" src="../../php/scripts/validaciones.js"></script>
+<script type="text/javascript" src="php/scripts/validaciones.js"></script>
 <?php   
  
-  include ('loginMensaje.php');
  	include ('conexion.php');
     $sql = "SELECT * FROM `generos`";
 	if(!$result = mysqli_query($conn, $sql)) die();
@@ -14,13 +13,6 @@
    	}
    	/* DATOS 
  		$generos --> contiene todos los generos que existen.
-    $id_mensaje --> contiene el numero de error del login
-     -1 : el mensaje no existe
-      0 : el login es correcto
-      1 : nombre de usuario no cumple condicion
-      2 : contraseña no cumple condicion
-      3 : el usuario no existe
-      4 : contraseña incorrecta
     $nombre --> contiene el nombre de busqueda
     $anio --> contiene el año de busqueda
     $genero --> contiene el genero de busqueda
@@ -36,12 +28,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../../php/index.php">Peliszone</a>
+      <a class="navbar-brand" href="php/index.php">Peliszone</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" action="../../php/index.php" method="GET">
+      <form class="navbar-form navbar-left" action="php/index.php" method="GET">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="<?php if(isset($nombre)) echo stripslashes($nombre) ?>">
           <input type="number" class="form-control" placeholder="Año de estreno" name="anio" value="<?php if(isset($nombre)) echo $anio ?>">
@@ -70,16 +62,16 @@
               <!--<li><a href="#">Modificar</a></li>-->
               <?php if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
               { ?>
-              <li><a href="../../php/paginas/AdministrarPeliculas.php">Administrar peliculas</a></li>
+              <li><a href="php/paginas/AdministrarPeliculas.php">Administrar peliculas</a></li>
               <?php } ?>
               <li role="separator" class="divider"></li>
-              <li><a href="../../php/paginas/logout.php">Cerrar Sesión</a></li>
+              <li><a href="php/paginas/logout.php">Cerrar Sesión</a></li>
             </ul>
           </div>
         </ul>
       <?php }else{?> <!-- Sino existe la sesion -->
         <ul class="nav navbar-nav navbar-right">
-          <li><button class="btn btn-bc navbar-btn" data-toggle="modal" onclick="openModal(9)">  Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
+          <li><button class="btn btn-bc navbar-btn" data-toggle="modal" onclick="openModal()">  Ingresar <span class="glyphicon glyphicon-user"></span></button></li>
         </ul>
       <?php } ?>
     </div><!-- /.navbar-collapse -->
@@ -98,7 +90,7 @@
       </div>
       <!-- Cuerpo del modal --> 
       <div class="modal-body">
-      <form action="../../php/paginas/getUsuario.php" method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
+      <form action="php/paginas/getUsuario.php" method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
           <div class="form-group">
               <label for="username">Nombre de usuario:</label>
               <input type="text" class="form-control" name="username" id="usernameL" required placeholder="Nombre de usuario" autofocus="true">
@@ -114,7 +106,7 @@
       <!-- footer del modal -->
       <div class="modal-footer">
         <p class="texto">No tienes una cuenta?   
-        <a type="button" class="btn btn-ingreso navbar-btn" href="../../php/paginas/register.php"> Regístrate!</a></p>
+        <a type="button" class="btn btn-ingreso navbar-btn" href="php/paginas/register.php"> Regístrate!</a></p>
       </div>
 
     </div> <!-- fin contenido del modal -->

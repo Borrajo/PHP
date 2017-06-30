@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php include "paginas/header.php" ?>
-
-<link rel="stylesheet" href="Styles/estilos.css" type="text/css">
+<base href="../PHP" />
+<?php include "./paginas/header.php" ?>
+<link rel="stylesheet" href="/php/Styles/estilos.css" type="text/css">
 <!--<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> -->
 <!--<script type="text/javascript" src="carousel.js"></script>-->
 
 </head>
 <body>
-
 
 <?php
 
@@ -24,7 +23,7 @@
   $paginas --> contiene la cantidad de paginas totales para esa busqueda.
   */
   include "./paginas/getPeliculas.php" ;
-  include "paginas/nav_top.php" ;
+  include "./paginas/nav_top.php" ;
 ?>
         
 <div class="container-fluid fondo">
@@ -33,7 +32,7 @@
           <!-- MENU DE ORDENAMIENTO -->
           <div class="pull-right">
           <!-- DATOS PARA EL ENVIO DEL ORDENAMIENTO -->
-          <form action="index.php" method="GET" name="order">
+          <form action="php/index.php" method="GET" name="order">
             <input type="hidden" name="nombre" value="<?php echo $nombre ?>" >
             <input type="hidden" name="genero" value="<?php echo $genero ?>" >
             <input type="hidden" name="anio" value="<?php echo $anio ?>" >
@@ -79,8 +78,8 @@
                           <div class="row justify-content-center">
                               <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
                               <div class="col-sm-10 col-md-3 align-items-center poster">
-                                  <a href="<?php echo 'paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
-                                    <img class="poster-img" src="data:<?php echo $peliculas[$p]['tipoimagen'].';base64, '.base64_encode($peliculas[$p]['contenidoimagen']); ?>" onload="openModal(<?php echo $id_mensaje ?>)"/>
+                                  <a href="<?php echo 'php/paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
+                                    <img class="poster-img" src="data:<?php echo $peliculas[$p]['tipoimagen'].';base64, '.base64_encode($peliculas[$p]['contenidoimagen']); ?>" />
                                   </a>
                                   <div class="poster-info"> <!-- Clase de css creada por nosotros para representar los posters-->
                                     <div class="poster-titulo"><?php echo $peliculas[$p]['nombre'];?></div>
@@ -106,7 +105,7 @@
       <div class="pull-right">
         <nav aria-label="Page navigation">
         <ul class="pagination  pagination-lg">
-          <form action="index.php" method="GET">
+          <form action="php/index.php" method="GET">
               <input type="hidden" name="nombre" value="<?php echo $nombre ?>" >
               <input type="hidden" name="genero" value="<?php echo $genero ?>" >
               <input type="hidden" name="anio" value="<?php echo $anio ?>" >
