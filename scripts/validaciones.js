@@ -91,41 +91,12 @@ catch (e)
 }
 
 
-var errores = { 		0 : "Login Correcto", 
-						1 : "El nombre de usuario es demasiado corto", 
-						2:"La contraseña es demasiado corta", 
-						3:"El usuario ingresado no existe", 
-						4:"La contraseña es incorrecta"
-				};
-
-function openModal(error)
+function openModal()
 {
-	/*
-	 -1 : el mensaje no existe
-      0 : el login es correcto
-      1 : nombre de usuario no cumple condicion
-      2 : contraseña no cumple condicion
-      3 : el usuario no existe
-      4 : contraseña incorrecta
-    */
-	if( error >= 1 )
-	{
-		
 		$('#modalIngreso').modal('show') ;
 		$('#modalIngreso').on('shown.bs.modal', function () {
 	  	$('#usernameL').focus()
 		});
-		if(error == 1 || error == 3)
-		{
-			$('#usernameL').popover({animation: "true", title: "error", content: errores[error], placement: "right"});
-			$('#usernameL').popover('show');
-		}
-		if(error == 2 || error == 4)
-		{
-			$('#passwordL').popover({animation: "true", title: "error", content: errores[error], placement: "right"});
-			$('#passwordL').popover('show');
-		}
-	}
 }
 
 function eliminarPelicula(pelicula)
@@ -183,16 +154,16 @@ function validarLogin(campo1, campo2, formulario)
 	var alfanumerico=/^[a-z0-9]+$/i;
 	var ExpPass=/^((?=.*\d)|(?=.*[A-Z])|(?=.*\W)).{6,15}$/;
 	var mensaje='';
-	username=document.getElementById(campo1).value;
-	password=document.getElementById(campo2).value;
+	_username=document.getElementById(campo1).value;
+	_password=document.getElementById(campo2).value;
 try
 {
-	if(username.length<6 || !alfanumerico.test(username)){
+	if(_username.length<6 || !alfanumerico.test(_username)){
     	todo_correcto = false;
     	mensaje += "El nombre de usuario debe tener mas de 6 caracteres \n\r";
     	//Estos alert despues deberian ser cambiados por unos tooltip, y que haga tooltip.show 
 	}
-	if(!ExpPass.test(password)){
+	if(!ExpPass.test(_password)){
 		todo_correcto = false;
 		mensaje += "La contraseña debe tener mas de 6 caracteres \n\r";
 	}
@@ -201,10 +172,36 @@ catch (e)
 {
 	alert(e);
 }
-	if(todo_correcto)
-	{
-		document.getElementById(formulario).submit();
-	}
+if(todo_correcto)
+{
+	$.ajax({
+        type: 'POST',
+        url: 'php/paginas/getUsuario.php',
+        //async: false,
+        dataType: 'json',
+        data: {username:_username,password:_password},
+        success: function(data)
+        { 
+        	if(typeof data['OK'] !== 'undefined')
+        	{
+        		window.location.replace("php/index.php");
+        	}
+        	else
+        	{
+        		if(data['ERROR'] == 1 || data['ERROR'] == 3)
+				{
+					$('#usernameL').popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$('#usernameL').popover('show');
+				}
+				if(data['ERROR'] == 2 || data['ERROR'] == 4)
+				{
+					$('#passwordL').popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$('#passwordL').popover('show');
+				}
+        	}
+        }
+      });
+}
 	else
 	{
 		alert(mensaje);
