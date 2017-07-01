@@ -225,3 +225,7 @@ a:hover {
     color: #777;
     text-decoration: none;
 }
+
+.errorInput {
+    box-shadow: 0px 0px 19px #FF0000;
+}

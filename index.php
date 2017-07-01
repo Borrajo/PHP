@@ -4,9 +4,6 @@
 <base href="../PHP" />
 <?php include "./paginas/header.php" ?>
 <link rel="stylesheet" href="/php/Styles/estilos.css" type="text/css">
-<!--<link rel="stylesheet" href="Styles/slide.css" type="text/css" media="screen"> -->
-<!--<script type="text/javascript" src="carousel.js"></script>-->
-
 </head>
 <body>
 

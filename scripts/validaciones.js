@@ -148,6 +148,87 @@ function editarPelicula(id,nombre,sinopsis,anio,genero)
 		});
 }
 
+function validarSubmitPelicula()
+{
+	var todo_correcto = true;
+	var clase = ' errorInput';
+	var formulario = document.getElementById('editPelicula_form');
+	var id = formulario.elements.namedItem('id_edit_peli').value;
+	var nombre = formulario.elements.namedItem('nombre_edit_peli');
+	var sinopsis = formulario.elements.namedItem('sinopsis_edit_peli');
+	var anio = formulario.elements.namedItem('anio_edit_peli');
+	var genero = formulario.elements.namedItem('genero_edit_peli');
+	var imagen = formulario.elements.namedItem('file_pic');
+
+	//NOMBRE
+	if(nombre.value == '')
+	{
+		nombre.className += clase;
+		todo_correcto = false;
+		$(nombre).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío", placement: "right"});
+		$(nombre).popover('show');
+	}
+	else
+	{
+		nombre.className = nombre.className.replace(clase,''); //Borramos la clase del error.
+		$(nombre).popover('hide');
+	}
+	//AÑO
+	if(anio.value == '')
+	{
+		anio.className += clase;
+		todo_correcto = false;
+		$(anio).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío", placement: "left"});
+		$(anio).popover('show');
+	}
+	else
+	{
+		anio.className = anio.className.replace(clase,''); //Borramos la clase del error.
+		$(anio).popover('hide');
+	}
+	//SINOPSIS
+	if(sinopsis.value == '')
+	{
+		sinopsis.className += clase;
+		todo_correcto = false;
+		$(sinopsis).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío", placement: "left"});
+		$(sinopsis).popover('show');
+	}
+	else
+	{
+		sinopsis.className = sinopsis.className.replace(clase,''); //Borramos la clase del error.
+		$(sinopsis).popover('hide');
+	}
+	//GENERO
+	if(genero.value == '')
+	{
+		genero.className += clase;
+		todo_correcto = false;
+		$(genero).popover({animation: "true", title: "Error", content: "Debe seleccionar un género", placement: "right"});
+		$(genero).popover('show');
+	}
+	else
+	{
+		genero.className = genero.className.replace(clase,''); //Borramos la clase del error.
+		$(genero).popover('hide');
+	}
+	//IMAGEN
+	if(id == -1) //Pelicula Nueva
+	{
+		if(imagen.value == '')
+		{
+			todo_correcto = false;
+			$(imagen).popover({animation: "true", title: "Error", content: "Para crear una nueva película deberá agregar una portada", placement: "right"});
+			$(imagen).popover('show');
+		}
+		else
+		{
+			$(imagen).popover('hide');
+		}
+	}
+	return todo_correcto;
+}
+
 function validarLogin(campo1, campo2, formulario)
 {
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false

@@ -36,8 +36,6 @@ ob_start();
 
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tabPelis">Administrar Películas</a></li>
-                <li><a data-toggle="tab" href="#tabGeneros">Administrar Géneros</a></li>
-                <li><a data-toggle="tab" href="#tabUsuarios">Administrar Usuarios</a></li>
               </ul>
 
               <div class="tab-content">
@@ -78,61 +76,14 @@ ob_start();
                          <td>
                           <button type="button" class="btn btn-danger" data-toggle="modal" 
                           onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'] ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
-                         </form>
                          </td>
                       </tr>
                       <?php } ?>
                      </tbody>
                     </table>
                   </div>
-                </div>
-                <!-- TAB DE GENEROS -->
-                <div id="tabGeneros" class="tab-pane fade">
-                  <h3>Puede agregar, editar o incluso eliminar generos</h3>
-                  <div class="col-md-4 col-md-offset-4">
-                    <table class="table table-striped">
-                      <thead>
-                      <tr>
-                         <th>Nombre</th>
-                         <th>Editar</th>
-                      </tr>
-                     </thead>
-                     <tbody>
-                     <?php for ($g=0; $g < count($generos) ; $g++) { ?>
-                      <tr>
-                         <td><?php echo $generos[$g]['genero'] ?></td>
-                         <td>
-                              <button type="button" class="btn btn-success" data-toggle="modal" 
-                              onclick="editarGenero(<?php echo $generos[$g]['id'] .",'" . addslashes($generos[$g]['genero']) ."'" ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-                         </td>
-                      </tr>
-                      <?php } ?>
-                      
-                     </tbody>
-                     <thead>
-                      <tr>
-                         <th>Agregar un nuevo género</th>
-                         <th></th>
-                      </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                        <form action="php/paginas/addGenero.php" method="post" id="addGenero_form">
-                          <td><input class="form-control" type="text" name="addGenero" placeholder="Ingrese el nombre del genero" required></td>
-                          <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
-                          <td><button type="submit" class="btn btn-bc">Agregar</button></td>
-                        </form>
-                      </tr>
-                     </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div id="tabUsuarios" class="tab-pane fade">
-                  <h3>Puede agregar, editar o incluso eliminar usuarios</h3>
-
                 </div>
               </div>
-
             <?php } ?>
             </div> <!-- div col-12 -->
             </div> <!-- row -->
@@ -173,53 +124,29 @@ ob_start();
     </div>
 </div>
 
-<div class="modal fade" id="editGenero" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                Editar nombre
-            </div>
-            <form action="php/paginas/editGenero.php" method="post" id="editGenero_form">
-              <div class="modal-body">
-                <div class="form-group">
-                    <label for="nombre">Ingrese el nuevo nombre</label>
-                    <input type="text" class="form-control" name="nombre_gen" id="nombre_edit_gen" required autofocus="true">
-                </div>
-                <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
-                <input type="hidden" class="form-control" name="genero_id" id="genero_id">
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button type="submit" class="btn btn-success btn-ok">Guardar</button>
-              </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="editPelicula" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <a id="title_edit">Editar Pelicula</a>
             </div>
-            <form action="php/paginas/editPelicula.php" method="post" id="editPelicula_form" enctype="multipart/form-data">
+            <form action="php/paginas/editPelicula.php" onsubmit="return validarSubmitPelicula()" method="post" id="editPelicula_form" enctype="multipart/form-data">
               <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                       <label for="pelicula_nombre">Nombre</label>
-                      <input type="text" class="form-control" name="pelicula_nombre" id="nombre_edit_peli" required autofocus="true">
+                      <input type="text" class="form-control" name="pelicula_nombre" id="nombre_edit_peli" autofocus="true">
                   </div>
                   <div class="form-group">
                       <label for="pelicula_sinopsis">Sinopsis</label>
-                      <textarea class="form-control" name="pelicula_sinopsis" id="sinopsis_edit_peli" required autofocus="true" style="resize: vertical;"></textarea>
+                      <textarea class="form-control" name="pelicula_sinopsis" id="sinopsis_edit_peli"  autofocus="true" style="resize: vertical;"></textarea>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="pelicula_anio">Año</label>
-                      <input type="number" class="form-control" name="pelicula_anio" id="anio_edit_peli" required autofocus="true">
+                      <input type="number" class="form-control" name="pelicula_anio" id="anio_edit_peli"  autofocus="true" min=0>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -239,7 +166,7 @@ ob_start();
                 <div class="col-md-10">
                   <div class="form-group">
                     <label for="file_pic" id="label_file">Cargue una nueva portada ( opcional ) </label>
-                    <input type="file" accept="image/*" class="form-control-file" name="file_pic" required>
+                    <input type="file" accept="image/*" class="form-control-file" name="file_pic" id="file_pic">
                   </div>
                 </div>
               </div>
