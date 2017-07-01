@@ -11,6 +11,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="php/scripts/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="php/Styles/Montserrat.css" rel="stylesheet" type="text/css">
 
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="php/Styles/Lato.css" rel="stylesheet" type="text/css">

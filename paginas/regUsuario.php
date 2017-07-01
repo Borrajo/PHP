@@ -1,7 +1,8 @@
 <!-- Obtencion de datos del usuario - validacion del registro (servidor)-->
 
 <?php 
-    include ('conexion.php');
+    require_once('conexion.php');
+    $conn = conexion();
     if( isset($_POST['nombre'], $_POST['apellido'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['password2'])) //Comprobamos que existan los parametros del registro enviados por el metodo POST
     {
         /* Se verifica la validez de los datos del usuario*/

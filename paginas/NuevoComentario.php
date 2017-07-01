@@ -1,5 +1,6 @@
 <?php
-include ('conexion.php');
+require_once('conexion.php');
+$conn = conexion();
 if(isset($_POST["pelicula_id"]) && isset($_POST["usuario_id"]) && isset($_POST["comentario"])&& isset($_POST["calificacion"])) 
 {
 		if($_POST["comentario"] != "")

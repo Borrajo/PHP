@@ -106,25 +106,31 @@ function eliminarPelicula(pelicula)
 	$('#deletePeliculaModal').modal('show') ;
 }
 
-function editarGenero(id_genero,nombre_genero)
-{
-	document.getElementById('nombre_edit_gen').value = nombre_genero;
-	document.getElementById('genero_id').value = id_genero;
-	$('#editGenero').modal('show') ;
-	$('#editGenero').on('shown.bs.modal', function () {
-	$('#nombre_edit_gen').focus()
-		});
-}
 
 function nuevaPelicula()
 {
-	document.getElementById('id_edit_peli').value = -1;
+	var formulario = document.getElementById('editPelicula_form');
+	var id = formulario.elements.namedItem('id_edit_peli');
+	var nombre = formulario.elements.namedItem('nombre_edit_peli');
+	var sinopsis = formulario.elements.namedItem('sinopsis_edit_peli');
+	var anio = formulario.elements.namedItem('anio_edit_peli');
+	var genero = formulario.elements.namedItem('genero_edit_peli');
+	var imagen = formulario.elements.namedItem('file_pic');
+	var clase = ' errorInput';
+
 	document.getElementById('label_file').text = "Cargue una portada" 
 	document.getElementById('title_edit').text = "Nueva Película" 
-	document.getElementById('nombre_edit_peli').value = "";
-	document.getElementById('sinopsis_edit_peli').value = "";
-	document.getElementById('anio_edit_peli').value = "";
-	document.getElementById('genero_edit_peli').value = "";
+	id.value = -1; 
+	nombre.value = "";
+	sinopsis.value = "";
+	anio.value = "";
+	genero.value = "";
+
+	quitarClase(nombre, clase);
+	quitarClase(sinopsis, clase);
+	quitarClase(anio, clase);
+	quitarClase(genero, clase);
+	quitarClase(imagen, clase);
 
 	$('#editPelicula').modal('show') ;
 	$('#editPelicula').on('shown.bs.modal', function () {
@@ -133,14 +139,29 @@ function nuevaPelicula()
 }
 
 
-function editarPelicula(id,nombre,sinopsis,anio,genero)
+function editarPelicula(_id,_nombre,_sinopsis,_anio,_genero)
 {
-	document.getElementById('id_edit_peli').value = id;
-	document.getElementById('nombre_edit_peli').value = nombre;
-	document.getElementById('sinopsis_edit_peli').value = sinopsis;
-	document.getElementById('anio_edit_peli').value = anio;
-	document.getElementById('genero_edit_peli').value = genero;
+	var formulario = document.getElementById('editPelicula_form');
+	var id = formulario.elements.namedItem('id_edit_peli');
+	var nombre = formulario.elements.namedItem('nombre_edit_peli');
+	var sinopsis = formulario.elements.namedItem('sinopsis_edit_peli');
+	var anio = formulario.elements.namedItem('anio_edit_peli');
+	var genero = formulario.elements.namedItem('genero_edit_peli');
+	var imagen = formulario.elements.namedItem('file_pic');
+	var clase = ' errorInput';
+
 	document.getElementById('title_edit').text = "Editar Película" 
+	id.value = _id; 
+	nombre.value = _nombre;
+	sinopsis.value = _sinopsis;
+	anio.value = _anio;
+	genero.value = _genero;
+
+	quitarClase(nombre, clase);
+	quitarClase(sinopsis, clase);
+	quitarClase(anio, clase);
+	quitarClase(genero, clase);
+	quitarClase(imagen, clase);
 
 	$('#editPelicula').modal('show') ;
 	$('#editPelicula').on('shown.bs.modal', function () {
@@ -170,8 +191,7 @@ function validarSubmitPelicula()
 	}
 	else
 	{
-		nombre.className = nombre.className.replace(clase,''); //Borramos la clase del error.
-		$(nombre).popover('hide');
+		quitarClase(nombre, clase);
 	}
 	//AÑO
 	if(anio.value == '')
@@ -183,8 +203,7 @@ function validarSubmitPelicula()
 	}
 	else
 	{
-		anio.className = anio.className.replace(clase,''); //Borramos la clase del error.
-		$(anio).popover('hide');
+		quitarClase(anio, clase)
 	}
 	//SINOPSIS
 	if(sinopsis.value == '')
@@ -196,8 +215,7 @@ function validarSubmitPelicula()
 	}
 	else
 	{
-		sinopsis.className = sinopsis.className.replace(clase,''); //Borramos la clase del error.
-		$(sinopsis).popover('hide');
+		quitarClase(sinopsis, clase);
 	}
 	//GENERO
 	if(genero.value == '')
@@ -209,8 +227,7 @@ function validarSubmitPelicula()
 	}
 	else
 	{
-		genero.className = genero.className.replace(clase,''); //Borramos la clase del error.
-		$(genero).popover('hide');
+		quitarClase(genero, clase);
 	}
 	//IMAGEN
 	if(id == -1) //Pelicula Nueva
@@ -223,10 +240,16 @@ function validarSubmitPelicula()
 		}
 		else
 		{
-			$(imagen).popover('hide');
+			quitarClase(imagen,clase);
 		}
 	}
 	return todo_correcto;
+}
+
+function quitarClase(elemento, clase)
+{
+	elemento.className = elemento.className.replace(clase,''); //Borramos la clase del error.
+	$(elemento).popover('hide');
 }
 
 function validarLogin(campo1, campo2, formulario)

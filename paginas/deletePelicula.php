@@ -1,6 +1,7 @@
 <?php 
-    include ('conexion.php');
+    require_once('conexion.php');
     include('funciones.php');
+    $conn = conexion();
     if( isset($_POST['peli_id']) && isset($_POST['usuario_id']) ) //Corroboramos que exista un parametro con el nombre 'id' enviado por metodo POST
     {
         if(is_numeric($_POST['peli_id']) && is_numeric($_POST['usuario_id']) )

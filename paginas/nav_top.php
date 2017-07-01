@@ -1,16 +1,8 @@
 <script type="text/javascript" src="php/scripts/validaciones.js"></script>
 <?php   
  
- 	include ('conexion.php');
-    $sql = "SELECT * FROM `generos`";
-	if(!$result = mysqli_query($conn, $sql)) die();
-	/*Creamos un arreglo de generos*/
-    $generos = array();
-    //fetch tha data from the database
-    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))  
-    {
-        array_push($generos, $row); /*en cada fila del arreglo ponemos un genero*/
-   	}
+  include ('getGeneros.php');
+  $generos = getGeneros();
    	/* DATOS 
  		$generos --> contiene todos los generos que existen.
     $nombre --> contiene el nombre de busqueda

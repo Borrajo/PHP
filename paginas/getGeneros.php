@@ -1,7 +1,9 @@
-<!-- Obtencion de datos de pelicula -->
-<!-- Parametros: nombre, anio, genero, page, order_anio, order_nombre -->
 <?php 
-	include ('conexion.php');
+
+function getGeneros()
+{
+	require_once ('conexion.php');
+    $conn=conexion();
     $sql = "SELECT * FROM `generos`";
 	if(!$result = mysqli_query($conn, $sql)) die();
 	/*Creamos un arreglo de generos*/
@@ -11,5 +13,6 @@
     {
         array_push($generos, $row); /*en cada fila del arreglo ponemos un genero*/
    	}
-      
+    return $generos;
+}
 ?>

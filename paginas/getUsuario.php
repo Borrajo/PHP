@@ -1,7 +1,8 @@
 
 <?php 
     //Obtencion de datos de un usuario
-    include ('conexion.php');
+    require_once('conexion.php');
+    $conn = conexion();
     if( isset($_POST['username'], $_POST['password'])) //Corroboramos que existan los parametros 'username' y 'password' enviados por el metodo POST
     {
         /* aca hay que verificar la validez del nombre de usuario y contraseña */

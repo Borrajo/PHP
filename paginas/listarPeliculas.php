@@ -1,6 +1,7 @@
 <!-- Obtencion de datos de pelicula -->
 <?php 
-	include ('conexion.php');
+	require_once('conexion.php');
+	$conn = conexion();
     			$sql = "SELECT peliculas.* , generos.genero, AVG(comentarios.calificacion) AS calificacion 
 						FROM peliculas INNER JOIN generos ON (peliculas.generos_id = generos.id) LEFT JOIN comentarios ON (comentarios.peliculas_id = peliculas.id)	GROUP BY peliculas.id";
 				

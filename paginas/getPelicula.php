@@ -1,6 +1,7 @@
 <!-- Obtencion de datos de UNA pelicula -->
 <?php 
-    include ('conexion.php');
+    require_once('conexion.php');
+    $conn = conexion();
     if( isset($_GET['id']) ) //Corroboramos que exista un parametro con el nombre 'id' enviado por metodo GET
     {
                 $id = $_GET['id'];

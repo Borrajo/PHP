@@ -1,6 +1,7 @@
 <?php 
-    include ('conexion.php');
+    require_once('conexion.php');
     include('funciones.php');
+    $conn = conexion();
     if( isset($_POST['pelicula_nombre']) && isset($_POST['pelicula_sinopsis']) && isset($_POST['pelicula_anio']) && isset($_POST['usuario_id']))
     {
         if(is_numeric($_POST['pelicula_anio']) && is_numeric($_POST['pelicula_gen']) && is_numeric($_POST['usuario_id']) && is_numeric($_POST['pelicula_id']) && $_POST['pelicula_nombre'] != '' && $_POST['pelicula_sinopsis'] != '')
