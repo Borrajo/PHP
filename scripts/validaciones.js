@@ -28,7 +28,9 @@ try{
 	if(nombre == null || !alfabetico.test(nombre))
 	{
 	    todo_correcto = false;
-	    mensaje += "El nombre no debe ser vacío y debe tener sólo caracteres alfabéticos \n\r";
+	   // mensaje += "El nombre no debe ser vacío y debe tener sólo caracteres alfabéticos \n\r";
+	    $(nombre).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío", placement: "right"});
+
 	}
 
 	
@@ -36,7 +38,8 @@ try{
 	if(apellido == null || !alfabetico.test(apellido))
 	{
 	    todo_correcto = false;
-	    mensaje += "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos\n\r";
+	   // mensaje += "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos\n\r";
+	    $(apellido).popover({animation: "true", title: "Error", content: "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos", placement: "right"});
 	}
 
 	/*Verificamos el valor ingresado por el usuario tiene estructura de 
@@ -45,7 +48,8 @@ try{
 	if (!ExpEmail.test(email))
 	{
 	    todo_correcto = false;
-	    mensaje += "Los datos ingresados no corresponden al formato de un e-mail\n\r";
+	   // mensaje += "Los datos ingresados no corresponden al formato de un e-mail\n\r";
+	   $(email).popover({animation: "true", title: "Error", content: "Los datos ingresados no corresponden al formato de un e-mail", placement: "right"});
 	}
 
 	/* Nombre de usuario debe tener por lo menos 6 caracteres y que sean alfanuméricos*/
@@ -53,7 +57,8 @@ try{
 	if(username.length<6 || !alfanumerico.test(username))
 	{
 	    todo_correcto = false;
-	    mensaje += "La nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos\n\r";
+	    //mensaje += "El nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos\n\r";
+	     $(username).popover({animation: "true", title: "Error", content: "El nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos", placement: "right"});
 	}
 
 	if(password.toString().localeCompare(password2)==0)
@@ -61,34 +66,59 @@ try{
 		if(!ExpPass1.test(password) || !ExpPass2.test(password) || !ExpPass3.test(password) )
 		{
 			todo_correcto = false;
-			mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
+			//mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
+			$(password).popover({animation: "true", title: "Error", content: "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula", placement: "right"});
 		}
 	}
 	else
 	{
 		todo_correcto = false;
-		alert('Las contraseñas no coinciden');
+		$(password).popover({animation: "true", title: "Error", content: "Las contraseñas no coinciden", placement: "right"});
 	}
+}
 
-	if(!todo_correcto)
-	{
-		alert('Algunos campos no están correctos, vuelva a revisarlos');
-	}
-}
-catch (e)
+catch(e)
 {
-	alert(e);
+	alert("Error: " + e );
+	
 }
-	if(todo_correcto)
-	{
-		document.getElementById(registerForm).submit();
-	}
+if(todo_correcto)
+{
+	$.ajax({
+        type: 'POST',
+        url: 'php/paginas/register.php',
+        //async: false,
+        dataType: 'json',
+        data: {username:username,password:password, email:email, apellido:apellido, nombre:nombre},
+        success: function(data)
+        { 
+        	if(typeof data['OK'] !== 'undefined')
+        	{
+        		window.location.replace("php/index.php");
+        	}
+        	else
+        	{
+        		//VER
+        	}
+        }
+      });
+}
 	else
 	{
 		alert(mensaje);
 	}
+}
+
+/*finally{
+if(todo_correcto)
+{
+	document.getElementById(registerForm).submit();
+}
+
+
 	return todo_correcto;
 }
+}*/
 
 
 function openModal()

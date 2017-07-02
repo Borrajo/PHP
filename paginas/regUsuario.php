@@ -12,7 +12,6 @@
 				$ExpPass1="/([0-9]|[!#$%&()=?¡¿@-_*+])+/"; //la condicion verifica que tenga al menos un numero o un simbolo
 				$ExpPass2="/[A-Z]+/"; //la condicion verifica que exista al menos una mayuscula
 				$ExpPass3="/[a-z]+/"; //la condicion verifica que exista al menos una minuscula
-				$correcto=0;
 
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
@@ -21,19 +20,21 @@
                 $password = $_POST['password'];
                 $password2 = $_POST['password2'];
                 $mensaje = "";
-
-			if ($correcto==0) {
 					
 				if($nombre == null || !preg_match($alfabetico,$nombre) )
-				{throw new Exception('Nombre  demasiado corto y no puede contener números ni símbolos');
-				$mensaje = 5;
+				{
+					$mensaje = new StdClass();
+                    $mensaje->ERROR = 5;
+                    $mensaje->DESCRIP = 'Nombre  demasiado corto y no puede contener números ni símbolos';
 				}
 
 	
 				/*Verifiamos que apellido no sea vacio y tenga sólo caracteres alfabéticos**/
 				if($apellido == null || !preg_match($alfabetico,$apellido) )
 				{
-				 	throw new Exception('Apellido demasiado corto y no puede contener números ni símbolos');
+				 	$mensaje = new StdClass();
+                    $mensaje->ERROR = 6;
+                    $mensaje->DESCRIP = 'Apellido demasiado corto y no puede contener números ni símbolos';
 
 				}
 
@@ -42,36 +43,39 @@
 
 				if (!preg_match($ExpEmail,$email) )
 				{
-				   throw new Exception('El email ingresado no tiene estructura de email');
+				   	$mensaje = new StdClass();
+                    $mensaje->ERROR = 7;
+                    $mensaje->DESCRIP = 'El email ingresado no tiene estructura de email';
 				}
 
 				/* Nombre de usuario debe tener por lo menos 6 caracteres y que sean alfanuméricos*/
 
 				if(strlen($username) < 6  || !preg_match($alfanumerico,$username) )
 				{
-				    throw new Exception('Nombre de usuario demasiado corto y debe contener sólo números y letras');
+				    $mensaje = new StdClass();
+                    $mensaje->ERROR = 8;
+                    $mensaje->DESCRIP = 'Nombre de usuario demasiado corto y debe contener sólo números y letras';
 				}
 
 				if(strcmp($password,$password2)==0)
 				{
 					if(!preg_match($ExpPass1,$password) || !preg_match($ExpPass2,$password)  || !preg_match($ExpPass3,$password) )
 					{
-						throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula');
+						$mensaje = new StdClass();
+                    	$mensaje->ERROR = 9;
+                  		$mensaje->DESCRIP = 'La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula';
 					}
 				}
 				else if(strcmp($password,$password2)!=0)
 					{
-						throw new Exception('Las contraseñas no coinciden');
+						$mensaje = new StdClass();
+                   		$mensaje->ERROR = 10;
+                   		$mensaje->DESCRIP = 'Las contraseñas no coinciden';
 				}
 
 
-                
-              $correcto=1;
-            }
-
                 $sql="";
                 
-                if($correcto){
                 	$sql = "SELECT COUNT(*) AS existe
                         FROM usuarios 
                         WHERE usuarios.nombreusuario = '$username'";
@@ -90,19 +94,27 @@
 			 		{
 			 			$sql="INSERT INTO usuarios
 			 			(id, nombreusuario, email, password, nombre, apellido, administrador) VALUES(NULL,'$username','$email','$password', '$nombre', '$apellido', 0)";
+
+			 			$mensaje = new StdClass();
+                        $mensaje->OK = 0;
+                        $mensaje->DESCRIP = 'Usuario creado correctamente';
  					
  					if(!$result = mysqli_query($conn, $sql))
                     { 
                         echo mysqli_error($conn); 
                         die();
-                    } 
-                	}
-                    else { throw new Exception('El nombre de usuario ya existe'); $mensaje = 5;
-                	}
+                    }
+                	} 
+                	 else{ 
+                        $mensaje = new StdClass();
+                        $mensaje->ERROR = 11;
+                        $mensaje->DESCRIP = 'El usuario ya existe';
+                    }
+                    
+                $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
+                header('Content-Type: application/json');
+                echo $json;
+                	
                 }
-
- 
-     print_r($mensaje);
     }
-   header("Location: ../index.php?register=$mensaje");
 ?>
