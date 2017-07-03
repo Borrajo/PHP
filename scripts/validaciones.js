@@ -86,7 +86,7 @@ if(todo_correcto)
 {
 	$.ajax({
         type: 'POST',
-        url: 'php/paginas/register.php',
+        url: 'php/paginas/regUsuario.php',
         //async: false,
         dataType: 'json',
         data: {username:username,password:password, email:email, apellido:apellido, nombre:nombre},
