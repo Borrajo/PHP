@@ -86,6 +86,12 @@
 					         		</select>
 					         	</div>
 				         	</div>
+				         	<div class="col-md-8">
+								<div class="alert alert-warning alert-dismissable">
+									<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					  				<strong>Informacion: </strong> Solo puede comentar una vez por pelicula.
+								</div>
+				         	</div>
 				         	<div class="col-md-10">
 				         		<input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
 				         		<input type="hidden" class="form-control" name="pelicula_id" value="<?php echo $data['id'] ?>">

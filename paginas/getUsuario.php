@@ -20,7 +20,7 @@
                     $mensaje->DESCRIP = 'Nombre de usuario demasiado corto';
                 }
 
-                if(!preg_match($ExpPass,$pass) || strlen($password) < 6 )
+                if(!preg_match($ExpPass,$pass) || strlen($pass) < 6 )
                 {
                     $mensaje = new StdClass();
                     $mensaje->ERROR = 2;

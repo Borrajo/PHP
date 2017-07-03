@@ -82,7 +82,7 @@
       </div>
       <!-- Cuerpo del modal --> 
       <div class="modal-body">
-      <form action="php/paginas/getUsuario.php" method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
+      <form method="post" id="login"> <!-- si la funcion devuelve true, entonces hace el submit-->
           <div class="form-group">
               <label for="username">Nombre de usuario:</label>
               <input type="text" class="form-control" name="username" id="usernameL" required placeholder="Nombre de usuario" autofocus="true">

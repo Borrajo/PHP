@@ -284,6 +284,7 @@ function quitarClase(elemento, clase)
 
 function validarLogin(campo1, campo2, formulario)
 {
+	BootstrapDialog.alert('I want banana!');
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false
 	var alfanumerico=/^[a-z0-9]+$/i;
 	var ExpPass=/^((?=.*\d)|(?=.*[A-Z])|(?=.*\W)).{6,15}$/;
@@ -311,7 +312,6 @@ if(todo_correcto)
 	$.ajax({
         type: 'POST',
         url: 'php/paginas/getUsuario.php',
-        //async: false,
         dataType: 'json',
         data: {username:_username,password:_password},
         success: function(data)
