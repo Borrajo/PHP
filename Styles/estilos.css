@@ -59,29 +59,30 @@ body {
 }
 
 .poster{
-   max-width:960px;
   text-align:center;
 }
 
 .poster-img{
-	border-radius: 5px;
-    height: auto;
-    display: inline;
-    margin: 5px;
-    transition: .5s ease;
+    margin: 10px !important;
+	border-radius: 6px;
     width: 100%;
+    object-fit:contain;
+    display: inline-block;
+    margin: auto;
+    transition: .5s ease;
 }
+/*
 @media (max-width:920px){
-
 .poster-img{
 	border-radius: 5px;
-    height: 250px;
+    
     display: inline;
     margin: 10px 10px 10px 10px !important;
     transition: .5s ease;
     width: auto;
+    object-fit: cover;
 }
-}
+}/*
 
 /* Texto que aparece en el tooltip*/
 .poster .poster-info {
@@ -98,11 +99,6 @@ body {
     left:50%; /*para que aparezca a la derecha*/
     margin-left: -30px; /*se usa la mitad del ancho para centrarlo*/
 }
-/*No se usa más
-.poster-sinopsis{
-    font-style: italic;
-    bottom: -50%; } /*para que aparezca mas abajo si es negativo*/
-
 
 /* El tooltip se hace visible cuando se pasa el mouse por encima del poster*/
 .poster:hover .poster-info {
@@ -121,16 +117,6 @@ body {
     border-width: 5px;
     border-style: solid;
     border-color: transparent #343434 transparent transparent; /*La flecha aparece a la izquierda del tooltip*/
-}
-
-.poster-img 
-{
-    border-radius: 10px;
-    height: 20em;
-   /* max-width: 50%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
-    display: inline-block;
-    margin: auto;
-    transition: .5s ease;
 }
 
 .poster:hover .poster-img

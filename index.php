@@ -73,9 +73,9 @@
             <?php if(count($peliculas) > 0 )
             { ?>
                           <div class="row">
-                            <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                            <div class="col-md-1 col-sm-1 col-xs-1"></div> 
                               <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
-                              <div class="col-sm-10 col-md-2 col-xs-6 align-items-center poster">
+                              <div class="col-sm-12 col-md-2 col-xs-12 align-items-center poster">
                                   <a href="<?php echo 'php/paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
                                     <img class="poster-img" src="data:<?php echo $peliculas[$p]['tipoimagen'].';base64, '.base64_encode($peliculas[$p]['contenidoimagen']); ?>" />
                                   </a>
