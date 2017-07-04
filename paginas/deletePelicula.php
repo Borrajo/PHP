@@ -23,16 +23,15 @@
                     if(!mysqli_query($conn, $delete2))
                     {
                         $data = new StdClass();
-                        $data->OK = 0;
-                        $data->DESCRIP = "No se puedo eliminar";
+                        $data->ERROR = 1;
+                        $data->DESCRIP = "No se pudo eliminar";
                         die();
                     }
                     else
                     {
                         $data = new StdClass();
                         $data->OK = 0;
-                        $data->DESCRIP = "pelicula borrada correctamente";
-
+                        $data->DESCRIP = "Pelicula borrada correctamente";
                     } 
                     mysqli_close($conn);
                 }  

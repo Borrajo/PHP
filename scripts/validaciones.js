@@ -200,7 +200,7 @@ function eliminarPelicula(_pelicula, _username)
 								message: data['DESCRIP'],
 								type: BootstrapDialog.TYPE_DANGER,
 							});
-							window.location.replace("php/paginas/administrarPeliculas.php");
+							//window.location.replace("php/paginas/administrarPeliculas.php");
 				        }
 				    });
                 }

@@ -95,41 +95,37 @@
 			 		{
 			 			$sql="INSERT INTO usuarios
 			 			(id, nombreusuario, email, password, nombre, apellido, administrador) VALUES(NULL,'$username','$email','$password', '$nombre', '$apellido', 0)";
-
-
+						if(!$result = mysqli_query($conn, $sql))
+	                    { 
+	                        //echo mysqli_error($conn); 
+	                        
+	                        $mensaje = new StdClass();
+	                        $mensaje->ERROR = 12;
+	                        $mensaje->DESCRIP = 'No se pudo agregar al usuario';
+	            
+	                        die();
+	                	} 
+	                	 else { 
+	                	 	$mensaje = new StdClass();
+	                        $mensaje->OK = 0;
+	                        $mensaje->DESCRIP = 'Usuario creado correctamente';
+	                    }
  					}
  					else{
  						$mensaje = new StdClass();
                         $mensaje->ERROR = 11;
                         $mensaje->DESCRIP = 'El usuario ya existe';
  					}
- 					if(!$result = mysqli_query($conn, $sql))
-                    { 
-                        echo mysqli_error($conn); 
-                        
-                        $mensaje = new StdClass();
-                        $mensaje->ERROR = 12;
-                        $mensaje->DESCRIP = 'No se pudo agregar al usuario';
-                        
-                        die();
-
-                	} 
-                	 else { 
-                	 	$mensaje = new StdClass();
-                        $mensaje->OK = 0;
-                        $mensaje->DESCRIP = 'Usuario creado correctamente';
-
-                    }
                     
                 $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
                 header('Content-Type: application/json');
                 echo $json;
                 	
-                }
+                
             }
-            catch(e)
+            catch(Exception $e)
 			{
-				alert("Error: " + e );
+				
 	
 			}
     }
