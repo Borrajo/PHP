@@ -170,11 +170,42 @@ function openModal()
 		});
 }
 
-function eliminarPelicula(pelicula)
+function eliminarPelicula(_pelicula, _username)
 {
-	document.getElementById('peli_id').value = pelicula;
-	console.log(document.getElementById('peli_id').value);
-	$('#deletePeliculaModal').modal('show') ;
+	//$('#deletePeliculaModal').modal('show') ;
+	BootstrapDialog.show({
+			title: "Borrar Pelicula",
+			type: BootstrapDialog.TYPE_DANGER,
+            message: 'Esta seguro que desea borrar la pelicula?',
+            buttons: [
+            	{
+                label: 'Cancelar',
+                action: function(dialogItself){
+                    dialogItself.close();
+                }
+            	}, {
+                label: 'Borrar',
+                cssClass: 'btn-danger',
+                action: function()
+                {
+                 	$.ajax({
+				        type: 'POST',
+				        url: 'php/paginas/deletePelicula.php',
+				        dataType: 'json',
+				        data: {usuario_id:_username,peli_id:_pelicula},
+				        success: function(data)
+				        { 
+
+							BootstrapDialog.alert({
+								message: data['DESCRIP'],
+								type: BootstrapDialog.TYPE_DANGER,
+							});
+							window.location.replace("php/paginas/administrarPeliculas.php");
+				        }
+				    });
+                }
+            	}]
+        });
 }
 
 
@@ -325,15 +356,13 @@ function quitarClase(elemento, clase)
 
 function validarLogin(campo1, campo2, formulario)
 {
-	BootstrapDialog.alert('I want banana!');
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false
 	var alfanumerico=/^[a-z0-9]+$/i;
 	var ExpPass=/^((?=.*\d)|(?=.*[A-Z])|(?=.*\W)).{6,15}$/;
 	var mensaje='';
 	_username=document.getElementById(campo1).value;
 	_password=document.getElementById(campo2).value;
-try
-{
+
 	if(_username.length<6 || !alfanumerico.test(_username)){
     	todo_correcto = false;
     	mensaje += "El nombre de usuario debe tener mas de 6 caracteres \n\r";
@@ -343,11 +372,6 @@ try
 		todo_correcto = false;
 		mensaje += "La contraseña debe tener mas de 6 caracteres \n\r";
 	}
-}
-catch (e)
-{
-	alert(e);
-}
 if(todo_correcto)
 {
 	$.ajax({
@@ -379,7 +403,11 @@ if(todo_correcto)
 }
 	else
 	{
-		alert(mensaje);
+			BootstrapDialog.alert({
+				title: "Atencion",
+				message: mensaje,
+				type: BootstrapDialog.TYPE_DANGER,
+				});
 	}
 }
 

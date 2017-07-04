@@ -2,8 +2,8 @@
 <html>
 <head>
 <base href="../../php" />
-<?php include "header.php" ?>
-
+<?php include "header.php";
+?>
 <link rel="stylesheet" href="php/Styles/estilos.css" type="text/css">
 <script type="text/javascript" src="php/scripts/validaciones.js"></script>
 
@@ -19,6 +19,7 @@ ob_start();
   */
   include "listarPeliculas.php" ;
   include "nav_top.php" ;
+  require_once('class_usuario.php');
   if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) 
   {
     if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
@@ -75,7 +76,7 @@ ob_start();
                               onclick="editarPelicula(<?php echo $cadena ?>)"><i class="glyphicon glyphicon-pencil"></i></button></td>
                          <td>
                           <button type="button" class="btn btn-danger" data-toggle="modal" 
-                          onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'] ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
+                          onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'].','.$_SESSION['id'] ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
                          </td>
                       </tr>
                       <?php } ?>
@@ -109,7 +110,7 @@ ob_start();
             <div class="modal-header">
                 Confirmar
             </div>
-            <form action="php/paginas/deletePelicula.php" method="post" id="deletePelicula_form">
+            <form method="post" id="deletePelicula_form">
               <div class="modal-body">
                 Esta seguro que desea borrar la pelicula?
                 <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
@@ -117,7 +118,7 @@ ob_start();
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button type="submit" class="btn btn-danger btn-ok">Borrar</button>
+                  <button type="button" onclick="eliminarPelicula('delete_Pelicula_form')" class="btn btn-danger btn-ok">Borrar</button>
               </div>
             </form>
         </div>

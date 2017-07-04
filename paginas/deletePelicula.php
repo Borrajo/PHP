@@ -22,11 +22,23 @@
                     } 
                     if(!mysqli_query($conn, $delete2))
                     {
+                        $data = new StdClass();
+                        $data->OK = 0;
+                        $data->DESCRIP = "No se puedo eliminar";
                         die();
+                    }
+                    else
+                    {
+                        $data = new StdClass();
+                        $data->OK = 0;
+                        $data->DESCRIP = "pelicula borrada correctamente";
+
                     } 
                     mysqli_close($conn);
                 }  
-            header("Location: ../../php/paginas/AdministrarPeliculas.php");  
+                $json = json_encode($data,JSON_UNESCAPED_UNICODE);
+                header('Content-Type: application/json');
+                echo $json;  
         }
     }
 ?>

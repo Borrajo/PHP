@@ -2,6 +2,7 @@
 <?php 
     //Obtencion de datos de un usuario
     require_once('conexion.php');
+    require_once('class_usuario.php');
     $conn = conexion();
     if( isset($_POST['username'], $_POST['password'])) //Corroboramos que existan los parametros 'username' y 'password' enviados por el metodo POST
     {
@@ -56,6 +57,7 @@
                         {
                             $_SESSION["$key"] = $value;
                         }
+                        //global $user_logged = new Usuario($_SESSION);
                         setcookie("user_session", session_id(), time()+3600,'/');
                         $mensaje = new StdClass();
                         $mensaje->OK = 0;
