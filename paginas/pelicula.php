@@ -61,7 +61,7 @@
   		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) != 1){echo 's';} ?></small></h1>
 		</div>
 		<?php 
-		 if (Usuario::conexion_establecida() && !in_array(Usuario::getUsuario(), $usuarios))) { ?>
+		 if (Usuario::conexion_establecida() && !in_array(Usuario::getUsuario(), $usuarios)) { ?>
 		<!-- 'si la persona ya comentó lo siguiente no aparece'  -->
 		<!-- tiene que: estar conectado Y existir el username Y no tiene que estar en los usuarios que comentaron -->
 		<div class="col-md-12">

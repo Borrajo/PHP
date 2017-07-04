@@ -76,7 +76,7 @@ function validarRegistro(_nombre, _apellido,_email,_username,_password,_password
 
 	if(password.value.toString().localeCompare(password2.value.toString())==0)
 	{
-		if(!ExpPass1.test(password.value) || !ExpPass2.test(password.value) || !ExpPass3.test(password.value) )
+		if(!ExpPass1.test(password.value) || !ExpPass2.test(password.value) || !ExpPass3.test(password.value) || password.value.length<6)
 		{
 			todo_correcto = false;
 			//mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
