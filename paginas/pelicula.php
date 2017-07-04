@@ -73,7 +73,7 @@
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
 					<h4> <strong><?php echo $_SESSION['nombreusuario'] ?> </strong></h4> 
-					<form name="formComentario" action="NuevoComentario.php" method="post">
+					<form name="formComentario" action="php/paginas/NuevoComentario.php" method="post">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">

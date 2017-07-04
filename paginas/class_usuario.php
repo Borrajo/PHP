@@ -10,33 +10,112 @@
  	private $start;
  	private $loggedin;
  	private $id;
+    private static $instancia;
 
-    public function __construct($valores = Array()) 
+    private function __construct() 
+    {}
+
+
+    // método singleton
+    public static function singleton()
     {
-    	foreach ($valores as $key => $value)
-    	{
-    		$this->$key = $value; 
-    	}
+        if (!isset(self::$instancia)) {
+            $u = __CLASS__;
+            self::$instancia = new $u;
+        } 
+        return self::$instancia;
+    }
+
+    public function cargar($valores = Array())
+    {
+        foreach ($valores as $key => $value)
+            {
+                $this->$key = $value; 
+            }
     }
 
     public function isAdmin() 
     {
-        return $this->administrador; //retornamos true si es administrador
+        try
+        {   
+            if($this->administrador == null)
+            {
+                throw new Exception("Error", 1);
+                
+            }
+            return $this->administrador; //retornamos true si es administrador
+        }
+        catch(Exception $e)
+        {
+            return 0;
+        }
     }
 
     public function getUsuario() 
-    {
-        return $this->nombreusuario;
+    {  
+        try
+        {   
+            if($this->nombreusuario == null)
+            {
+                throw new Exception("Error", 2);
+                
+            }
+            return $this->nombreusuario; 
+        }
+        catch(Exception $e)
+        {
+
+        }
+    }
+
+    public function loggedIn() 
+    {  
+            if($this->loggedin == null)
+            {
+                return 0;
+                
+            }
+            return $this->loggedIn; //retornamos true si esta conectado
     }
 
     public function getNombre() 
     {
-        return $this->nombre;
+                try
+        {   
+            if($this->nombre == null)
+            {
+                throw new Exception("Error", 3);
+                
+            }
+            return $this->nombre; 
+        }
+        catch(Exception $e)
+        {
+
+        }
     }
 
     public function getId()
     {
-        return $this->id;
+        try
+        {   
+            if($this->id == null)
+            {
+                throw new Exception("Error", 4);
+                
+            }
+            return $this->id; 
+        }
+        catch(Exception $e)
+        {
+
+        }
+    }
+
+    // Evita que el objeto se pueda clonar
+    public function __clone()
+    {
+        trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
     }
 
 }

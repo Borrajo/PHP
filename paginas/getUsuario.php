@@ -13,19 +13,15 @@
                 $username = $_POST['username'];
                 $pass = $_POST['password'];
                 $mensaje = "";
-
+        try{
                 if(!preg_match($alfanumerico,$username) || strlen($username) < 6 )
                 {
-                    $mensaje = new StdClass();
-                    $mensaje->ERROR = 1;
-                    $mensaje->DESCRIP = 'Nombre de usuario demasiado corto';
+                    throw new Exception('Nombre de usuario demasiado corto',1);
                 }
 
                 if(!preg_match($ExpPass,$pass) || strlen($pass) < 6 )
                 {
-                    $mensaje = new StdClass();
-                    $mensaje->ERROR = 2;
-                    $mensaje->DESCRIP = 'Contraseña demasiado corta';
+                    throw new Exception('Contraseña demasiado corta',2);
                 }
 
                 $sql = "SELECT COUNT(*) AS existe
@@ -57,25 +53,27 @@
                         {
                             $_SESSION["$key"] = $value;
                         }
-                        //global $user_logged = new Usuario($_SESSION);
+                        $user_logged = Usuario::singleton();
+                        $user_logged->cargar($_SESSION);
                         setcookie("user_session", session_id(), time()+3600,'/');
-                        $mensaje = new StdClass();
-                        $mensaje->OK = 0;
-                        $mensaje->DESCRIP = 'Login Correcto';
+                        throw new Exception('Login Correcto',0);
                     }
                     else {                   
-                            $mensaje = new StdClass();
-                            $mensaje->ERROR = 4;
-                            $mensaje->DESCRIP = 'La contraseña es incorrecta'; 
+                            throw new Exception('La contraseña es incorrecta',4); 
                          }
                 }
                 else{ 
-                        $mensaje = new StdClass();
-                        $mensaje->ERROR = 3;
-                        $mensaje->DESCRIP = 'El usuario no existe';
+                        throw new Exception('El usuario no existe',3);
                 }
+            }
+            catch(Exception $e)
+            {
+                $mensaje = new StdClass();
+                $mensaje->ERROR = $e->getCode();
+                $mensaje->DESCRIP = $e->getMessage();
                 $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
                 header('Content-Type: application/json');
                 echo $json;
+            }
     }
 ?>

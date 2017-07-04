@@ -1,4 +1,3 @@
-<!-- Obtencion de datos de pelicula -->
 <?php 
 	require_once('conexion.php');
 	$conn = conexion();

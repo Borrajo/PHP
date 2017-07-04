@@ -1,5 +1,3 @@
-<!-- Obtencion de datos de pelicula -->
-<!-- Parametros: nombre, anio, genero, page, order_anio, order_nombre -->
 <?php 
 	require_once('conexion.php');
 	$conn = conexion();

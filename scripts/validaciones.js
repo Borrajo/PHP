@@ -1,6 +1,6 @@
 /*VALIDACION DEL LADO DEL CLIENTE*/
 
-function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2R,registerForm)
+function validarRegistro(_nombre, _apellido,_email,_username,_password,_password2)
 {
 
 	var todo_correcto = true; // Cuando las condiciones no se cumplan retorna false
@@ -12,16 +12,14 @@ function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2
 	var ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
 	var mensaje='';
 
-	nombre=document.getElementById('nombreR');
-	apellido=document.getElementById('apellidoR');
-	username=document.getElementById('usernameR');
-	email = document.getElementById('emailR'); 
-	password=document.getElementById('passwordR');
-	password2=document.getElementById('password2R');
+	nombre=document.getElementById(_nombre);
+	apellido=document.getElementById(_apellido);
+	username=document.getElementById(_username);
+	email = document.getElementById(_email); 
+	password=document.getElementById(_password);
+	password2=document.getElementById(_password2);
 
 
-try{
-	
 	/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
 	la condición, en este caso, que no sea vacio y tenga sólo caracteres alfabéticos*/
 
@@ -96,26 +94,22 @@ try{
 		$(password).popover("show");
 	}
 
-}
-catch(e)
-{
-	alert("Error: " + e );
-	
-}
-if(todo_correcto)
-{
-	$.ajax({
+	if(todo_correcto)
+	{
+		$.ajax({
         type: 'POST',
         url: 'php/paginas/regUsuario.php',
         dataType: 'json',
         data: {username:username.value, password:password.value, email:email.value, apellido:apellido.value, nombre:nombre.value, password2: password2.value},
         success: function(data)
         { 
-        	console.log(data);
-        	if(typeof data['OK'] !== 'undefined')
+        	if(data['ERROR'] == 0)
         	{
-        		alert(data['DESCRIP']);
-        		window.location.replace("php/index.php");
+        		BootstrapDialog.alert({
+					message: data['DESCRIP'],
+					type: BootstrapDialog.TYPE_DANGER,
+							});
+        		window.location.replace("/php/index.php");
         	}
         	else
         	{
@@ -147,20 +141,8 @@ if(todo_correcto)
         	}
         }
       });
+	}
 }
-
-}
-
-/*finally{
-if(todo_correcto)
-{
-	document.getElementById(registerForm).submit();
-}
-
-
-	return todo_correcto;
-}
-}*/
 
 
 function openModal()
@@ -187,23 +169,20 @@ function eliminarPelicula(_pelicula, _username)
             	}, {
                 label: 'Borrar',
                 cssClass: 'btn-danger',
-                action: function()
+                action: function(dialogItself)
                 {
+                	dialogItself.close();
                  	$.ajax({
 				        type: 'POST',
 				        url: 'php/paginas/deletePelicula.php',
+				        async: false,
 				        dataType: 'json',
 				        data: {usuario_id:_username,peli_id:_pelicula},
 				        success: function(data)
 				        { 
-
-							BootstrapDialog.alert({
-								message: data['DESCRIP'],
-								type: BootstrapDialog.TYPE_DANGER,
-							});
-							alert("lalala");
-							window.location.replace("php/paginas/administrarPeliculas.php");
-				        }
+								alert(data['DESCRIP']);
+								window.location.replace("php/paginas/administrarPeliculas.php");
+						}
 				    });
                 }
             	}]
@@ -383,7 +362,7 @@ if(todo_correcto)
         data: {username:_username,password:_password},
         success: function(data)
         { 
-        	if(typeof data['OK'] !== 'undefined')
+        	if(data['ERROR'] == 0)
         	{
         		window.location.replace("php/index.php");
         	}

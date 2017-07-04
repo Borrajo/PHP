@@ -20,7 +20,7 @@
       </form>
  		<h1>Registrar</h1> 
  		<!--OnSubmit llama a la funcion validar() para validar formulario desde el lado del cliente-->
-		<form action="php/paginas/regUsuario.php" method="post" id="registerForm"> <!-- si la funcion devuelve true, entonces hace el submit-->
+		<form method="post" id="registerForm"> <!-- si la funcion devuelve true, entonces hace el submit-->
  		<p>
 		 <label for="user_name">Nombre<br />
  		<input type="text" class="form-control" name="nombre" id="nombreR"  size="32" /></label>
