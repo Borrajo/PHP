@@ -12,10 +12,10 @@ function validarRegistro(nombreR, apellidoR,emailR,usernameR,passwordR,password2
 	var ExpPass3=/[a-z]+/; //la condicion verifica que exista al menos una minuscula
 	var mensaje='';
 
-	nombre=document.getElementById('nombreR').value;
-	apellido=document.getElementById('apellidoR').value;
-	username=document.getElementById('usernameR').value;
-	email = document.getElementById('emailR').value; 
+	nombre=document.getElementById('nombreR');
+	apellido=document.getElementById('apellidoR');
+	username=document.getElementById('usernameR');
+	email = document.getElementById('emailR'); 
 	password=document.getElementById('passwordR');
 	password2=document.getElementById('password2R');
 
@@ -25,58 +25,78 @@ try{
 	/*El primer campo que comprobamos es el del nombre. Lo traemos por id y verificamos 
 	la condición, en este caso, que no sea vacio y tenga sólo caracteres alfabéticos*/
 
-	if(nombre == null || !alfabetico.test(nombre))
+	if(nombre.value == null || !alfabetico.test(nombre.value))
 	{
 	    todo_correcto = false;
 	   // mensaje += "El nombre no debe ser vacío y debe tener sólo caracteres alfabéticos \n\r";
-	    $(nombre).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío", placement: "right"});
-
+	    $(nombre).popover({animation: "true", title: "Error", content: "El campo no puede estar vacío y debe tener sólo caracteres alfabéticos", placement: "right"});
+		$(nombre).popover("show");
+	}
+	else{
+		$(nombre).popover("hide");
 	}
 
 	
 	/*Verifiamos que apellido no sea vacio y tenga sólo caracteres alfabéticos**/
-	if(apellido == null || !alfabetico.test(apellido))
+	if(apellido.value == null || !alfabetico.test(apellido.value))
 	{
 	    todo_correcto = false;
 	   // mensaje += "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos\n\r";
-	    $(apellido).popover({animation: "true", title: "Error", content: "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos", placement: "right"});
+	    $(apellido).popover({animation: "true", title: "Error", content: "El apellido no debe estar vacío y debe tener sólo caracteres alfabéticos", placement: "left"});
+		$(apellido).popover("show");
+	}
+	else{
+		$(apellido).popover("hide");
 	}
 
 	/*Verificamos el valor ingresado por el usuario tiene estructura de 
 	e-mail.*/
 
-	if (!ExpEmail.test(email))
+	if (!ExpEmail.test(email.value))
 	{
 	    todo_correcto = false;
 	   // mensaje += "Los datos ingresados no corresponden al formato de un e-mail\n\r";
 	   $(email).popover({animation: "true", title: "Error", content: "Los datos ingresados no corresponden al formato de un e-mail", placement: "right"});
+	   $(email).popover("show");
+	}
+	else{
+		$(email).popover("hide");
 	}
 
 	/* Nombre de usuario debe tener por lo menos 6 caracteres y que sean alfanuméricos*/
 
-	if(username.length<6 || !alfanumerico.test(username))
+	if(username.value.length<6 || !alfanumerico.test(username.value))
 	{
 	    todo_correcto = false;
 	    //mensaje += "El nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos\n\r";
-	     $(username).popover({animation: "true", title: "Error", content: "El nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos", placement: "right"});
+	     $(username).popover({animation: "true", title: "Error", content: "El nombre de usuario debe tener mas de 6 caracteres y sólo caracteres alfanuméricos", placement: "left"});
+		 $(username).popover("show");
+	}
+	else{
+		$(username).popover("hide");
 	}
 
-	if(password.toString().localeCompare(password2)==0)
+	if(password.value.toString().localeCompare(password2.value)==0)
 	{
-		if(!ExpPass1.test(password) || !ExpPass2.test(password) || !ExpPass3.test(password) )
+		if(!ExpPass1.test(password.value) || !ExpPass2.test(password.value) || !ExpPass3.test(password.value) )
 		{
 			todo_correcto = false;
 			//mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
 			$(password).popover({animation: "true", title: "Error", content: "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula", placement: "right"});
+			$(password).popover("show");
+		}
+		else{
+		$(password).popover("hide");
 		}
 	}
 	else
 	{
 		todo_correcto = false;
 		$(password).popover({animation: "true", title: "Error", content: "Las contraseñas no coinciden", placement: "right"});
+		$(password).popover("show");
 	}
-}
 
+}
 catch(e)
 {
 	alert("Error: " + e );
@@ -98,15 +118,36 @@ if(todo_correcto)
         	}
         	else
         	{
-        		//VER
+        		if(data['ERROR'] == 5)
+				{
+					$(nombre).popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$(nombre).popover('show');
+				}
+				if(data['ERROR'] == 6)
+				{
+					$(apellido).popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$(apellido).popover('show');
+				}
+				if(data['ERROR'] == 7)
+				{
+					$(email).popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$(email).popover('show');
+				}
+				if(data['ERROR'] == 8 || data['ERROR'] == 11 || data['ERROR'] == 12)
+				{
+					$(username).popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$(username).popover('show');
+				}
+				if(data['ERROR'] == 9 || data['ERROR'] == 10)
+				{
+					$(password).popover({animation: "true", title: "error", content: data['DESCRIP'], placement: "right"});
+					$(password).popover('show');
+				}
         	}
         }
       });
 }
-	else
-	{
-		alert(mensaje);
-	}
+
 }
 
 /*finally{

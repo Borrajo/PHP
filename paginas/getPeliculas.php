@@ -8,7 +8,7 @@
 	$genero ="";
 	$order_nombre = "ASC";
 	$order_anio = "DESC";
-	$cantPpP = 4; //Cantidad de Peliculas Por Pagina
+	$cantPpP = 5; //Cantidad de Peliculas Por Pagina
 	$page = 1;	//Pagina inicial
     			$sql = "SELECT peliculas.* , generos.genero, AVG(comentarios.calificacion) AS calificacion 
 						FROM peliculas INNER JOIN generos ON (peliculas.generos_id = generos.id) LEFT JOIN comentarios ON (comentarios.peliculas_id = peliculas.id)

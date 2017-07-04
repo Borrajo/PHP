@@ -25,7 +25,7 @@
         
 <div class="container-fluid fondo">
 
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
           <!-- MENU DE ORDENAMIENTO -->
           <div class="pull-right">
           <!-- DATOS PARA EL ENVIO DEL ORDENAMIENTO -->
@@ -72,9 +72,9 @@
         <div class="well">
             <?php if(count($peliculas) > 0 )
             { ?>
-                          <div class="row justify-content-center">
+                          <div class="row">
                               <?php for ($p=0; $p < count($peliculas) ; $p++) { ?>
-                              <div class="col-sm-10 col-md-3 align-items-center poster">
+                              <div class="col-sm-10 col-md-2 align-items-center poster">
                                   <a href="<?php echo 'php/paginas/pelicula.php?id='.$peliculas[$p]['id'] ?>">
                                     <img class="poster-img" src="data:<?php echo $peliculas[$p]['tipoimagen'].';base64, '.base64_encode($peliculas[$p]['contenidoimagen']); ?>" />
                                   </a>

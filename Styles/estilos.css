@@ -55,13 +55,26 @@ body {
 .well{
     padding-bottom: 20px;
     border-radius: 8px;
+
 }
 
-.poster {
+.poster{
+   max-width:960px;
+  text-align:center;
+}
+
+.category {
+position:relative;
+display: inline-block;
+float:left;
+padding:10px;
+}
+/*.poster {
     position: relative;
     display: inline-block; /*Para que todos los elementos aparezcan en la misma linea*/
-     
-}
+    /* border-radius: 10px;
+
+}*/
 
 /* Texto que aparece en el tooltip*/
 .poster .poster-info {
@@ -107,8 +120,8 @@ body {
 {
     border-radius: 10px;
     height: 20em;
-    /*max-width: 100%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
-    display: block;
+   /* max-width: 50%;   si es porcentaje todas van a quedar de distinto tamaño*/ 
+    display: inline-block;
     margin: auto;
     transition: .5s ease;
 }

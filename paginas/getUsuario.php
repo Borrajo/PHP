@@ -71,9 +71,10 @@
                         $mensaje = new StdClass();
                         $mensaje->ERROR = 3;
                         $mensaje->DESCRIP = 'El usuario no existe';
-                    }
+                }
                 $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
                 header('Content-Type: application/json');
                 echo $json;
+            }
     }
 ?>
