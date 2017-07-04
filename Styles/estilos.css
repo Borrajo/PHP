@@ -63,18 +63,25 @@ body {
   text-align:center;
 }
 
-.category {
-position:relative;
-display: inline-block;
-float:left;
-padding:10px;
+.poster-img{
+	border-radius: 5px;
+    height: auto;
+    display: inline;
+    margin: 5px;
+    transition: .5s ease;
+    width: 100%;
 }
-/*.poster {
-    position: relative;
-    display: inline-block; /*Para que todos los elementos aparezcan en la misma linea*/
-    /* border-radius: 10px;
+@media (max-width:920px){
 
-}*/
+.poster-img{
+	border-radius: 5px;
+    height: 250px;
+    display: inline;
+    margin: 10px 10px 10px 10px !important;
+    transition: .5s ease;
+    width: auto;
+}
+}
 
 /* Texto que aparece en el tooltip*/
 .poster .poster-info {
