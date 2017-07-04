@@ -2,6 +2,7 @@
 <?php   
  
   include ('getGeneros.php');
+  require_once('class_usuario.php');
   $generos = getGeneros();
    	/* DATOS 
  		$generos --> contiene todos los generos que existen.
@@ -39,10 +40,8 @@
         </div>
         <button type="submit" class="btn btn-bc"><span class="glyphicon glyphicon-search"></span></button>
       </form>
-      <?php if(isset($_COOKIE['user_session'])){session_start();};
-     // print_r($_COOKIE);
-      //print_r($_SESSION);
-      if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) { ?> <!-- Si existe una sesion iniciada -->
+      <?php if(isset($_COOKIE['user_session'])){Usuario::iniciar_sesion();};
+      if( Usuario::conexion_establecida() ) { ?> <!-- Si existe una sesion iniciada -->
         <ul class="nav navbar-nav navbar-right">
           <div class="dropdown">
             <button class="btn btn-bc navbar-btn dropdown-toggle" id="cuentaMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
@@ -50,9 +49,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
-              <li><a href="#"><?php echo $_SESSION['nombre'];?></a></li>
+              <li><a href="#"><?php echo Usuario::getNombre();?></a></li>
               <!--<li><a href="#">Modificar</a></li>-->
-              <?php if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
+              <?php if(Usuario::isAdmin())
               { ?>
               <li><a href="php/paginas/AdministrarPeliculas.php">Administrar peliculas</a></li>
               <?php } ?>

@@ -152,7 +152,6 @@ function openModal()
 
 function eliminarPelicula(_pelicula, _username)
 {
-	//$('#deletePeliculaModal').modal('show') ;
 	BootstrapDialog.show({
 			title: "Borrar Pelicula",
 			type: BootstrapDialog.TYPE_DANGER,
@@ -168,7 +167,6 @@ function eliminarPelicula(_pelicula, _username)
                 cssClass: 'btn-danger',
                 action: function(dialogItself)
                 {
-                	dialogItself.close();
                  	$.ajax({
 				        type: 'POST',
 				        url: 'php/paginas/deletePelicula.php',
@@ -181,6 +179,7 @@ function eliminarPelicula(_pelicula, _username)
 								window.location.replace("php/paginas/administrarPeliculas.php");
 						}
 				    });
+				    dialogItself.close();
                 }
             	}]
         });

@@ -20,9 +20,10 @@ ob_start();
   include "listarPeliculas.php" ;
   include "nav_top.php" ;
   require_once('class_usuario.php');
-  if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION) ) 
+
+  if(Usuario::conexion_establecida()) 
   {
-    if(isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1)
+    if(Usuario::isAdmin())
     { 
 ?>
         
@@ -76,7 +77,7 @@ ob_start();
                               onclick="editarPelicula(<?php echo $cadena ?>)"><i class="glyphicon glyphicon-pencil"></i></button></td>
                          <td>
                           <button type="button" class="btn btn-danger" data-toggle="modal" 
-                          onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'].','.$_SESSION['id'] ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
+                          onclick="eliminarPelicula(<?php echo $peliculas[$p]['id'].','.Usuario::getId() ?>)" ><i class="glyphicon glyphicon-remove"></i></button>
                          </td>
                       </tr>
                       <?php } ?>
@@ -103,27 +104,6 @@ ob_start();
   }else  header("Location: /php/index.php");
   ob_end_flush();
 ?>
-
-<div class="modal fade" id="deletePeliculaModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                Confirmar
-            </div>
-            <form method="post" id="deletePelicula_form">
-              <div class="modal-body">
-                Esta seguro que desea borrar la pelicula?
-                <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
-                <input type="hidden" class="form-control" name="peli_id" id="peli_id">
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button type="button" onclick="eliminarPelicula('delete_Pelicula_form')" class="btn btn-danger btn-ok">Borrar</button>
-              </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="editPelicula" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog">
@@ -161,7 +141,7 @@ ob_start();
                           <?php } ?>
                         </select>
                     </div>
-                    <input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+                    <input type="hidden" class="form-control" name="usuario_id" value="<?php echo Usuario::getId() ?>">
                     <input type="hidden" class="form-control" name="pelicula_id" id="id_edit_peli">
                 </div>
                 <div class="col-md-10">

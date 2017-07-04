@@ -1,49 +1,40 @@
 <?php 
 	class Usuario{
- 	private $administrador;
- 	private $apellido;
- 	private $email;
- 	private $nombre;
- 	private $nombreusuario;
- 	private $password;
- 	private $expire;
- 	private $start;
- 	private $loggedin;
- 	private $id;
-    private static $instancia;
 
-    private function __construct() 
-    {}
-
-
-    // método singleton
-    public static function singleton()
+    public function iniciar_sesion()
     {
-        if (!isset(self::$instancia)) {
-            $u = __CLASS__;
-            self::$instancia = new $u;
-        } 
-        return self::$instancia;
+        session_start();
     }
 
-    public function cargar($valores = Array())
+    public function cerrar_sesion()
     {
-        foreach ($valores as $key => $value)
-            {
-                $this->$key = $value; 
-            }
+        if( session_status() == PHP_SESSION_ACTIVE)
+        {
+            setcookie("user_session",null, time()-3600,'/');
+            unset($_COOKIE);
+            session_unset();
+            session_destroy();
+        }
+    }
+    
+    public function conexion_establecida()
+    {
+        if(session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION))
+        {
+            return true;
+        }
+        return false;
     }
 
     public function isAdmin() 
     {
         try
         {   
-            if($this->administrador == null)
+            if(!isset($_SESSION) || !isset($_SESSION['administrador']))
             {
                 throw new Exception("Error", 1);
-                
             }
-            return $this->administrador; //retornamos true si es administrador
+            return $_SESSION['administrador']; //retornamos true si es administrador
         }
         catch(Exception $e)
         {
@@ -55,12 +46,11 @@
     {  
         try
         {   
-            if($this->nombreusuario == null)
+            if(!isset($_SESSION))
             {
                 throw new Exception("Error", 2);
-                
             }
-            return $this->nombreusuario; 
+            return $_SESSION['nombreusuario']; 
         }
         catch(Exception $e)
         {
@@ -70,24 +60,22 @@
 
     public function loggedIn() 
     {  
-            if($this->loggedin == null)
+            if(!isset($_SESSION))
             {
                 return 0;
-                
             }
-            return $this->loggedIn; //retornamos true si esta conectado
+            return $_SESSION['loggedIn'] ; //retornamos true si esta conectado
     }
 
     public function getNombre() 
     {
-                try
+        try
         {   
-            if($this->nombre == null)
+            if(!isset($_SESSION))
             {
-                throw new Exception("Error", 3);
-                
+                throw new Exception("Error", 2);
             }
-            return $this->nombre; 
+            return $_SESSION['nombre'];
         }
         catch(Exception $e)
         {
@@ -99,24 +87,16 @@
     {
         try
         {   
-            if($this->id == null)
+            if(!isset($_SESSION))
             {
-                throw new Exception("Error", 4);
-                
+                throw new Exception("Error", 2);
             }
-            return $this->id; 
+            return $_SESSION['id'];
         }
         catch(Exception $e)
         {
 
         }
     }
-
-    // Evita que el objeto se pueda clonar
-    public function __clone()
-    {
-        trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
-    }
-
 }
 ?>

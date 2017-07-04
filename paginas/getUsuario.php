@@ -45,16 +45,13 @@
                     /* Creamos la sesion si la contraseña coincide*/
                     if ($data != null)
                     {
-                        session_start();
-                        $_SESSION['loggedin'] = true;
+                        Usuario::iniciar_sesion();
                         $_SESSION['start'] = time();
                         $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
                         foreach ($data as $key => $value) 
                         {
                             $_SESSION["$key"] = $value;
                         }
-                        $user_logged = Usuario::singleton();
-                        $user_logged->cargar($_SESSION);
                         setcookie("user_session", session_id(), time()+3600,'/');
                         throw new Exception('Login Correcto',0);
                     }

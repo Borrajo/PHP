@@ -15,6 +15,7 @@
 <?php 
 	include ('getPelicula.php');
 	include ('funciones.php');
+	require_once('class_usuario.php');
 	/* NOS DEVUELVE UN ARREGLO $data CON LA INFORMACION */
 	$nombre = $data['nombre'];
 	$anio = $data['anio'];
@@ -60,7 +61,7 @@
   		<h1><small><?php echo count($comments) ?> comentario<?php if(count($comments) != 1){echo 's';} ?></small></h1>
 		</div>
 		<?php 
-		 if (session_status() == 2 && (isset($_SESSION['nombreusuario']) && !in_array($_SESSION['nombreusuario'], $usuarios))) { ?>
+		 if (Usuario::conexion_establecida() && !in_array(Usuario::getUsuario(), $usuarios))) { ?>
 		<!-- 'si la persona ya comentó lo siguiente no aparece'  -->
 		<!-- tiene que: estar conectado Y existir el username Y no tiene que estar en los usuarios que comentaron -->
 		<div class="col-md-12">
@@ -72,7 +73,7 @@
 				</div>
 				<div class="col-md-11 col-xs-11">
 					<!-- INPUTEXT PARA COMENTARIO -->
-					<h4> <strong><?php echo $_SESSION['nombreusuario'] ?> </strong></h4> 
+					<h4> <strong><?php echo Usuario::getUsuario() ?> </strong></h4> 
 					<form name="formComentario" action="php/paginas/NuevoComentario.php" method="post">
 						<div class="row">
 							<div class="col-md-4">
@@ -93,7 +94,7 @@
 								</div>
 				         	</div>
 				         	<div class="col-md-10">
-				         		<input type="hidden" class="form-control" name="usuario_id" value="<?php echo $_SESSION['id'] ?>">
+				         		<input type="hidden" class="form-control" name="usuario_id" value="<?php echo Usuario::getId() ?>">
 				         		<input type="hidden" class="form-control" name="pelicula_id" value="<?php echo $data['id'] ?>">
 					         	<div class="form-group">
 									<textarea type="text" class="form-control" name="comentario" placeholder="Escriba su comentario aquí" style="resize: vertical;min-height: 100px"></textarea>
