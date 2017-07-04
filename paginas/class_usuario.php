@@ -58,15 +58,7 @@
         }
     }
 
-    public function loggedIn() 
-    {  
-            if(!isset($_SESSION))
-            {
-                return 0;
-            }
-            return $_SESSION['loggedIn'] ; //retornamos true si esta conectado
-    }
-
+    
     public function getNombre() 
     {
         try
