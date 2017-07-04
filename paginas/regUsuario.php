@@ -48,9 +48,9 @@
 
 				if(strcmp($password,$password2)==0 )
 				{
-					if(!preg_match($ExpPass1,$password) || !preg_match($ExpPass2,$password)  || !preg_match($ExpPass3,$password) )
+					if(!preg_match($ExpPass1,$password) || !preg_match($ExpPass2,$password)  || !preg_match($ExpPass3,$password) || strlen($password) < 6)
 					{
-                  		throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula',9);
+                  		throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula y mínimo 6 caracteres',9);
 					}
 				}
 				else if(strcmp($password,$password2)!=0 )
