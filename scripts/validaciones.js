@@ -74,13 +74,13 @@ function validarRegistro(_nombre, _apellido,_email,_username,_password,_password
 		$(username).popover("hide");
 	}
 
-	if(password.value.toString().localeCompare(password2.value)==0)
+	if(password.value.toString().localeCompare(password2.value.toString())==0)
 	{
 		if(!ExpPass1.test(password.value) || !ExpPass2.test(password.value) || !ExpPass3.test(password.value) )
 		{
 			todo_correcto = false;
 			//mensaje += "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula\n\r";
-			$(password).popover({animation: "true", title: "Error", content: "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula", placement: "right"});
+			$(password).popover({animation: "true", title: "Error", content: "La contraseña debe tener al menos un número o signo, al menos una mayuscula y una minúscula y poseer mas de 6 caracteres", placement: "right"});
 			$(password).popover("show");
 		}
 		else{
@@ -105,10 +105,7 @@ function validarRegistro(_nombre, _apellido,_email,_username,_password,_password
         { 
         	if(data['ERROR'] == 0)
         	{
-        		BootstrapDialog.alert({
-					message: data['DESCRIP'],
-					type: BootstrapDialog.TYPE_DANGER,
-							});
+				alert(data['DESCRIP']);
         		window.location.replace("/php/index.php");
         	}
         	else
