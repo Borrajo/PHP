@@ -77,6 +77,5 @@
                 $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
                 header('Content-Type: application/json');
                 echo $json;
-            }
     }
 ?>

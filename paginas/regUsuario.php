@@ -1,5 +1,3 @@
-<!-- Obtencion de datos del usuario - validacion del registro (servidor)-->
-
 <?php 
     require_once('conexion.php');
     $conn = conexion();
@@ -19,24 +17,26 @@
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $password2 = $_POST['password2'];
-                $mensaje = "";
+
+                $todo_correcto=true;
                 
 		try{		
-				if($nombre == null || !preg_match($alfabetico,$nombre) )
+				if($nombre == null || !preg_match($alfabetico,$nombre))
 				{
 					$mensaje = new StdClass();
                     $mensaje->ERROR = 5;
                     $mensaje->DESCRIP = 'Nombre  demasiado corto y no puede contener números ni símbolos';
+                    throw new Exception('Nombre  demasiado corto y no puede contener números ni símbolos');
 				}
 
 	
 				/*Verifiamos que apellido no sea vacio y tenga sólo caracteres alfabéticos**/
-				if($apellido == null || !preg_match($alfabetico,$apellido) )
+				if($apellido == null || !preg_match($alfabetico,$apellido))
 				{
 				 	$mensaje = new StdClass();
                     $mensaje->ERROR = 6;
                     $mensaje->DESCRIP = 'Apellido demasiado corto y no puede contener números ni símbolos';
-
+                    throw new Exception('Apellido demasiado corto y no puede contener números ni símbolos');
 				}
 
 				/*Verificamos el valor ingresado por el usuario tiene estructura de 
@@ -47,7 +47,8 @@
 				   	$mensaje = new StdClass();
                     $mensaje->ERROR = 7;
                     $mensaje->DESCRIP = 'El email ingresado no tiene estructura de email';
-				}
+                    throw new Exception('El email ingresado no tiene estructura de email');				
+                }
 
 				/* Nombre de usuario debe tener por lo menos 6 caracteres y que sean alfanuméricos*/
 
@@ -56,27 +57,29 @@
 				    $mensaje = new StdClass();
                     $mensaje->ERROR = 8;
                     $mensaje->DESCRIP = 'Nombre de usuario demasiado corto y debe contener sólo números y letras';
+                    throw new Exception('Nombre de usuario demasiado corto y debe contener sólo números y letras');
 				}
 
-				if(strcmp($password,$password2)==0)
+				if(strcmp($password,$password2)==0 )
 				{
 					if(!preg_match($ExpPass1,$password) || !preg_match($ExpPass2,$password)  || !preg_match($ExpPass3,$password) )
 					{
 						$mensaje = new StdClass();
                     	$mensaje->ERROR = 9;
                   		$mensaje->DESCRIP = 'La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula';
+                  		throw new Exception('La contraseña debe tener al menos un número o signo, al menos una mayúscula y una minúscula');
 					}
 				}
-				else if(strcmp($password,$password2)!=0)
+				else if(strcmp($password,$password2)!=0 )
 					{
 						$mensaje = new StdClass();
                    		$mensaje->ERROR = 10;
                    		$mensaje->DESCRIP = 'Las contraseñas no coinciden';
+                   		throw new Exception('Las contraseñas no coinciden');
 				}
 
 
-                $sql="";
-                
+                               
                 	$sql = "SELECT COUNT(*) AS existe
                         FROM usuarios 
                         WHERE usuarios.nombreusuario = '$username'";
@@ -102,31 +105,32 @@
 	                        $mensaje = new StdClass();
 	                        $mensaje->ERROR = 12;
 	                        $mensaje->DESCRIP = 'No se pudo agregar al usuario';
-	            
-	                        die();
+	                        throw new Exception('No se pudo agregar al usuario');
 	                	} 
 	                	 else { 
 	                	 	$mensaje = new StdClass();
 	                        $mensaje->OK = 0;
 	                        $mensaje->DESCRIP = 'Usuario creado correctamente';
+	                        throw new Exception('Usuario creado correctamente');
 	                    }
  					}
  					else{
  						$mensaje = new StdClass();
                         $mensaje->ERROR = 11;
                         $mensaje->DESCRIP = 'El usuario ya existe';
+                        throw new Exception('El usuario ya existe');
  					}
                     
-                $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
-                header('Content-Type: application/json');
-                echo $json;
-                	
+                    $json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
+        			header('Content-Type: application/json');
+        			echo $json;
                 
             }
             catch(Exception $e)
 			{
-				
-	
+				$json = json_encode($mensaje,JSON_UNESCAPED_UNICODE);
+        		header('Content-Type: application/json');
+        		echo $json;
 			}
     }
 ?>

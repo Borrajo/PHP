@@ -107,13 +107,14 @@ if(todo_correcto)
 	$.ajax({
         type: 'POST',
         url: 'php/paginas/regUsuario.php',
-        //async: false,
         dataType: 'json',
-        data: {username:username,password:password, email:email, apellido:apellido, nombre:nombre},
+        data: {username:username.value, password:password.value, email:email.value, apellido:apellido.value, nombre:nombre.value, password2: password2.value},
         success: function(data)
         { 
+        	console.log(data);
         	if(typeof data['OK'] !== 'undefined')
         	{
+        		alert(data['DESCRIP']);
         		window.location.replace("php/index.php");
         	}
         	else
@@ -200,7 +201,8 @@ function eliminarPelicula(_pelicula, _username)
 								message: data['DESCRIP'],
 								type: BootstrapDialog.TYPE_DANGER,
 							});
-							//window.location.replace("php/paginas/administrarPeliculas.php");
+							alert("lalala");
+							window.location.replace("php/paginas/administrarPeliculas.php");
 				        }
 				    });
                 }

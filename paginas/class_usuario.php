@@ -28,5 +28,16 @@
     {
         return $this->nombreusuario;
     }
+
+    public function getNombre() 
+    {
+        return $this->nombre;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }
 ?>
